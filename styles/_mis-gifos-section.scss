@@ -1,0 +1,27 @@
+#container-section-mis-gifos {
+    h2 {
+        font-family: var(--font-Montserrat);
+        color: var(--layout-primary-color);
+        text-align: center;
+    }
+    #emoji-img {
+        content: url("/assets/icon-favoritos.svg");
+        margin: 5px auto 7px auto;
+    }
+    .container-mis-gifos {
+        width: 100%;
+        margin-top: 32px;
+        /* border: 1px solid black; */
+        display: flex;
+        flex-flow: row wrap;
+        overflow: hidden;
+        justify-content: center;
+        
+    }
+    .container-mis-gifos .mi-gifo {
+        width: 156px;
+        height: 120px;
+        margin:10px;
+        object-fit:cover;
+    }
+}

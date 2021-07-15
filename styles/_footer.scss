@@ -1,0 +1,42 @@
+footer {
+    height: 195px;
+    border-bottom: 5px solid var(--layout-primary-color);
+    padding-top: 47px;
+    padding-bottom: 23px;
+    p{
+        font-family: var(--font-Roboto);
+        line-height: 20px;
+        font-size: 15px;
+        text-align: center;
+    }
+    .container-logos {
+        width: 100px;
+        margin: 24px auto 46px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .sm-logo {
+            width: 20px;
+            height: 20px;
+        }
+        #sm-fb {
+            content: url("/assets/icon_facebook.svg");
+        }
+        #sm-fb:hover {
+            content: url("/assets/icon_facebook_hover.svg");
+        }
+        #sm-tw {
+            content: url("/assets/icon-twitter.svg");
+        }
+        #sm-tw:hover {
+            content: url("/assets/icon-twitter-hover.svg");
+        }
+        #sm-ig {
+            content: url("/assets/icon_instagram.svg");
+        }
+        #sm-ig:hover {
+            content: url("/assets/icon_instagram-hover.svg");
+        }
+    }
+}
+

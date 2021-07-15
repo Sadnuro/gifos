@@ -4,11 +4,146 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles\style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <title>GIFOS</title>
 </head>
 <body>
+    <header>
+        <nav class="bar-menu">
+            <img src="assets/logo-mobile.svg" alt="logo-mobile">
+            <details id="detailsMenu">
+                <summary></summary>
+                <ul>
+                    <li><a id="mode-btn" href="#"> Modo </a></li>
+                    <li><a id="inicio-btn" href="#"> Inicio </a></li>
+                    <li><a id="favorites-btn" href="#"> Favoritos </a></li>
+                    <li><a id="gifos-btn" href="#"> Mis GIFOS </a></li>
+                </ul>
+            </details>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="home-section" id="home-section">
+            <h1>Inspírate, busca, guarda, y crea los mejores <span id="home-text-resalt">GIFOS</span></h1>
+            <div class="container">
+                <img class="home-img" src="assets/ilustra_header.svg" alt="Ilustra-header">
+
+                <div class="search-bar-container">
+                    <input id="search-bar" type="text" placeholder="Busca GIFOS y más">
+                    <img id="search-btn-img" class="status-search" src="assets/icon-search.svg" alt="icon-search">
+                    <img id="close-btn-img" class="display-none" src="assets/close.svg" alt="icon-close">
+                    
+                    <!-- <details> 
+                        <ul id="sugerencias" style="height: 0px; width: 0px; list-style: none;">
+                            <li class="sugerencia sugerencia1">Sugerencia 1</li>
+                            <li class="sugerencia sugerencia2">Sugerencia 2</li>
+                            <li class="sugerencia sugerencia3">Sugerencia 3</li>
+                            <li class="sugerencia sugerencia4">Sugerencia 4</li>
+                        </ul>
+                   </details> -->
+                </div>
+            </div>
+        </section>
+        <section class="search-section" id="search-section">
+            <div class="trends-container">
+                <h3>Trending:</h3>
+                <div class="trend-words-container">
+                    <span class="trend-word tw-1">i miss you</span>
+                    <span class="trend-word tw-2">excited</span>
+                    <span class="trend-word tw-3">pig</span>
+                    <span class="trend-word tw-4">satisfacying</span>
+                    <span class="trend-word tw-5">alicia keys</span>
+                    <span class="trend-word tw-6">tum</span>
+                </div>
+            </div>
+
+            <div class="subsection-results" id="subsection-results-div">
+                <div id="line"></div>
+                <h2>Gifos topics of trends</h2>
+                <div class="results-container">
+                    <img class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
+                    <img class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
+                    <img class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
+                    <img class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
+                </div>
+                <button class="view-more-btn" id="view-more-btn-results">VER MÁS</button>
+            </div>
+        </section>
+        <!--checked btn favorites remove class "display-none" to show
+        the style is applied to id="container-section-favs"-->
+        <section class="display-none" id="container-section-favs">
+            <div id="heart-img"></div>
+            <h2>Favoritos</h2>
+            <div class="container-favs-gifs">
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+            </div>
+            <div class="container-btn-view-more">
+                <button class="view-more-btn" id="view-more-btn-favs">VER MÁS</button>
+            </div>
+        </section>
+        
+        <!--checked btn mis-gifos remove class "display-none" to show
+        the style is applied to id="container-section-mis-gifos"-->
+        <section class="display-none" id="container-section-mis-gifos">
+            <div id="emoji-img"></div>
+            <h2>Mis GIFOS</h2>
+            <div class="container-mis-gifos">
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+                <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img>
+            </div>
+            <div class="container-btn-view-more">
+                <button class="view-more-btn" id="view-more-btn-mis-gifos">VER MÁS</button>
+            </div>
+            
+        </section>
+        <section class="carrusel-section">
+            <div class="trends-carrusel-container">
+                <h2>Trending GIFOS</h2>
+                <p>Mira los últimos GIFOS de nuestra comunidad.</p>
+                <div class="carrusel">
+                   
+                    <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >                       
+                    <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                    <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                </div>
+            </div>
+        </section>
+
+    </main>
     
-    <scripts src="scripts\main.js" ></script>
+    <footer>
+        <p>Compartir en:</p>
+        <div class="container-logos">
+            <a href="https://www.facebook.com/" class="socialmedia-link">
+                <div id="sm-fb" class="sm-logo" ></div>          
+            </a>
+            
+            <a href="https://twitter.com" class="socialmedia-link">
+                <div id="sm-tw" class="sm-logo" > </div>
+            </a> 
+
+            <a href="https://instagram.com" class="socialmedia-link">
+                <div id="sm-ig" class="sm-logo"> </div>
+            </a>    
+        </div>
+        <p>GIFOS 2020 All Rights Reserved.</p>
+    </footer>
+
+    <script src="scripts/main.js" ></script>
 </body>
 </html>
