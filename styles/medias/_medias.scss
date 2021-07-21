@@ -1,0 +1,142 @@
+@media screen and (min-width: 670px) {
+
+    // HEADER ==================================
+    header {padding: 0 156px;
+        nav {
+            #logo {
+                content: url("/assets/logo-desktop.svg");
+            }
+        }
+    }
+    body.dark-mode {
+        #logo {
+            content: url("/assets/Logo-modo-noc.svg");
+        }
+    }
+
+    // HOME-SECTION =====================================  
+    .home-section {
+        h1 {
+            width: 934px;
+            padding: 0 150px;
+            margin-top: 76px;
+            line-height: 50px;
+            font-size: 35px;
+        }
+        .container {
+            width: 553px;
+            height: auto;
+            .home-img {
+                width: 400px;
+                height: 190px;
+            }
+            .search-bar-container {
+                width: 550px;
+            }
+
+        }
+    }
+
+    // SEARCH SECTION ====================================
+    .search-section {
+        .trends-container {
+            padding-top: 76px;
+            h3 {
+                margin: 0;
+                font-size: 18px;
+            }
+            .trend-word {
+                font-size: 16px;
+            }
+        }
+
+        .subsection-results {
+            
+            h2 {font-size: 35px;}
+            .results-container {
+                width: 100%;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                figure {
+                    width: 260px;
+                    height: 200px;
+                    margin: 15px;
+                    .modal-container {
+                        width: 100%;
+                        height: 100%;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    // CARRUSE; - SECTION ================================================
+
+    .carrusel-section {
+        width: 100%;
+        height: 640px;
+        padding: 67px 94px;
+        .trends-carrusel-container {
+            padding: 0;
+            h2 {
+                margin-top: 0;
+                line-height: 30px;
+                font-size: 25px;
+            }
+            p {
+                margin-top: 12px;
+                line-height: 20px;
+                font-size: 18px;
+            }
+
+            .carrusel {
+                margin-top: 53px;
+                .GIF {
+                    width: 357px;
+                    height: 275px;
+                }
+            }
+        }
+    }
+
+    // FOOTER ===========================================
+
+    footer {
+        width: 100%;
+        height: 121px;
+        padding: 49px 156px;
+        display: flex;
+        flex-flow: row nowrap;
+        p {
+            position: static;
+            height: 15px;
+            line-height: 15px;
+            font-size: 13px;
+        }
+        p#share-txt {
+            width: 100px;
+        }
+        p.copyright-txt {
+            width: 250px;
+        }
+        .container-logos {
+            margin: 0;
+            width: 75%;
+            display: flex;
+            justify-content: left;
+            a {
+                margin: 0 10px;
+            }
+        }
+
+    }
+
+}

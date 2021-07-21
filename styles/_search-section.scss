@@ -1,4 +1,5 @@
 .search-section {
+    background-color: var(--background-primary-color);
     .subsection-results {
         display: flex;
         flex-flow: column nowrap;
@@ -15,16 +16,23 @@
             margin-bottom: 27px;
             text-align: center;
             font-family: var(--font-Montserrat);
-            color: var(--layout-primary-color);
+            color: var(--font-primary-color);
         }
+
 
         .results-container{
             width: 360px;
-            img {
+            display: flex;
+            flex-flow: row wrap;
+            figure {
+                margin: 10px;
+                width: 156px;
+                img {
                 width: 156px;
                 height: 120px;
-                margin: 11px;
+                // margin: 11px;
                 object-fit: cover;
+                }
             }
         }
     }    

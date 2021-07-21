@@ -1,17 +1,18 @@
 .carrusel-section {
+    background-color: var(--background-secondary-color);
     .trends-carrusel-container {
         height: 430px;
         width: 100%;
         padding-top: 46px;
         padding-bottom: 82px;
-        background-color: var(--layout-third-color);
+        // background-color: var(--background-secondary-color);
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
         h2 {
             width: 60%;
             font-family: var(--font-Montserrat);
-            color: var(--layout-primary-color);
+            color: var(--font-primary-color);
             text-align: center;
         }
         p{
@@ -20,6 +21,7 @@
             line-height: 23px;
             font-size: 16px;
             text-align: center;
+            color: var(--font-third-color);
         }
         .carrusel {
             width: 100%;

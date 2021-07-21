@@ -1,7 +1,9 @@
 #container-section-favs {
+    background-color: var(--background-primary-color);
+    padding-top: 5px;
     h2 {
         font-family: var(--font-Montserrat);
-        color: var(--layout-primary-color);
+        color: var(--font-primary-color);
         text-align: center;
     }
     #heart-img {

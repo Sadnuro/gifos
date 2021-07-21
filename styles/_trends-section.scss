@@ -2,10 +2,13 @@
 .search-section {
     h3, .trend-word {
         font-family: var(--font-Montserrat);
-        color: var(--layout-primary-color);
+        color: var(--font-primary-color);
     }
     h3 {
         margin-top: 30px;
+    }
+    .trend-word {
+        font-weight: medium;
     }
     .trends-container {
         width: 100%;

@@ -1,13 +1,15 @@
 footer {
     height: 195px;
-    border-bottom: 5px solid var(--layout-primary-color);
+    border-bottom: 5px solid var(--line-header-color);
     padding-top: 47px;
     padding-bottom: 23px;
+    background-color: var( --background-primary-color);
     p{
         font-family: var(--font-Roboto);
         line-height: 20px;
         font-size: 15px;
         text-align: center;
+        color: var( --font-third-color);
     }
     .container-logos {
         width: 100px;

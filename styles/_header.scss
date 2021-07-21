@@ -1,5 +1,6 @@
 header {
-    border-top: var(--header-line-top) solid var(--layout-primary-color);
+    border-top: var(--header-line-top) solid var(--line-header-color);
+    background-color: var(--background-primary-color);
     nav {
         height: var(--header-nav-height);
         width: 100%;
@@ -9,9 +10,10 @@ header {
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
-        img {
+        #logo {
             width: 50px;
             height: 50px;
+            content: url("/assets/logo-mobile.svg");
         }
         details {
             width: 30px;
@@ -23,7 +25,7 @@ header {
                 list-style: none;
                 line-height: 40px;
                 font-size: 20px;
-                color: var(--layout-primary-color)
+                color: var(--font-primary-color)
             }
             summary:hover{
                 cursor: pointer;
@@ -39,11 +41,13 @@ header {
                 }
             }
             ul {
+                z-index: 3;
                 width: 100%;
-                height: calc(100vmax - calc(var(--header-nav-height) + var(--header-line-top)));
+                height: 100vmax;
+                // height: 100%;
                 padding-top: 17px;
-                background-color: var(--layout-primary-color);
-                opacity: 80%;
+                background-color: var(--menu-color);
+                // opacity: 80%;
                 position: absolute;
                 left: 0px;
                 top: 100px;
@@ -66,4 +70,8 @@ header {
             }
         }
     }
+}
+
+.dark-mode #logo {
+    content: url("/assets/logo-mobile-modo-noct.svg");
 }

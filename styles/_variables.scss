@@ -2,10 +2,33 @@
     --header-line-top : 5px;
     --header-nav-height: 95px;
     // --nav-menu-color: white;
+    --line-header-color: #572EE5;
+    --menu-color: rgba(87, 46, 229, 0.8);
     --layout-primary-color: #572EE5;
+    --font-primary-color: #572EE5;
+
+    --placeholder-searchbar-primary-color: #6B7989;
+    --background-primary-color: white;
+    --background-secondary-color: #F3F5F8;
+
     --layout-secondary-color: #50E3C2;
-    --layout-third-color: #F3F5F8;
+    --font-secondary-color: #50E3C2;
+
+    --font-third-color: black;
+
+    // --layout-third-color: #F3F5F8;
+
     --font-Montserrat: 'Montserrat', sans-serif;
     --font-Roboto: "Roboto", sans-serif;
-    
+}
+
+.dark-mode {
+    --line-header-color: #000;
+    --font-primary-color: white;
+    --menu-color: rgba(0, 0, 0, 1);
+
+    --font-third-color: white;
+
+    --background-primary-color: #37383C;
+    --background-secondary-color: #222326;
 }

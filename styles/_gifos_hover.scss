@@ -1,0 +1,189 @@
+// .container {
+//     width: 100%;
+//     height: 50%;
+//     margin-top: 100px;
+//     border: 1px solid black;
+//     display: flex;
+//     flex-flow: row wrap;
+//     align-items: center;
+//     justify-content: space-around;
+// }
+// // .container 
+figure {
+    width: 156px;
+    height: 120px;
+    border: 1px solid black;
+    // margin: 2px;
+    /*Permite aplicar [absolute] a un elemento hijo y será
+    relativo a este contenedor*/
+    position: relative;         
+    overflow: hidden;
+}
+
+
+// // .container 
+// figure img {
+//     width: 156px;
+//     height: 120px;
+//     object-fit: cover;
+    
+// }
+
+
+// /* CAPA HOVER =================================================================== */
+// // .container 
+figure .capa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    background: rgba(87,46,229, 0.6);
+    transition: 0.5s;
+    opacity: 0;
+    /* Elemento desaparece de pantalla*/
+    visibility: hidden;  
+}
+// /* Como .capa no está en pantalla, no esposible hacerle hover sobre él
+// por lo tanto le hacemos hover al elemento figure y aplicamos los efectos
+// al primer elemento .capa de ese contenedor */
+
+figure:hover > .capa {
+    transition: 0.5s;
+    opacity: 1;
+    visibility: visible;
+}
+figure .capa:hover {
+    transition: 0.5s;
+    opacity: 1;
+    visibility: visible;
+}
+figure .capa h3 {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    color: White;
+    line-height: 20px;
+    font-size: 12px;
+}
+figure .capa p {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+}
+figure .capa .buttons{
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+// buttoms hover ========================================================================
+.hover-btns {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    margin-left: 11px;
+}
+
+.btn-fav {
+    content: url("/assets/icon-fav.svg");
+}
+.btn-fav:hover {
+    content: url("/assets/icon-fav-hover.svg");
+}
+// .btn-fav:checked {
+//     content: url("/assets/icon-fav-active.svg");
+// }
+.btn-download {
+    content: url("/assets/icon-download.svg");
+}
+.btn-download:hover {
+    content: url("/assets/icon-download-hover.svg");
+}
+.btn-max {
+    content: url("/assets/icon-max-normal.svg");
+}
+.btn-max:hover {
+    content: url("/assets/icon-max-hover.svg");
+}
+.btn-delete {
+    content: url("/assets/icon-trash-normal.svg");
+}
+.btn-delete:hover {
+    content: url("/assets/icon-trash-hover.svg");
+}
+.btn-link {
+    content: url("/assets/icon-link-normal.svg");
+}
+.btn-link:hover {
+    content: url("/assets/icon-link-hover.svg");
+}
+
+// MODAL MOBILE ===============================================================
+// ============================================================================
+
+
+
+// MODAL DESKTOP STYLE =======================================================
+// ===========================================================================
+
+.preview {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.preview .btn-close {
+    position: absolute;
+    top: 66px;
+    right: 20%;
+}
+.preview img {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    object-fit: contain;
+}
+.preview .container-btns-info {
+    width: 500px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+    .container-info {
+        width: 400px;
+        height: 50px;
+        font-family: monospace;
+        p {
+            font-size: 16px;
+        }
+        h3 {
+            margin: 0;
+        }
+    }
+}
+
+
+.display-none{
+    display: none;
+}
