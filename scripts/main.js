@@ -1,3 +1,36 @@
+const gifosList = [
+    {
+        "id": "mf8UbIDew7e8g",
+        "title": "Climate Change Earth GIF",
+        "author": "uknown",
+        "url": "https://media.giphy.com/media/mf8UbIDew7e8g/giphy.gif"
+    },
+    {
+        "id": "3o7WIB00yXujVt4WEo",
+        "title": "Earth GIF by MOODMAN",
+        "author": "uknown",
+        "url": "https://media.giphy.com/media/3o7WIB00yXujVt4WEo/giphy.gif"
+    },
+    {
+        "id": "l1KVcrdl7rJpFnY2s",
+        "title": "Mother Earth World GIF by eyedesyn",
+        "author": "eyedesyn",
+        "url": "https://media.giphy.com/media/l1KVcrdl7rJpFnY2s/giphy.gif"
+    },
+    {
+        "id": "26tP7vexsaMrS4UpO",
+        "title": "David Attenborough Wow GIF by BBC Earth",
+        "author": "bbcearth",
+        "url": "https://media.giphy.com/media/26tP7vexsaMrS4UpO/giphy.gif"
+      },
+    {
+        "id": "3o6YgoY0GU0Yah2ujK",
+        "title": "Pizza Time Rex GIF by GIPHY Studios Originals",
+        "author": "studiosoriginals",
+        "url": "https://media.giphy.com/media/3o6YgoY0GU0Yah2ujK/giphy.gif"
+    }
+]
+
 
 
 // // https://api.giphy.com/v1/gifs/trending?api_key=oAF6BugvxZqmpPf30UwCOVes8vOpwQEe
@@ -18,20 +51,20 @@ var SEARCHES_GIFOS = []
 var FAVORITES_GIFOS = []
 var MY_GIFOS = []
 
-template = `
-<figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
-    <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
-    <div class="capa">
-        <div class="buttons">
-            <div class="btn" id="btn-a">A</div>
-            <div class="btn" id="btn-b">B</div>
-            <div class="btn" id="btn-c">C</div>
-        </div>
-        <h3>Master Chief</h3>
-        <p>Lorem ipsum dolor sit, adipisicing elit.</p>
-    </div>
-</figure>
-`
+// template = ` // DEPRECATED TEMPLATE FOR GIFO
+// <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
+//     <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
+//     <div class="capa">
+//         <div class="buttons">
+//             <div class="btn" id="btn-a">A</div>
+//             <div class="btn" id="btn-b">B</div>
+//             <div class="btn" id="btn-c">C</div>
+//         </div>
+//         <h3>Master Chief</h3>
+//         <p>Lorem ipsum dolor sit, adipisicing elit.</p>
+//     </div>
+// </figure>
+// `
 
 
 
@@ -40,16 +73,23 @@ template = `
 
 // INICIO | CAMBIO ENTRE SECCIONES DESDE MENÚ ======================================================
 // =================================================================================================
-const body = document.querySelector("body")
-const mode_btn = document.getElementById("mode-btn")
-const inicio_btn = document.getElementById("inicio-btn")
-const favorites_btn = document.getElementById("favorites-btn")
-const mis_gifos_btn = document.getElementById("gifos-btn")
+const body = document.querySelector("body");
+const mode_btn = document.getElementById("mode-btn");
+const mode_btn_dkt = document.getElementById("mode-btn-dkt");
+const inicio_btn = document.getElementById("inicio-btn");
+const inicio_btn_dkt = document.getElementById("inicio-btn-dkt");
+const favorites_btn = document.getElementById("favorites-btn");
+const favorites_btn_dkt = document.getElementById("favorites-btn-dkt");
+const mis_gifos_btn = document.getElementById("gifos-btn");
+const mis_gifos_btn_dkt = document.getElementById("gifos-btn-dkt");
+const create_gifos_btn = document.getElementById("create-gifos-btn");
 
-const home_section_id = document.querySelector("#home-section")
-const search_section_id = document.querySelector("#search-section")
-const container_section_favs_id = document.querySelector("#container-section-favs")
-const container_section_mis_gifos_id = document.querySelector("#container-section-mis-gifos")
+const home_section_id = document.querySelector("#home-section");
+const search_section_id = document.querySelector("#search-section");
+const container_section_favs_id = document.querySelector("#container-section-favs");
+const container_section_mis_gifos_id = document.querySelector("#container-section-mis-gifos");
+const create_gifos_section_id = document.querySelector("#create-gifos-section");
+const carrusel_section_id = document.querySelector("#carrusel-section");
 
 function validateClassList (validate, classList) {
     /* input:
@@ -79,17 +119,20 @@ function validateClassList (validate, classList) {
 // =========================================================================================================
 
 
-console.log(mode_btn)
+console.log(mode_btn, mode_btn_dkt)
 // var THEME = ""
 if (localStorage.getItem("THEME")===null) {
     // THEME = "LIGHT" // DARK | LIGHT
     localStorage.setItem("THEME", "LIGHT")
-    mode_btn.textContent = "Modo nocturno"
-    body.classList.remove("dark-mode")
+    mode_btn.textContent = "Modo nocturno";
+    mode_btn_dkt.textContent = "MODO NOCTURNO";
+    body.classList.remove("dark-mode");
 } else if (localStorage.getItem("THEME")==="DARK") {
-    mode_btn.textContent = "Modo diurno"
+    mode_btn.textContent = "Modo diurno";
+    mode_btn_dkt.textContent = "MODO DIURNO";
 } else if (localStorage.getItem("THEME")==="LIGHT"){
-    mode_btn.textContent = "Modo nocturno"
+    mode_btn.textContent = "Modo nocturno";
+    mode_btn_dkt.textContent = "MODO NOCTURNO";
 }
 
 console.log(localStorage.getItem("THEME"))
@@ -100,7 +143,17 @@ mode_btn.addEventListener ("click", (event)=>{
     details.removeAttribute("open")         // Cierra el menú
     body.classList.toggle("dark-mode")
     localStorage.getItem("THEME")==="LIGHT" ? localStorage.setItem("THEME", "DARK") : localStorage.setItem("THEME", "LIGHT");
-    mode_btn.textContent === "Modo nocturno" ? mode_btn.textContent ="Modo diurno" : mode_btn.textContent ="Modo nocturno";
+    mode_btn.textContent == "Modo nocturno" ? mode_btn.textContent ="Modo diurno" : mode_btn.textContent ="Modo nocturno";
+    mode_btn_dkt.textContent == "MODO NOCTURNO" ? mode_btn_dkt.textContent ="MODO DIURNO" : mode_btn_dkt.textContent ="MODO NOCTURNO";
+})
+
+mode_btn_dkt.addEventListener ("click", (event)=>{
+    console.log("CLICK MODE_BTN_DKT")
+    details.removeAttribute("open")         // Cierra el menú
+    body.classList.toggle("dark-mode")
+    localStorage.getItem("THEME")==="LIGHT" ? localStorage.setItem("THEME", "DARK") : localStorage.setItem("THEME", "LIGHT");
+    mode_btn.textContent == "Modo nocturno" ? mode_btn.textContent ="Modo diurno" : mode_btn.textContent ="Modo nocturno";
+    mode_btn_dkt.textContent == "MODO NOCTURNO" ? mode_btn_dkt.textContent ="MODO DIURNO" : mode_btn_dkt.textContent ="MODO NOCTURNO";
 })
 
 // const addIframe = () => {
@@ -116,10 +169,10 @@ var activeSection = "inicio"
 const toggleSections = (event)=>{
     console.log(event.target)
 
-    const id = event.target.id
+    const clase = event.target.classList[0];
 
-    if (id === "inicio-btn" && activeSection!=="inicio") {
-        console.log(id)
+    if (clase === "inicio-btn" && activeSection!=="inicio") {
+        console.log(clase)
         sectionToHidden1 = "container_section_favs"
         // ocultar: favoritos, mis gifos
         if  (validateClassList("display-none", container_section_favs_id.classList)!=true) {
@@ -128,13 +181,19 @@ const toggleSections = (event)=>{
         if  (validateClassList("display-none", container_section_mis_gifos_id.classList)!=true) {
             container_section_mis_gifos_id.classList.toggle("display-none")
         }
+        if(validateClassList("display-none", create_gifos_section_id.classList)!=true){
+            create_gifos_section_id.classList.toggle("display-none");
+        }
+        if (validateClassList("display-none", carrusel_section_id.classList)==true){
+            carrusel_section_id.classList.toggle("display-none");
+        }
         // mostrar secciones de inicio
         home_section_id.classList.toggle("display-none") //home-section
-        search_section_id.classList.toggle("display-none") // search-section
+        // search_section_id.classList.toggle("display-none") // search-section
         activeSection = "inicio"
 
-    } else if (id === "favorites-btn" && activeSection!=="favorites") {
-        console.log(id)
+    } else if (clase === "favorites-btn" && activeSection!=="favorites") {
+        console.log(clase)
         // ocultar home, trends, mis-gifos
         if  (validateClassList("display-none", home_section_id.classList)!=true) {
             home_section_id.classList.toggle("display-none")
@@ -145,12 +204,19 @@ const toggleSections = (event)=>{
         if  (validateClassList("display-none", container_section_mis_gifos_id.classList)!=true) {
             container_section_mis_gifos_id.classList.toggle("display-none")
         }
+        if(validateClassList("display-none", create_gifos_section_id.classList)!=true){
+            create_gifos_section_id.classList.toggle("display-none");
+        }
+        if (validateClassList("display-none", carrusel_section_id.classList)==true){
+            carrusel_section_id.classList.toggle("display-none");
+        }
         //mostrar favorites sections
         container_section_favs_id.classList.toggle("display-none")
 
         activeSection = "favorites"
     }
-    else if (id === "gifos-btn" && activeSection!=="mis-gifos" ) {
+    else if (clase === "gifos-btn" && activeSection!=="mis-gifos" ) {
+        console.log(clase)
         // ocultar home, trends and favorites
         if  (validateClassList("display-none", home_section_id.classList)!=true) {
             home_section_id.classList.toggle("display-none")
@@ -161,12 +227,38 @@ const toggleSections = (event)=>{
         if  (validateClassList("display-none", container_section_favs_id.classList)!=true) {
             container_section_favs_id.classList.toggle("display-none")
         }
+        if(validateClassList("display-none", create_gifos_section_id.classList)!=true){
+            create_gifos_section_id.classList.toggle("display-none");
+        }
+        if (validateClassList("display-none", carrusel_section_id.classList)==true){
+            carrusel_section_id.classList.toggle("display-none");
+        }
         // Mostrar mis-gifos section
         container_section_mis_gifos_id.classList.toggle("display-none")
         activeSection = "mis-gifos"
+    } else if (clase==="create-gifos-btn" && activeSection!="create-gifos") {
+        console.log(clase);
+        if  (validateClassList("display-none", home_section_id.classList)!=true) {
+            home_section_id.classList.toggle("display-none")
+        }
+        if  (validateClassList("display-none", search_section_id.classList)!=true) {
+            search_section_id.classList.toggle("display-none")
+        }
+        if  (validateClassList("display-none", container_section_favs_id.classList)!=true) {
+            container_section_favs_id.classList.toggle("display-none")
+        }
+        if  (validateClassList("display-none", container_section_mis_gifos_id.classList)!=true) {
+            container_section_mis_gifos_id.classList.toggle("display-none")
+        }
+        if (validateClassList("display-none", carrusel_section_id.classList)!=true){
+            carrusel_section_id.classList.toggle("display-none");
+        }
+
+        create_gifos_section_id.classList.toggle("display-none");
+        activeSection = "create-gifos"
     }
 }
-
+// console.log(carrusel_section);
 
 /*  Modificar estado de desplegable details
     Se agrega un atributo al elemento details cuyo nombre será 'open' o 'close'
@@ -180,22 +272,44 @@ const toggleSections = (event)=>{
 */
 
 inicio_btn.addEventListener("click", (event)=>{
-    toggleSections(event)
-    details.removeAttribute("open")         // Cierra el menú
-    console.log(activeSection) // inicio
+    toggleSections(event);
+    details.removeAttribute("open")  ;       // Cierra el menú
+    console.log(activeSection); // inicio
+})
+inicio_btn_dkt.addEventListener("click", (event)=>{
+    toggleSections(event);
+    details.removeAttribute("open");        // Cierra el menú
+    console.log(activeSection); // inicio
 })
 favorites_btn.addEventListener("click", (event)=>{
-    toggleSections(event)
-    details.removeAttribute("open")         // Cierra el menú
+    toggleSections(event);
+    details.removeAttribute("open");         // Cierra el menú
     // addIframe()                          // Recopilar gifos de LocalStorage
-    console.log(activeSection) // favorites
+    console.log(activeSection); // favorites
+})
+favorites_btn_dkt.addEventListener("click", (event)=>{
+    toggleSections(event);
+    details.removeAttribute("open");         // Cierra el menú
+    // addIframe()                          // Recopilar gifos de LocalStorage
+    console.log(activeSection); // favorites
 })
 mis_gifos_btn.addEventListener("click", (event)=>{
-    toggleSections(event)
-    details.removeAttribute("open")         // Cierra el menú
-    console.log(activeSection)              // Recopilar gifos de LocalStorage
+    toggleSections(event);
+    details.removeAttribute("open");         // Cierra el menú
+    console.log(activeSection);              // Recopilar gifos de LocalStorage
 })
-console.log(activeSection)
+mis_gifos_btn_dkt.addEventListener("click", (event)=>{
+    toggleSections(event);
+    details.removeAttribute("open");         // Cierra el menú
+    console.log(activeSection);              // Recopilar gifos de LocalStorage
+})
+create_gifos_btn.addEventListener("click", (event)=>{
+    toggleSections(event);
+    details.removeAttribute("open");
+    console.log(activeSection);
+
+})
+console.log(activeSection);
 
 // FIN | CAMBIO ENTRE SECCIONES DESDE MENÚ ==================================================================
 // ==========================================================================================================
@@ -292,6 +406,7 @@ for (var i=0; i<view_more_btns.length; i++) {
 }
 
 
+
 // CONTROL DE HOVER DE GIFO ======================================================
 // ===============================================================================
 
@@ -311,13 +426,19 @@ for (var i=0; i<view_more_btns.length; i++) {
 //     })
 // })
 
+// function preview(element, )
 
 // Modal for desktop version
-var normalTemplate = ""
-var elementFigure = null
+var normalTemplate = "";
+var elementFigure = null;
 
 function focusedElement(element) { // element == <figure>
+    const widthScreen = screen.width;
+    const innerWidth = window.innerWidth;
+    // console.log("Width screen: ", widthScreen)
+    // console.log("Windoe Width: ", innerWidth)
 
+    // status indica eventos de preview cargados
     if (element.getAttribute("status")==="false"){
         console.log("Show hover")
         const img = element.firstElementChild.firstElementChild
@@ -333,35 +454,50 @@ function focusedElement(element) { // element == <figure>
         console.log(btn_download)
         console.log(btn_modal)
 
-        btn_modal.addEventListener("click", (event)=>{
-            console.log("HTML ELEMENT IMG:", img)
-            console.log("GIFO TITLE: ", title)
-            console.log("GIFO AUTHOR: ", author)
-
-            var templatePreview = `
-            <div class="btn-close btn-delete"></div>
-            <img src=${img.src} alt=${title.textContent}>
-            <div class="container-btns-info">
-                <div class="container-info">
-                    <p class="author">${author.textContent}</p>
-                    <h3 class="title">${title.textContent}</h3>
-                </div>
-                <div class="btn-fav"></div>
-                <div class="btn-download"></div>
+        var templatePreview = `
+        <div class="modal-btn btn-close hover-btns"></div>
+        <img src=${img.src} alt=${title.textContent}>
+        <div class="container-btns-info">
+            <div class="container-info">
+                <p class="author">${author.textContent}</p>
+                <h3 class="title">${title.textContent}</h3>
             </div>
-            `
-            const container_preview = document.querySelector(".preview")
-            container_preview.innerHTML = templatePreview
-            container_preview.classList.remove("display-none")
-
-            const btn_close = document.querySelector(".btn-close")
-            btn_close.addEventListener("click", (event)=>{
-                container_preview.classList.add("display-none");
-            })
-
-        })
-
+            <div class="modal-btn btn-fav hover-btns"></div>
+            <div class="modal-btn btn-download hover-btns"></div>
+        </div>
+        `
+        const container_preview = document.querySelector(".preview")
+        //   MODAL DESKTOP FUNCTION =====================================
+        if (window.innerWidth>670){
+            btn_modal.addEventListener("click", (event)=>{
+                console.log("HTML ELEMENT IMG:", img)
+                console.log("GIFO TITLE: ", title)
+                console.log("GIFO AUTHOR: ", author)
         
+                container_preview.innerHTML = templatePreview
+                container_preview.classList.remove("display-none")
+        
+                const btn_close = document.querySelector(".btn-close")
+                btn_close.addEventListener("click", (event)=>{
+                    container_preview.classList.add("display-none");
+                })
+            })
+        } else {
+            element.addEventListener("click", (event)=>{
+                console.log("HTML ELEMENT IMG:", img)
+                console.log("GIFO TITLE: ", title)
+                console.log("GIFO AUTHOR: ", author)
+        
+                container_preview.innerHTML = templatePreview
+                container_preview.classList.remove("display-none")
+        
+                const btn_close = document.querySelector(".btn-close")
+                btn_close.addEventListener("click", (event)=>{
+                    container_preview.classList.add("display-none");
+                })
+            })
+        }
+
         // activeSection
             // gifListSection.find.id
                 // Get Name
@@ -369,7 +505,7 @@ function focusedElement(element) { // element == <figure>
                 // Get other required
             // Insert properties in capa hover
 
-        element.setAttribute("status", "true")
+        element.setAttribute("status", "true")  // Debe setearlo el metodo que inserte gifos
         // element.innerHTML += hoverTemplate;
     }
 }
@@ -397,11 +533,28 @@ function unfocusedElement (element){
 
 
 
+// GIFOS TEMPLATE GENERIC FOR ALL SECTIONS ======================
+
+/*
+<figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
+    <div class="modal-container">
+        <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
+    </div>
+    <div class="capa">
+        <div class="buttons">
+            <div class="btn-fav hover-btns" id="btn-a">A</div>
+            <div class="btn-download hover-btns" id="btn-b">B</div>
+            <div class="btn-max hover-btns" id="btn-c">C</div>
+        </div>
+        <p>@AuthorGif 1</p>
+        <h3>Master Chief Title 1</h3>
+    </div>
+</figure>
+*/
 
 
-
-
-
+// HOVER TEMPLATE =================================
+/*
 hoverTemplate = `
 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
     <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
@@ -416,43 +569,60 @@ hoverTemplate = `
     </div>
 </figure>
 `
+*/
 
-// var normalTemplate = ""
-// var elementFigure = null
-// function focusedElement(element) {
-//     const elementFigure = element
-//     const elementImgGif = element.firstElementChild
 
-//     if (element.getAttribute("status")==="false"){
-//         console.log("Show hover")
-//         console.log(elementImgGif.id)
-//         // activeSection
-//             // gifListSection.find.id
-//                 // Get Name
-//                 // Get Author 
-//                 // Get other required
-//             // Insert properties in capa hover
 
-//         element.setAttribute("status", "true")
-//         // element.innerHTML += hoverTemplate;
-//     }
-// }
+// MODAL PREVIEW TEMPLATE ================================
+/**
+ var templatePreview = `
+ <div class="modal-btn btn-close"></div>
+ <img src=${img.src} alt=${title.textContent}>
+ <div class="container-btns-info">
+     <div class="container-info">
+         <p class="author">${author.textContent}</p>
+         <h3 class="title">${title.textContent}</h3>
+     </div>
+     <div class="modal-btn btn-fav"></div>
+     <div class="modal-btn btn-download"></div>
+ </div>
+ `
+ 
+ */
 
-// function unfocusedElement (element){
-//     if (element.getAttribute("status")==="true") {
-//         console.log("Remove hover")
-//         // element.setAttribute("status", "false") 
-//         // element.innerHTML = normalTemplate
-//     }
-// }
-
+// CARRUSEL GIF TEMPLATE ==================================
+/*
+<g>
+    <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
+        <div class="modal-container">
+            <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+        </div>
+        <div class="capa">
+            <div class="buttons">
+                <div class="btn-fav hover-btns" id="btn-a">A</div>
+                <div class="btn-download hover-btns" id="btn-b">B</div>
+                <div class="btn-max hover-btns" id="btn-c">C</div>
+            </div>
+            <p>@AuthorGif 1</p>
+            <h3>Master Chief Title 1</h3>
+        </div>
+    </figure>                      
+</g>
+*/
 
 
 
 /*
-    * Desarrollar aplicacion de modo dark and light
+    *** Desarrollar aplicacion de modo dark and light
     *** Incorporar boton [ver-más] a cada sección
     * Traer tendencia de palabras y ocultar seccion que muestra sus busquedas
     * Desarrollar aplicativo de crear y subir gifo
     * Incorporar comunicacion con API a cada section
 */
+
+
+// window.pageYOffset
+// window.pageXOffset
+// window.scrollTo()
+// document.documentElement.scrollTop
+// document.documentElement.scrollLeft

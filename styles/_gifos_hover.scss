@@ -32,62 +32,63 @@ figure {
 
 // /* CAPA HOVER =================================================================== */
 // // .container 
-figure .capa {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-end;
-    background: rgba(87,46,229, 0.6);
-    transition: 0.5s;
-    opacity: 0;
-    /* Elemento desaparece de pantalla*/
-    visibility: hidden;  
-}
-// /* Como .capa no está en pantalla, no esposible hacerle hover sobre él
-// por lo tanto le hacemos hover al elemento figure y aplicamos los efectos
-// al primer elemento .capa de ese contenedor */
+@media screen and (min-width: 670px) { 
+    figure .capa {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
+        background: rgba(87,46,229, 0.6);
+        transition: 0.5s;
+        opacity: 0;
+        /* Elemento desaparece de pantalla*/
+        visibility: hidden;  
+    }
+    // /* Como .capa no está en pantalla, no esposible hacerle hover sobre él
+    // por lo tanto le hacemos hover al elemento figure y aplicamos los efectos
+    // al primer elemento .capa de ese contenedor */
 
-figure:hover > .capa {
-    transition: 0.5s;
-    opacity: 1;
-    visibility: visible;
+    figure:hover > .capa {
+        transition: 0.5s;
+        opacity: 1;
+        visibility: visible;
+    }
+    figure .capa:hover {
+        transition: 0.5s;
+        opacity: 1;
+        visibility: visible;
+    }
+    figure .capa h3 {
+        margin: 0;
+        font-family: Roboto, sans-serif;
+        font-weight: bold;
+        color: White;
+        line-height: 20px;
+        font-size: 12px;
+    }
+    figure .capa p {
+        color: white;
+        font-family: Roboto, sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+    }
+    figure .capa .buttons{
+        width: 100%;
+        height: 50px;
+        padding: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
-figure .capa:hover {
-    transition: 0.5s;
-    opacity: 1;
-    visibility: visible;
-}
-figure .capa h3 {
-    margin: 0;
-    font-family: Roboto, sans-serif;
-    font-weight: bold;
-    color: White;
-    line-height: 20px;
-    font-size: 12px;
-}
-figure .capa p {
-    color: white;
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 300;
-}
-figure .capa .buttons{
-    width: 100%;
-    height: 50px;
-    padding: 5px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: flex-end;
-}
-
-
+    
 
 // buttoms hover ========================================================================
 .hover-btns {
@@ -130,7 +131,20 @@ figure .capa .buttons{
 .btn-link:hover {
     content: url("/assets/icon-link-hover.svg");
 }
-
+.btn-close {
+    width: 15px;
+    height: 15px;
+    // position: absolute;
+    // top: 60px;
+    // right: 20px;
+    content: url("/assets/close.svg");
+}
+// .btn-close:hover {
+//     cursor: pointer;
+// }
+.dark-mode .btn-close {
+    content: url("/assets/close-modo-noct.svg");
+}
 // MODAL MOBILE ===============================================================
 // ============================================================================
 
@@ -142,14 +156,83 @@ figure .capa .buttons{
 .preview {
     width: 100vw;
     height: 100vh;
-    background-color: white;
-    position: absolute;
+    background-color: var(--background-primary-color);
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    z-index: 99;
+
+}
+
+.preview .btn-close {
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    margin-left: 5px;
+}
+.preview img {
+    width: 320px;
+    border: 1px solid red;
+    object-fit: contain;
+}
+.preview .container-btns-info {
+    width: 320px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    .container-info {
+        width: 300px;
+        height: 50px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        font-family: monospace;
+        p {
+            font-size: 12px;
+            line-height: 18px;
+            font-family: var(--font-Roboto);
+        }
+        h3 {
+            margin: 0;
+            line-height: 20px;
+            font-size: 16px;
+            font-family: var(--font-Montserrat);
+        }
+    }
+}
+.dark-mode {
+    .preview{
+        p, h3 {
+            color: white;
+        }
+
+    }
+}
+.display-none{
+    display: none;
+}
+
+
+
+/*
+.preview {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
 
 }
 
@@ -183,7 +266,7 @@ figure .capa .buttons{
     }
 }
 
-
 .display-none{
     display: none;
 }
+*/
