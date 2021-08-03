@@ -441,76 +441,71 @@ function focusedElement(element) { // element == <figure>
     // console.log("Width screen: ", widthScreen)
     // console.log("Windoe Width: ", innerWidth)
 
-    // status indica eventos de preview cargados
-    if (element.getAttribute("status")==="false"){
-        console.log("Show hover")
-        const img = element.firstElementChild.firstElementChild
-        const title = element.lastElementChild.lastElementChild
-        const author = element.lastElementChild.firstElementChild.nextElementSibling
-        const btn_fav = element.lastElementChild.firstElementChild.firstElementChild
-        const btn_download = element.lastElementChild.firstElementChild.firstElementChild.nextElementSibling
-        const btn_modal = element.lastElementChild.firstElementChild.lastElementChild
-        console.log(img)
-        console.log(title)
-        console.log(author)
-        console.log(btn_fav)
-        console.log(btn_download)
-        console.log(btn_modal)
+    console.log("Show hover")
+    const img = element.firstElementChild.firstElementChild
+    const title = element.lastElementChild.lastElementChild
+    const author = element.lastElementChild.firstElementChild.nextElementSibling
+    const btn_fav = element.lastElementChild.firstElementChild.firstElementChild
+    const btn_download = element.lastElementChild.firstElementChild.firstElementChild.nextElementSibling
+    const btn_modal = element.lastElementChild.firstElementChild.lastElementChild
 
-        var templatePreview = `
-        <div class="modal-btn btn-close hover-btns"></div>
-        <img src=${img.src} alt=${title.textContent}>
-        <div class="container-btns-info">
-            <div class="container-info">
-                <p class="author">${author.textContent}</p>
-                <h3 class="title">${title.textContent}</h3>
-            </div>
-            <div class="modal-btn btn-fav hover-btns"></div>
-            <div class="modal-btn btn-download hover-btns"></div>
+    var templatePreview = `
+    <div class="modal-btn btn-close hover-btns"></div>
+    <img src=${img.src} alt=${title.textContent}>
+    <div class="container-btns-info">
+        <div class="container-info">
+            <p class="author">${author.textContent}</p>
+            <h3 class="title">${title.textContent}</h3>
         </div>
-        `
-        const container_preview = document.querySelector(".preview")
-        //   MODAL DESKTOP FUNCTION =====================================
-        if (window.innerWidth>670){
-            btn_modal.addEventListener("click", (event)=>{
-                console.log("HTML ELEMENT IMG:", img)
-                console.log("GIFO TITLE: ", title)
-                console.log("GIFO AUTHOR: ", author)
-        
-                container_preview.innerHTML = templatePreview
-                container_preview.classList.remove("display-none")
-        
-                const btn_close = document.querySelector(".btn-close")
-                btn_close.addEventListener("click", (event)=>{
-                    container_preview.classList.add("display-none");
-                })
+        <div class="modal-btn btn-fav hover-btns"></div>
+        <div class="modal-btn btn-download hover-btns"></div>
+    </div>
+    `
+    const container_preview = document.querySelector(".preview")
+    //   MODAL DESKTOP FUNCTION =========================================================
+    if (window.innerWidth>670 && element.getAttribute("statusdktp")==="false"){ // Ancho de documento en [px]
+        btn_modal.addEventListener("click", (event)=>{
+            event.stopPropagation();    
+            console.log("HTML ELEMENT IMG:", img)
+            console.log("GIFO TITLE: ", title)
+            console.log("GIFO AUTHOR: ", author)
+            container_preview.innerHTML = templatePreview
+            container_preview.classList.remove("display-none")
+    
+            const btn_close = document.querySelector(".btn-close")
+            btn_close.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                container_preview.classList.add("display-none");
             })
-        } else {
-            element.addEventListener("click", (event)=>{
-                console.log("HTML ELEMENT IMG:", img)
-                console.log("GIFO TITLE: ", title)
-                console.log("GIFO AUTHOR: ", author)
-        
-                container_preview.innerHTML = templatePreview
-                container_preview.classList.remove("display-none")
-        
-                const btn_close = document.querySelector(".btn-close")
-                btn_close.addEventListener("click", (event)=>{
-                    container_preview.classList.add("display-none");
-                })
+        })
+        element.setAttribute("statusdktp", "true");
+
+    } else if (window.innerWidth<=670 && element.getAttribute("statusmobile")==="false"){
+        element.addEventListener("click", (event)=>{
+            console.log("HTML ELEMENT IMG:", img)
+            console.log("GIFO TITLE: ", title)
+            console.log("GIFO AUTHOR: ", author)
+    
+            container_preview.innerHTML = templatePreview;
+            container_preview.classList.remove("display-none");
+
+            const btn_close = document.querySelector(".btn-close")
+            btn_close.addEventListener("click", (event)=>{
+                container_preview.classList.add("display-none");
             })
-        }
+        })
 
-        // activeSection
-            // gifListSection.find.id
-                // Get Name
-                // Get Author 
-                // Get other required
-            // Insert properties in capa hover
-
-        element.setAttribute("status", "true")  // Debe setearlo el metodo que inserte gifos
-        // element.innerHTML += hoverTemplate;
+        element.setAttribute("statusmobile", "true")
     }
+
+    // activeSection
+        // gifListSection.find.id
+            // Get Name
+            // Get Author 
+            // Get other required
+        // Insert properties in capa hover
+
+    // element.setAttribute("status", "true")  // Debe setearlo el metodo que inserte gifos
 }
 
 function unfocusedElement (element){
@@ -522,17 +517,9 @@ function unfocusedElement (element){
 }
 
 
-
-
-
+// Desplazamiento de carrusel con botones
 const carrusel_btn_left = document.querySelector("#carrusel-btn-left");
 const carrusel_btn_right = document.querySelector("#carrusel-btn-right");
-// const carrusel = document.querySelector(".carrusel");
-
-console.log(carrusel_btn_left);
-console.log(carrusel_btn_right);
-// console.log(carrusel);
-
 carrusel_btn_right.addEventListener("click", (event)=>{
     console.log(event);
     carrusel.scrollLeft += 300;

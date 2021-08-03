@@ -21,20 +21,17 @@ var myGifos = [];
 
 var gifosResults = [];
 
-// var gifoCarruselTemplate = `
-//     <g>
-//         ${gifoTemplate}                
-//     </g>
-// `
 
 const carrusel = document.querySelector(".carrusel");
+const favorites = document.querySelector(".container-favs-gifs");
 
-const gifosTemplate = "";
+var gifosTemplate = "";
+
 function insertGifos (gifos, containerGifosElement) {
     gifos.forEach(gifo => {
         gifosTemplate = `
             <g>
-                <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
+                <figure class="figure-gifo" onmouseover="focusedElement(this)" statusMobile="false" statusDktp="false">
                     <div class="modal-container">
                         <img id="${gifo.id}" class="GIF img-gif" src="${gifo.medias.gif}" alt="${gifo.title}" >
                     </div>
@@ -51,15 +48,11 @@ function insertGifos (gifos, containerGifosElement) {
             </g>
         `
         containerGifosElement.innerHTML += gifosTemplate;
-        console.log(gifosTemplate)
     })
 }
 
-
-
-function search (URL){
-    console.log("Fetch starting...")
-    gifosResults = []; //inicializa
+function search (URL, containerElement){
+    console.log("MOTA: Fetch starting...")
     fetch(URL)
     .then(apiResponse => apiResponse.json())
     .then(apiResponseJSON => {
@@ -67,7 +60,8 @@ function search (URL){
 
         // Storage gifos code or function 
         data.forEach(gifo => {
-          const gifoData  = {
+            const gifoData  = {
+                // Validar contenido en title and id. replace with unknown if require
                 id: gifo.id,
                 title:  gifo.title,
                 author:  gifo.username,     //username
@@ -78,17 +72,18 @@ function search (URL){
                     giphy: gifo.url
                 }
             }
-            // gifosResponse.push(gifoData);
-            // gifosList.push(gifosResponse) Almacena por lote, cada lote de n gifos en una posicion
             gifosList.push(gifoData);
             gifosResults.push(gifoData)
         });
-
+        console.log("gifosResults: ", gifosResults, typeof gifosResults, gifosResults.length)
+        insertGifos(gifosResults, containerElement);
+        console.log("NOTA: Fetch finished succesfully!")
         // Insert gifos in page code or function
     })
     .catch(error => console.error(error))
 }
 
-search(URL);
-insertGifos(gifosResults, carrusel);
-
+window.onload = onloadExe = () =>{
+    // Load trends in carrusel
+    search(URL, carrusel);    
+} 
