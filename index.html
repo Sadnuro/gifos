@@ -11,7 +11,9 @@
     <header>
         <nav class="bar-menu">
             <!-- src="assets/logo-mobile.svg" -->
-            <img id="logo" alt="logo-mobile">
+            <a href="./index.html">
+                <img id="logo" alt="logo-mobile">
+            </a>
             <details id="detailsMenu">
                 <summary></summary>
                 <ul>
@@ -58,7 +60,7 @@
                 </div>
             </div>
         </section>
-        <section class="search-section display-none" id="search-section">
+        <section class="search-section" id="search-section">
             <div class="trends-container">
                 <h3>Trending:</h3>
                 <div class="trend-words-container">
@@ -71,11 +73,12 @@
                 </div>
             </div>
         
-            <div class="subsection-results" id="subsection-results-div">
+            <div class="subsection-results display-none" id="subsection-results-div">
                 <div id="line"></div>
                 <h2>Gifos topics of trends</h2>
                 <div class="results-container">
 
+<!-- 
                     <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                         <div class="modal-container">
                             <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
@@ -152,7 +155,7 @@
                             <p>@AuthorGif 4</p>
                             <h3>Master Chief Title 4</h3>
                         </div>
-                    </figure> 
+                    </figure>  -->
                 </div>
                 <button class="view-more-btn" id="view-more-btn-results">VER MÁS</button>
             </div>
@@ -163,10 +166,27 @@
             <div id="heart-img"></div>
             <h2>Favoritos</h2>
             <div class="container-favs-gifs">
-                
+
+                <!-- <g>
+                    <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
+                        <div class="modal-container">
+                          
+                            <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                        </div>
+                        <div class="capa">
+                            <div class="buttons">
+                                <div class="btn-fav hover-btns" id="btn-a">A</div>
+                                <div class="btn-download hover-btns" id="btn-b">B</div>
+                                <div class="btn-max hover-btns" id="btn-c">C</div>
+                            </div>
+                            <p>@AuthorGif 1</p>
+                            <h3>Master Chief Title 1</h3>
+                        </div>
+                    </figure>
+                </g>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                       
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -181,7 +201,7 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                       
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -196,7 +216,7 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                        
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -211,7 +231,6 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -226,7 +245,7 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                        
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -241,7 +260,7 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                       
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -256,7 +275,7 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                      
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -271,7 +290,7 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                        
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -286,7 +305,7 @@
                 </figure>
                 <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                     <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
+                        
                         <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                     </div>
                     <div class="capa">
@@ -298,22 +317,7 @@
                         <p>@AuthorGif 1</p>
                         <h3>Master Chief Title 1</h3>
                     </div>
-                </figure>
-                <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
-                    <div class="modal-container">
-                        <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                        <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
-                    </div>
-                    <div class="capa">
-                        <div class="buttons">
-                            <div class="btn-fav hover-btns" id="btn-a">A</div>
-                            <div class="btn-download hover-btns" id="btn-b">B</div>
-                            <div class="btn-max hover-btns" id="btn-c">C</div>
-                        </div>
-                        <p>@AuthorGif 1</p>
-                        <h3>Master Chief Title 1</h3>
-                    </div>
-                </figure>
+                </figure> -->
             </div>
             <div class="container-btn-view-more">
                 <button class="view-more-btn" id="view-more-btn-favs">VER MÁS</button>
@@ -464,14 +468,12 @@
             <h2>Trending GIFOS</h2>
             <p>Mira los últimos GIFOS de nuestra comunidad.</p>
             <div class="trends-carrusel-container">
-                <div class="carrusel-btn carrusel-btn-left" onClick="scroll(-300, 0)"></div>
+                <div class="carrusel-btn carrusel-btn-left" id="carrusel-btn-left" onClick="scroll(300, 0)"></div>
                 <div class="carrusel">
-                    <g>
+                    
+                    <!-- <g>
                         <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                             <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
                                 <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                             </div>
                             <div class="capa">
@@ -488,9 +490,6 @@
                     <g>
                         <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                             <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
                                 <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                             </div>
                             <div class="capa">
@@ -507,9 +506,6 @@
                     <g>
                         <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                             <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
                                 <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                             </div>
                             <div class="capa">
@@ -526,9 +522,6 @@
                     <g>
                         <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                             <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
                                 <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                             </div>
                             <div class="capa">
@@ -545,9 +538,21 @@
                     <g>
                         <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                             <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
+                                <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
+                            </div>
+                            <div class="capa">
+                                <div class="buttons">
+                                    <div class="btn-fav hover-btns" id="btn-a">A</div>
+                                    <div class="btn-download hover-btns" id="btn-b">B</div>
+                                    <div class="btn-max hover-btns" id="btn-c">C</div>
+                                </div>
+                                <p>@AuthorGif 1</p>
+                                <h3>Master Chief Title 1</h3>
+                            </div>
+                        </figure>                      
+                    </g>
+                    <g>
+                        <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                                 <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                             </div>
                             <div class="capa">
@@ -564,9 +569,6 @@
                     <g>
                         <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                             <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
                                 <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                             </div>
                             <div class="capa">
@@ -583,9 +585,6 @@
                     <g>
                         <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
                             <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
                                 <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
                             </div>
                             <div class="capa">
@@ -598,28 +597,9 @@
                                 <h3>Master Chief Title 1</h3>
                             </div>
                         </figure>                      
-                    </g>
-                    <g>
-                        <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
-                            <div class="modal-container">
-                                <!-- <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF fav-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" > -->
-                                <!-- <img class="GIF mi-gifo" src="https://media0.giphy.com/media/WlBUAWG03Zic8/giphy.gif?cid=9039c678ckw4f7d8eih7cykx2nv059ibr02tmbdnithmrp0p&rid=giphy.gif&ct=g"> </img> -->
-                                <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
-                            </div>
-                            <div class="capa">
-                                <div class="buttons">
-                                    <div class="btn-fav hover-btns" id="btn-a">A</div>
-                                    <div class="btn-download hover-btns" id="btn-b">B</div>
-                                    <div class="btn-max hover-btns" id="btn-c">C</div>
-                                </div>
-                                <p>@AuthorGif 1</p>
-                                <h3>Master Chief Title 1</h3>
-                            </div>
-                        </figure>                      
-                    </g>
+                    </g> -->
                 </div>
-                <div class="carrusel-btn carrusel-btn-right" onClick="scroll(300, 0)"></div>
+                <div class="carrusel-btn carrusel-btn-right" id="carrusel-btn-right" onClick="scroll(-300, 0)"></div>
             </div>
         </section>
 
@@ -687,6 +667,7 @@
         <p class="copyright-txt">GIFOS 2020 All Rights Reserved.</p>
     </footer>
 
-    <script src="scripts/main.js" ></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/api.js"></script>
 </body>
 </html>

@@ -471,6 +471,10 @@ header nav details ul li a {
   content: url("../assets/button-slider-right-md-noct.svg");
 }
 
+.display-none {
+  display: none;
+}
+
 figure {
   width: 156px;
   height: 120px;
@@ -1326,7 +1330,6 @@ footer .container-logos #sm-ig:hover {
     width: 100%;
     height: 640px;
     padding: 67px 96px;
-    display: block;
   }
   #carrusel-section h2 {
     margin-top: 0;
@@ -1371,6 +1374,9 @@ footer .container-logos #sm-ig:hover {
     -o-object-fit: cover;
        object-fit: cover;
   }
+  #carrusel-section .trends-carrusel-container .carrusel::-webkit-scrollbar {
+    display: none;
+  }
   #carrusel-section .trends-carrusel-container .carrusel-btn {
     display: block;
   }
@@ -1410,6 +1416,56 @@ footer .container-logos #sm-ig:hover {
   }
   footer .container-logos a {
     margin: 0 10px;
+  }
+  .preview img {
+    width: 500px;
+    border: 1px solid red;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .preview .container-btns-info {
+    width: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .preview .container-btns-info .container-info {
+    width: 400px;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-family: monospace;
+  }
+  .preview .container-btns-info .container-info p {
+    font-size: 16px;
+    line-height: 20px;
+    font-family: var(--font-Roboto);
+  }
+  .preview .container-btns-info .container-info h3 {
+    margin: 0;
+    line-height: 30px;
+    font-size: 25px;
+    font-family: var(--font-Montserrat);
   }
 }
 

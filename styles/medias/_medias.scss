@@ -181,7 +181,6 @@
         width: 100%;
         height: 640px;
         padding: 67px 96px;
-        display: block;
         h2 {
             margin-top: 0;
             line-height: 30px;
@@ -221,6 +220,9 @@
                     }
                 }
             }
+            .carrusel::-webkit-scrollbar {
+                display: none;
+            }
             .carrusel-btn {
                 display: block;
             }
@@ -259,7 +261,44 @@
 
     }
 
+    // MODAL 
+    .preview img {
+        width: 500px;
+        border: 1px solid red;
+        object-fit: contain;
+    }
+    .preview .container-btns-info {
+        width: 500px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        .container-info {
+            width: 400px;
+            height: 100px;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            font-family: monospace;
+            p {
+                font-size: 16px;
+                line-height: 20px;
+                font-family: var(--font-Roboto);
+            }
+            h3 {
+                margin: 0;
+                line-height: 30px;
+                font-size: 25px;
+                font-family: var(--font-Montserrat);
+            }
+        }
+    }
+
 }
+
+
+
 
 .dark-mode {
     header nav .desktop-menu .create-gifos-btn{

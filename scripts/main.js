@@ -1,4 +1,5 @@
-const gifosList = [
+
+const gifosForTest = [
     {
         "id": "mf8UbIDew7e8g",
         "title": "Climate Change Earth GIF",
@@ -86,6 +87,7 @@ const create_gifos_btn = document.getElementById("create-gifos-btn");
 
 const home_section_id = document.querySelector("#home-section");
 const search_section_id = document.querySelector("#search-section");
+const subsection_results_id = document.querySelector("subsection-results-div");
 const container_section_favs_id = document.querySelector("#container-section-favs");
 const container_section_mis_gifos_id = document.querySelector("#container-section-mis-gifos");
 const create_gifos_section_id = document.querySelector("#create-gifos-section");
@@ -252,6 +254,7 @@ const toggleSections = (event)=>{
         }
         if (validateClassList("display-none", carrusel_section_id.classList)!=true){
             carrusel_section_id.classList.toggle("display-none");
+            console.log(carrusel_section_id.classList);
         }
 
         create_gifos_section_id.classList.toggle("display-none");
@@ -522,11 +525,22 @@ function unfocusedElement (element){
 
 
 
+const carrusel_btn_left = document.querySelector("#carrusel-btn-left");
+const carrusel_btn_right = document.querySelector("#carrusel-btn-right");
+// const carrusel = document.querySelector(".carrusel");
 
+console.log(carrusel_btn_left);
+console.log(carrusel_btn_right);
+// console.log(carrusel);
 
-
-
-
+carrusel_btn_right.addEventListener("click", (event)=>{
+    console.log(event);
+    carrusel.scrollLeft += 300;
+})
+carrusel_btn_left.addEventListener("click", (event)=>{
+    console.log(event);
+    carrusel.scrollLeft -= 300;
+})
 
 
 
