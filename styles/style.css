@@ -12,6 +12,7 @@
   --layout-secondary-color: #50E3C2;
   --font-secondary-color: #50E3C2;
   --font-third-color: black;
+  --layout-third-color: #F3F5F8;
   --font-Montserrat: 'Montserrat', sans-serif;
   --font-Roboto: "Roboto", sans-serif;
 }
@@ -239,18 +240,19 @@ header nav details ul li a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 80px;
 }
 
 .search-section .subsection-results #line {
-  width: 160px;
+  width: 250px;
   margin: 0 auto 43px auto;
-  border: calc(0.5px) solid var(--layout-third-color);
+  border: 1px solid var(--layout-third-color);
 }
 
 .search-section .subsection-results h2 {
   line-height: 40px;
   font-size: 25px;
-  margin-bottom: 27px;
+  margin-bottom: 100px;
   text-align: center;
   font-family: var(--font-Montserrat);
   color: var(--font-primary-color);
@@ -279,8 +281,30 @@ header nav details ul li a {
      object-fit: cover;
 }
 
+.search-section .subsection-results .results-container .not-found .img {
+  margin: 0 auto;
+  content: url("../assets/icon-busqueda-sin-resultado.svg");
+  width: 150px;
+  height: 150px;
+}
+
+.search-section .subsection-results .results-container .not-found p {
+  margin-top: 30px;
+  margin-bottom: 70px;
+  color: var(--font-secondary-color);
+  line-height: 25px;
+  font-size: 22px;
+  font-family: var(--font-Montserrat);
+  font-weight: bold;
+}
+
 .search-section .display-none {
   display: none;
+}
+
+.dark-mode .search-section .subsection-results #line {
+  border: 1px solid var(--layout-third-color);
+  opacity: 0.3;
 }
 
 .search-section h3, .search-section .trend-word {
@@ -810,6 +834,15 @@ footer .container-logos #sm-ig {
 
 footer .container-logos #sm-ig:hover {
   content: url("/assets/icon_instagram-hover.svg");
+}
+
+footer .default-btn {
+  display: none;
+  visibility: hidden;
+}
+
+.display-none {
+  display: none;
 }
 
 #container-section-favs {

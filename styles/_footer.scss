@@ -40,5 +40,12 @@ footer {
             content: url("/assets/icon_instagram-hover.svg");
         }
     }
+    .default-btn {
+        display: none;
+        visibility:hidden;
+    }
 }
 
+.display-none {
+    display: none;
+}
