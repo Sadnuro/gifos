@@ -1,7 +1,6 @@
-var CARRUSEL_GIFOS = []
-var SEARCHES_GIFOS = []
-var FAVORITES_GIFOS = []
-var MY_GIFOS = []
+// import { gifosList, gifosTrends, gifosFavorites, gifosResults, myGifos } from "./arrays.js";
+
+
 
 // INICIO | CAMBIO ENTRE SECCIONES DESDE MENÚ ======================================================
 // =================================================================================================
@@ -31,7 +30,7 @@ function validateClassList (validate, classList) {
         Output: 
             true or false: element have or not have the class
     */
-        classListCleaned = []
+        let classListCleaned = [];
         for (const i of classList) {    // guarda clases y omite metadatos
             classListCleaned.push(i)
         }
@@ -217,12 +216,15 @@ favorites_btn.addEventListener("click", (event)=>{
     details.removeAttribute("open");         // Cierra el menú
     // addIframe()                          // Recopilar gifos de LocalStorage
     console.log(activeSection); // favorites
+
+    
 })
 favorites_btn_dkt.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     // addIframe()                          // Recopilar gifos de LocalStorage
     console.log(activeSection); // favorites
+    console.log("gifosTrends array printed from main.js: ", gifosTrends)
 })
 mis_gifos_btn.addEventListener("click", (event)=>{
     toggleSections(event);
@@ -254,40 +256,44 @@ console.log(activeSection);
 var normalTemplate = "";
 var elementFigure = null;
 
-function focusedElement(element) { // element == <figure>
+function focusedElement(figureElement) { // element == <figure>
     const widthScreen = screen.width;
     const innerWidth = window.innerWidth;
     // console.log("Width screen: ", widthScreen)
     // console.log("Windoe Width: ", innerWidth)
 
     console.log("Show hover")
-    const img = element.firstElementChild.firstElementChild
-    const title = element.lastElementChild.lastElementChild
-    const author = element.lastElementChild.firstElementChild.nextElementSibling
-    const btn_fav = element.lastElementChild.firstElementChild.firstElementChild
-    const btn_download = element.lastElementChild.firstElementChild.firstElementChild.nextElementSibling
-    const btn_modal = element.lastElementChild.firstElementChild.lastElementChild
+    const img = figureElement.querySelector(".img-gif");
+    const title = figureElement.querySelector("#title")
+    const author = figureElement.querySelector("#author")
+    const btn_fav = figureElement.querySelector(".buttons #btn-fav")
+    const btn_download = figureElement.querySelector(".buttons #btn-download")
+    const btn_modal = figureElement.querySelector(".buttons #btn-max")
 
-    var templatePreview = `
-    <div class="modal-btn btn-close hover-btns"></div>
-    <img src=${img.src} alt=${title.textContent}>
-    <div class="container-btns-info">
-        <div class="container-info">
-            <p class="author">${author.textContent}</p>
-            <h3 class="title">${title.textContent}</h3>
-        </div>
-        <div class="modal-btn btn-fav hover-btns"></div>
-        <div class="modal-btn btn-download hover-btns"></div>
-    </div>
-    `
+    // btn_fav.setAttribute("fav", "true")
+    var btn_insert = btn_fav.outerHTML;
+// <div class="modal-btn btn-fav hover-btns" ></div>
+    var templatePreview = ``
     const container_preview = document.querySelector(".preview")
     //   MODAL DESKTOP FUNCTION =========================================================
-    if (window.innerWidth>670 && element.getAttribute("statusdktp")==="false"){ // Ancho de documento en [px]
+    if (window.innerWidth>670 && figureElement.getAttribute("statusdktp")==="false"){ // Ancho de documento en [px]
         btn_modal.addEventListener("click", (event)=>{
             event.stopPropagation();    
-            console.log("HTML ELEMENT IMG:", img)
-            console.log("GIFO TITLE: ", title)
-            console.log("GIFO AUTHOR: ", author)
+            btn_insert = btn_fav.outerHTML;
+            templatePreview = `
+                    <div class="modal-btn btn-close hover-btns"></div>
+                    <div class="modal-preview">
+                        <img class="GIF img-gif" id=${img.id} src=${img.src} alt=${title.textContent} >
+                    </div>
+                    <div class="container-btns-info">
+                        <div class="container-info">
+                            <p class="author">${author.textContent}</p>
+                            <h3 class="title">${title.textContent}</h3>
+                        </div>
+                        ${btn_insert}
+                        <div class="modal-btn btn-download hover-btns"></div>
+                    </div>
+                `
             container_preview.innerHTML = templatePreview
             container_preview.classList.remove("display-none")
     
@@ -296,25 +302,82 @@ function focusedElement(element) { // element == <figure>
                 event.stopPropagation();
                 container_preview.classList.add("display-none");
             })
+            const btn_fav_preview = document.querySelector(".preview #btn-fav")
+            btn_fav_preview.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                if (btn_fav.getAttribute("fav")=="false"){
+                    btn_fav.setAttribute("fav" , "true")
+                    btn_fav_preview.setAttribute("fav" , "true")
+                } else {
+                    btn_fav.setAttribute("fav" , "false")
+                    btn_fav_preview.setAttribute("fav" , "false")
+                }
+            })
+    
+            btn_download.addEventListener("click", (event)=>{
+                event.stopPropagation();
+            })
         })
-        element.setAttribute("statusdktp", "true");
+        btn_fav.addEventListener("click", (event)=>{
+            console.log(img)
+            console.log(img.id)
+            event.stopPropagation();
+            if (btn_fav.getAttribute("fav")=="false"){
+                btn_fav.setAttribute("fav" , "true")
+                gifosFavorites.push(findFavs(gifosList, img.id, true))
+            } else {
+                btn_fav.setAttribute("fav" , "false")
+                const index = gifosFavorites.findIndex(e => e.id == img.id)
+                gifosFavorites.splice(index, 1)
+            }
+            console.log(gifosFavorites)
+        })
 
-    } else if (window.innerWidth<=670 && element.getAttribute("statusmobile")==="false"){
-        element.addEventListener("click", (event)=>{
-            console.log("HTML ELEMENT IMG:", img)
-            console.log("GIFO TITLE: ", title)
-            console.log("GIFO AUTHOR: ", author)
+        btn_download.addEventListener("click", (event)=>{
+        })
+
+        figureElement.setAttribute("statusdktp", "true");
+
+    } else if (window.innerWidth<=670 && figureElement.getAttribute("statusmobile")==="false"){
+        figureElement.addEventListener("click", (event)=>{
+            event.stopPropagation();
+            btn_insert = btn_fav.outerHTML;
+            templatePreview = `
+                <div class="modal-btn btn-close hover-btns"></div>
+                <div class="modal-preview">
+                    <img class="GIF img-gif" id=${img.id} src=${img.src} alt=${title.textContent} >
+                </div>
+                <div class="container-btns-info">
+                    <div class="container-info">
+                        <p class="author">${author.textContent}</p>
+                        <h3 class="title">${title.textContent}</h3>
+                    </div>
+                    ${btn_insert}
+                    <div class="modal-btn btn-download hover-btns"></div>
+                </div>
+            `
     
             container_preview.innerHTML = templatePreview;
             container_preview.classList.remove("display-none");
 
             const btn_close = document.querySelector(".btn-close")
             btn_close.addEventListener("click", (event)=>{
+                event.stopPropagation();
                 container_preview.classList.add("display-none");
             })
+            const btn_fav_preview = document.querySelector(".preview #btn-fav")
+            btn_fav_preview.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                if (btn_fav.getAttribute("fav")=="false"){
+                    btn_fav.setAttribute("fav" , "true")
+                    btn_fav_preview.setAttribute("fav" , "true")
+                } else {
+                    btn_fav.setAttribute("fav" , "false")
+                    btn_fav_preview.setAttribute("fav" , "false")
+                }
+            })
         })
-
-        element.setAttribute("statusmobile", "true")
+        figureElement.setAttribute("statusmobile", "true")
     }
 
     // activeSection
@@ -337,6 +400,7 @@ function unfocusedElement (element){
 
 
 // Desplazamiento de carrusel con botones
+// const carrusel = document.querySelector(".carrusel");
 const carrusel_btn_left = document.querySelector("#carrusel-btn-left");
 const carrusel_btn_right = document.querySelector("#carrusel-btn-right");
 carrusel_btn_right.addEventListener("click", (event)=>{

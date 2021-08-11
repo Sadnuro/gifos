@@ -14,7 +14,7 @@
         h2 {
             line-height: 40px;
             font-size: 25px;
-            margin-bottom: 100px;
+            margin-bottom: 40px;
             text-align: center;
             font-family: var(--font-Montserrat);
             color: var(--font-primary-color);
@@ -36,6 +36,8 @@
                 }
             }
             .not-found{
+                width: 100%;
+                
                 .img {
                     margin: 0 auto;
                     content: url("../assets/icon-busqueda-sin-resultado.svg");
@@ -44,12 +46,12 @@
                 }
                 p{
                     margin-top: 30px;
-                    margin-bottom: 70px;
                     color: var(--font-secondary-color);
                     line-height: 25px;
                     font-size: 22px;
                     font-family: var(--font-Montserrat);
                     font-weight: bold;
+                    text-align: center;
                 }
             }
         }

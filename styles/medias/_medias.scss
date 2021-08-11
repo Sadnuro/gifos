@@ -105,7 +105,7 @@
 
         .subsection-results {
             
-            h2 {font-size: 35px;}
+            h2 {font-size: 35px; margin-bottom: 100px;}
             .results-container {
                 width: 100%;
                 display: flex;
@@ -126,6 +126,11 @@
                     }
                 }
 
+                .not-found {
+                    p{
+                        margin-bottom: 70px;
+                    }
+                }
             }
         }
 
@@ -262,11 +267,17 @@
     }
 
     // MODAL 
-    .preview img {
+    .preview .modal-preview
+    {
         width: 500px;
-        border: 1px solid red;
-        object-fit: contain;
-    }
+        max-height: 600px;
+        img {
+            width: 100%;
+            max-height: 100%;
+            border: 1px solid red;
+            object-fit: contain;
+        }
+    } 
     .preview .container-btns-info {
         width: 500px;
         display: flex;

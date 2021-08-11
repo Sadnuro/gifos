@@ -30,6 +30,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     input#search-bar {
         height: 40px;
         width: 85%;
@@ -42,12 +43,33 @@
     input#search-bar::placeholder {
         color: var(--placeholder-searchbar-primary-color);
     }
+
+    #search-btn-img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        content: url("../assets/icon-search.svg");
+    }
+    #close-btn-img {
+        width: 15px;
+        height: 15px;
+        object-fit: contain;
+        content: url("../assets/close.svg");
+    }
     
 
 }
 .home-img {
     width: 65%;
 }
-.dark-mode input#search-bar {
-    color: white;
+.dark-mode {
+    input#search-bar {
+        color: white;
+    }
+    #search-btn-img {
+        content: url("../assets/icon-search-modo-noct.svg");
+    }
+    #close-btn-img {
+        content: url("../assets/close-modo-noct.svg");
+    }
 }
