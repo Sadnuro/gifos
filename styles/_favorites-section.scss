@@ -18,6 +18,23 @@
         flex-flow: row wrap;
         overflow: hidden;
         justify-content: center;
+
+        .defaultFavs {
+            .img {
+                margin: 90px auto 20px auto;
+                content: url("../assets/icon-fav-sin-contenido.svg");
+            }
+            p {
+                margin-bottom: 130px;
+                max-width: 430px;
+                text-align: center;
+                font-size: 22px;
+                font-family: var(--font-Montserrat);
+                line-height: 33px;
+                font-weight: bold;
+                color: var(--font-secondary-color);
+            }
+        }
         
     }
     .container-favs-gifs figure {

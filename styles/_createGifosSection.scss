@@ -3,7 +3,7 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    background: white;
+    background: --background-primary-color;
     .screen-container {
         display: flex;
         flex-flow: row nowrap;
@@ -15,13 +15,13 @@
             flex-direction: row;
             align-items: center;
             .camera {
-                content: url("/assets/camara.svg");
+                content: url("../assets/camara.svg");
             }
             .luz {
                 margin-top: 1px;
                 margin-left: 2px;
                 opacity: 0.6;
-                content: url("/assets/element-luz-camara.svg");
+                content: url("../assets/element-luz-camara.svg");
             }
         }
         .screen {
@@ -32,7 +32,7 @@
                 .marco {
                     width: 690px;
                     height: 390px;
-                    border: 1px solid #572EE5;
+                    border: 1px solid var(--font-primary-color);
                     position: relative;
                 }
                 .esquina {
@@ -78,18 +78,19 @@
                 .info{
                     width: 100%;
                     h3 {
-
                         font-family: monospace; // monserrat
                         font-size: 25px;
                         line-height: 35px;
-                        color: #572EE5;
+                        color: var(--font-primary-color);
                         text-align: center;
+
+                        span.text-resalt {color: var(--font-secondary-color)};
                     }
                     p {
                         font-family: monospace; // Roboto regular
                         font-size: 16px;
                         line-height: 30px;
-                        color: black;
+                        color: var(--font-third-color);
                         text-align: center;
                     }
                 }
@@ -100,7 +101,7 @@
             position: relative;
             bottom: -235px;
             right: 0;
-            content: url("/assets/pelicula.svg");
+            content: url("../assets/pelicula.svg");
         }
     }
     .recording-container {
@@ -121,17 +122,18 @@
                     width: 32px;
                     height: 32px;
                     border-radius: 50%;
-                    border: 1px solid #572EE5;
-                    color: #572EE5; 
+                    border: 1px solid var(--font-primary-color);
+                    color: var(--font-primary-color); 
                     text-align: center;
                     line-height: 30px;
                     font-family: monospace;
+                    font-weight: bold;
                     font-size: 16px;
                     background-color: rgba($color: #fff, $alpha: 0.0);
                 }
                 .step[data-active]{
-                    background-color: #572EE5;
-                    color: white;
+                    background-color: var(--font-primary-color);
+                    color: var(--layout-third-color);
                     // cursor: pointer;
                 }
             }
@@ -148,7 +150,7 @@
                     font-family: monospace;
                     font-size: 16px;
                     line-height: 30px;
-                    color: #572EE5; 
+                    color: var(--font-primary-color); 
                     text-align: center;
                 }
             }
@@ -158,25 +160,26 @@
             height: 7px;
             margin-top: 24px;
             border-radius: 3px;
-            background: #572EE5;
+            background: var(--font-primary-color);
         }
         .btn-process {
             width: 127px;
             height: 50px;
             margin-top: 20px;
             padding-top: 14px;
-            border: 1px solid #572EE5;
+            border: 1px solid var(--font-primary-color);
             border-radius: 25px;
 
-            color: #572EE5;
+            color: var(--font-primary-color);
             font-family: monospace;
+            font-weight: bold;
             font-size: 16px;
             line-height: 20px;
             text-align: center;
         }
         .btn-process:hover {
-            background-color: #572EE5;
-            color: white;
+            background-color: var(--font-primary-color);
+            color: black;
             cursor: pointer;
         }
     }
@@ -186,13 +189,19 @@
     display: none;
 }
 .dark-mode {
-    .camera {
-        content: url("/assets/camara-modo-noc.svg");
-    }
-    .pelicula{
-        content: url("/assets/pelicula-modo-noc.svg");
-    }
-
+    background: var(--background-primary-color);
+    #create-gifos-section{
+        .screen-container {
+            g.videoCam {
+                .camera {
+                    content: url("../assets/camara-modo-noc.svg");
+                }
+            }
+        }
+        .pelicula{
+            content: url("../assets/pelicula-modo-noc.svg");
+        }
+    }    
 }
 
 // .cinta1 {

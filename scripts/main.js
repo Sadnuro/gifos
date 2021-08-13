@@ -5,6 +5,8 @@
 // INICIO | CAMBIO ENTRE SECCIONES DESDE MENÚ ======================================================
 // =================================================================================================
 const body = document.querySelector("body");
+const html_doc = document.getElementsByTagName("HTML")[0]
+
 const mode_btn = document.getElementById("mode-btn");
 const mode_btn_dkt = document.getElementById("mode-btn-dkt");
 const inicio_btn = document.getElementById("inicio-btn");
@@ -19,10 +21,12 @@ const home_section_id = document.querySelector("#home-section");
 const search_section_id = document.querySelector("#search-section");
 const subsection_results_id = document.querySelector("subsection-results-div");
 const container_section_favs_id = document.querySelector("#container-section-favs");
+const container_favs_gifs_id = document.querySelector("#container-favs-gifs");
 const container_section_mis_gifos_id = document.querySelector("#container-section-mis-gifos");
 const create_gifos_section_id = document.querySelector("#create-gifos-section");
 const carrusel_section_id = document.querySelector("#carrusel-section");
 
+var genericList = [];
 function validateClassList (validate, classList) {
     /* input:
             validate: name class to search in class list from element
@@ -119,6 +123,7 @@ const toggleSections = (event)=>{
         }
         // mostrar secciones de inicio
         home_section_id.classList.toggle("display-none") //home-section
+        search_section_id.classList.toggle("display-none");
         // search_section_id.classList.toggle("display-none") // search-section
         activeSection = "inicio"
 
@@ -142,7 +147,6 @@ const toggleSections = (event)=>{
         }
         //mostrar favorites sections
         container_section_favs_id.classList.toggle("display-none")
-
         activeSection = "favorites"
     }
     else if (clase === "gifos-btn" && activeSection!=="mis-gifos" ) {
@@ -200,7 +204,12 @@ const toggleSections = (event)=>{
     para cerrar el details removeremos el atributo cuando ocurra algun evento:
     details.removeAttribute("open")
 */
-
+const notFoundFavsGifs = `
+<div class="defaultFavs">
+    <div class="img"></div>
+    <p>¡Guarda tu primer GIFO en favoritos para que se muestre aquí!</p>
+</div>
+`
 inicio_btn.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open")  ;       // Cierra el menú
@@ -216,15 +225,17 @@ favorites_btn.addEventListener("click", (event)=>{
     details.removeAttribute("open");         // Cierra el menú
     // addIframe()                          // Recopilar gifos de LocalStorage
     console.log(activeSection); // favorites
+    container_favs_gifs_id.innerHTML='';
+    insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
 
-    
 })
 favorites_btn_dkt.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     // addIframe()                          // Recopilar gifos de LocalStorage
     console.log(activeSection); // favorites
-    console.log("gifosTrends array printed from main.js: ", gifosTrends)
+    container_favs_gifs_id.innerHTML='';
+    insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
 })
 mis_gifos_btn.addEventListener("click", (event)=>{
     toggleSections(event);
@@ -251,6 +262,23 @@ console.log(activeSection);
 
 // CONTROL DE HOVER DE GIFO ======================================================
 // ===============================================================================
+function addToFav (imgElement){
+    genericList=[];
+    genericList = gifosList;
+    genericList.push(gifosTrends);
+    gifosFavorites.push(findFavs(genericList, imgElement.id, true));
+    genericList=[];
+    container_favs_gifs_id.innerHTML='';
+    insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
+}
+function removeToFav (imgElement){
+    const index = gifosFavorites.findIndex(e => e.id == imgElement.id)
+    if (index>=0){
+        gifosFavorites.splice(index, 1)
+        container_favs_gifs_id.innerHTML='';
+        insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
+    }    
+}
 
 // Modal for desktop version
 var normalTemplate = "";
@@ -303,37 +331,42 @@ function focusedElement(figureElement) { // element == <figure>
                 container_preview.classList.add("display-none");
             })
             const btn_fav_preview = document.querySelector(".preview #btn-fav")
+            // inicio | favorites | mis-gifos
+            // Add gif to fav -> preview
             btn_fav_preview.addEventListener("click", (event)=>{
                 event.stopPropagation();
                 if (btn_fav.getAttribute("fav")=="false"){
                     btn_fav.setAttribute("fav" , "true")
                     btn_fav_preview.setAttribute("fav" , "true")
+                    addToFav(img);
                 } else {
                     btn_fav.setAttribute("fav" , "false")
                     btn_fav_preview.setAttribute("fav" , "false")
+                    removeToFav(img);
                 }
+                console.log(gifosFavorites)
             })
     
             btn_download.addEventListener("click", (event)=>{
                 event.stopPropagation();
             })
         })
+        // Add gif to fav -> hover desktop
         btn_fav.addEventListener("click", (event)=>{
             console.log(img)
             console.log(img.id)
             event.stopPropagation();
             if (btn_fav.getAttribute("fav")=="false"){
                 btn_fav.setAttribute("fav" , "true")
-                gifosFavorites.push(findFavs(gifosList, img.id, true))
+                addToFav(img);
             } else {
                 btn_fav.setAttribute("fav" , "false")
-                const index = gifosFavorites.findIndex(e => e.id == img.id)
-                gifosFavorites.splice(index, 1)
+                removeToFav(img);
             }
             console.log(gifosFavorites)
         })
-
         btn_download.addEventListener("click", (event)=>{
+            // Your code here
         })
 
         figureElement.setAttribute("statusdktp", "true");
@@ -366,15 +399,19 @@ function focusedElement(figureElement) { // element == <figure>
                 container_preview.classList.add("display-none");
             })
             const btn_fav_preview = document.querySelector(".preview #btn-fav")
+            // Add gif to fav -> mobile
             btn_fav_preview.addEventListener("click", (event)=>{
                 event.stopPropagation();
                 if (btn_fav.getAttribute("fav")=="false"){
                     btn_fav.setAttribute("fav" , "true")
                     btn_fav_preview.setAttribute("fav" , "true")
+                    addToFav(img);
                 } else {
                     btn_fav.setAttribute("fav" , "false")
                     btn_fav_preview.setAttribute("fav" , "false")
+                    removeToFav(img);
                 }
+                console.log(gifosFavorites)
             })
         })
         figureElement.setAttribute("statusmobile", "true")

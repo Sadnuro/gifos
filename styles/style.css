@@ -24,6 +24,7 @@
   --font-third-color: white;
   --background-primary-color: #37383C;
   --background-secondary-color: #222326;
+  --layout-third-color: black;
 }
 
 * {
@@ -128,8 +129,10 @@ header nav details ul li a {
   color: white;
 }
 
-.dark-mode #logo {
-  content: url("/assets/logo-mobile-modo-noct.svg");
+@media screen and (min-width: 1px) and (max-width: 669px) {
+  .dark-mode #logo {
+    content: url("/assets/logo-mobile-modo-noct.svg");
+  }
 }
 
 .home-section {
@@ -155,7 +158,7 @@ header nav details ul li a {
   font-size: 25px;
 }
 
-.home-section span#home-text-resalt {
+.home-section span.text-resalt {
   color: var(--font-secondary-color);
 }
 
@@ -927,6 +930,22 @@ footer .default-btn {
           justify-content: center;
 }
 
+#container-section-favs .container-favs-gifs .defaultFavs .img {
+  margin: 90px auto 20px auto;
+  content: url("../assets/icon-fav-sin-contenido.svg");
+}
+
+#container-section-favs .container-favs-gifs .defaultFavs p {
+  margin-bottom: 130px;
+  max-width: 430px;
+  text-align: center;
+  font-size: 22px;
+  font-family: var(--font-Montserrat);
+  line-height: 33px;
+  font-weight: bold;
+  color: var(--font-secondary-color);
+}
+
 #container-section-favs .container-favs-gifs figure {
   margin: 5px;
 }
@@ -994,7 +1013,7 @@ footer .default-btn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: white;
+  background: --background-primary-color;
 }
 
 #create-gifos-section .screen-container {
@@ -1026,14 +1045,14 @@ footer .default-btn {
 }
 
 #create-gifos-section .screen-container g.videoCam .camera {
-  content: url("/assets/camara.svg");
+  content: url("../assets/camara.svg");
 }
 
 #create-gifos-section .screen-container g.videoCam .luz {
   margin-top: 1px;
   margin-left: 2px;
   opacity: 0.6;
-  content: url("/assets/element-luz-camara.svg");
+  content: url("../assets/element-luz-camara.svg");
 }
 
 #create-gifos-section .screen-container .screen {
@@ -1051,7 +1070,7 @@ footer .default-btn {
 #create-gifos-section .screen-container .screen g .marco {
   width: 690px;
   height: 390px;
-  border: 1px solid #572EE5;
+  border: 1px solid var(--font-primary-color);
   position: relative;
 }
 
@@ -1111,15 +1130,19 @@ footer .default-btn {
   font-family: monospace;
   font-size: 25px;
   line-height: 35px;
-  color: #572EE5;
+  color: var(--font-primary-color);
   text-align: center;
+}
+
+#create-gifos-section .screen-container .screen .contenido .info h3 span.text-resalt {
+  color: var(--font-secondary-color);
 }
 
 #create-gifos-section .screen-container .screen .contenido .info p {
   font-family: monospace;
   font-size: 16px;
   line-height: 30px;
-  color: black;
+  color: var(--font-third-color);
   text-align: center;
 }
 
@@ -1128,7 +1151,7 @@ footer .default-btn {
   position: relative;
   bottom: -235px;
   right: 0;
-  content: url("/assets/pelicula.svg");
+  content: url("../assets/pelicula.svg");
 }
 
 #create-gifos-section .recording-container {
@@ -1174,18 +1197,19 @@ footer .default-btn {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #572EE5;
-  color: #572EE5;
+  border: 1px solid var(--font-primary-color);
+  color: var(--font-primary-color);
   text-align: center;
   line-height: 30px;
   font-family: monospace;
+  font-weight: bold;
   font-size: 16px;
   background-color: rgba(255, 255, 255, 0);
 }
 
 #create-gifos-section .recording-container .container-btns-timelapse .container-btns .step[data-active] {
-  background-color: #572EE5;
-  color: white;
+  background-color: var(--font-primary-color);
+  color: var(--layout-third-color);
 }
 
 #create-gifos-section .recording-container .container-btns-timelapse .timelapse-container {
@@ -1200,7 +1224,7 @@ footer .default-btn {
   font-family: monospace;
   font-size: 16px;
   line-height: 30px;
-  color: #572EE5;
+  color: var(--font-primary-color);
   text-align: center;
 }
 
@@ -1209,7 +1233,7 @@ footer .default-btn {
   height: 7px;
   margin-top: 24px;
   border-radius: 3px;
-  background: #572EE5;
+  background: var(--font-primary-color);
 }
 
 #create-gifos-section .recording-container .btn-process {
@@ -1217,18 +1241,19 @@ footer .default-btn {
   height: 50px;
   margin-top: 20px;
   padding-top: 14px;
-  border: 1px solid #572EE5;
+  border: 1px solid var(--font-primary-color);
   border-radius: 25px;
-  color: #572EE5;
+  color: var(--font-primary-color);
   font-family: monospace;
+  font-weight: bold;
   font-size: 16px;
   line-height: 20px;
   text-align: center;
 }
 
 #create-gifos-section .recording-container .btn-process:hover {
-  background-color: #572EE5;
-  color: white;
+  background-color: var(--font-primary-color);
+  color: black;
   cursor: pointer;
 }
 
@@ -1236,12 +1261,16 @@ footer .default-btn {
   display: none;
 }
 
-.dark-mode .camera {
-  content: url("/assets/camara-modo-noc.svg");
+.dark-mode {
+  background: var(--background-primary-color);
 }
 
-.dark-mode .pelicula {
-  content: url("/assets/pelicula-modo-noc.svg");
+.dark-mode #create-gifos-section .screen-container g.videoCam .camera {
+  content: url("../assets/camara-modo-noc.svg");
+}
+
+.dark-mode #create-gifos-section .pelicula {
+  content: url("../assets/pelicula-modo-noc.svg");
 }
 
 @media screen and (min-width: 670px) {
@@ -1558,16 +1587,14 @@ footer .default-btn {
     font-size: 25px;
     font-family: var(--font-Montserrat);
   }
-}
-
-.dark-mode header nav .desktop-menu .create-gifos-btn {
-  border: 1px solid white;
-  color: white;
-}
-
-.dark-mode header nav .desktop-menu .create-gifos-btn:hover {
-  background-color: white;
-  color: black;
+  .dark-mode header nav .desktop-menu .create-gifos-btn {
+    border: 1px solid white;
+    color: white;
+  }
+  .dark-mode header nav .desktop-menu .create-gifos-btn:hover {
+    background-color: white;
+    color: black;
+  }
 }
 
 .view-more-btn {

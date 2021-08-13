@@ -38,7 +38,7 @@ var notFoundResultsSearchTemplate = `
         <p>Intenta con otra búsqueda</p>
     </div>
 `
-function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=default_btn) {
+function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=default_btn, statusFav=false) {
     /**
      * [gifos]: array de gifos a insertar en [containerGifosElement]
      * [gifosContainer]: Elemento HTML que recibirá los gifos
@@ -57,7 +57,7 @@ function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=defau
                         </div>
                         <div class="capa">
                             <div class="buttons">
-                                <div class="btn-fav hover-btns" id="btn-fav" fav="false"></div>
+                                <div class="btn-fav hover-btns" id="btn-fav" fav="${statusFav}"></div>
                                 <div class="btn-download hover-btns" id="btn-download"></div>
                                 <div class="btn-max hover-btns" id="btn-max"></div>
                             </div>
@@ -101,9 +101,11 @@ async function search (URL, ){
         }
         result.push(gifoData);
     });
+    console.log(gifos)
     return result;
 }
 
+var trendWordsList = [];
 async function onloadExe (){
     /**
      * Carga las tendencias en el carrusel
@@ -117,6 +119,8 @@ async function onloadExe (){
     gifosTrends = await search(URL);
     //insert gifos function
     insertGifos (gifosTrends, carrusel)
+
+
 } 
 
 window.onload =  onloadExe();
@@ -205,13 +209,14 @@ function findFavs(array, id, matriz=false){
     if (matriz===true){
         for (i=0; i<array.length; i++){
             result = array[i].find(e => e.id === `${id}`)
-            if(result){
+            if(result!=undefined){
                 break
             }
         }
     } else {
         result = array.find(e => e.id === `${id}`)
     }
+    console.log("RESULT ELEMENT FAV: ", result)
     return result
 }
 
