@@ -7,13 +7,14 @@ let gifosResults = [];          // Stores current results of search of gifos
 
 
 const API_URL = "https://api.giphy.com/v1";
+const API_URL_UPLOAD = "https://upload.giphy.com/v1/gifs";
 const API_KEY = "oAF6BugvxZqmpPf30UwCOVes8vOpwQEe";
 let REQ_TYPE ="gifs";                // gifs | stickers
 let REQUEST = "trending";            // trending | search
 let Q ="";                           // Búsqueda usuario
 let LIMIT = 12;                      // Cant gifos to get
 let OFFSET = 0;
-let URL = "";
+let URI = "";
 
 // URL = "https://api.giphy.com/v1/gifs/trending?api_key=oAF6BugvxZqmpPf30UwCOVes8vOpwQEe&limit=10";
 // URL = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
@@ -80,8 +81,8 @@ function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=defau
     }
 }
 
-async function search (URL, ){
-    const response = await fetch(URL);
+async function search (URI, ){
+    const response = await fetch(URI);
     if(!response.ok) {
         throw new Error("WARN", response.status);
     }
@@ -105,6 +106,29 @@ async function search (URL, ){
     return result;
 }
 
+async function upload(gifBlob){
+    const API_URL_UPLOAD = 'https://upload.giphy.com/v1/gifs';
+    const API_KEY = "oAF6BugvxZqmpPf30UwCOVes8vOpwQEe";
+    const USERNAME = "Sadnuro";
+
+    let formData = new FormData();
+    formData.append('api_key', API_KEY);
+    formData.append('file', gifBlob, 'myGifo.gif');
+ 
+    try {
+        const response = await fetch(API_URL_UPLOAD, {
+                            method: 'POST',
+                            body: formData
+                        })
+        const jsonRes = await response.json();
+        return jsonRes;
+    } catch(error){
+        console.error(error);
+        return false;
+    }
+}
+
+
 var trendWordsList = [];
 async function onloadExe (){
     /**
@@ -114,13 +138,12 @@ async function onloadExe (){
     REQUEST = "trending";            // trending | search
     LIMIT = 12;                      // Cant gifos to get
     OFFSET = 0;
-    URL = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&offset=${OFFSET}&limit=${LIMIT}`
+    URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&offset=${OFFSET}&limit=${LIMIT}`
     // Load trends in carrusel
-    gifosTrends = await search(URL);
+    gifosTrends = await search(URI);
     //insert gifos function
+    //           Gifos[]    | HTML ELEMENT
     insertGifos (gifosTrends, carrusel)
-
-
 } 
 
 window.onload =  onloadExe();
@@ -169,14 +192,19 @@ async function toSearch(event){   // event keyboard data
         LIMIT = 12;                      // Cant gifos to get
         OFFSET = 0;
         gifosList = [];
-        URL = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
-        gifosResults = await search(URL);
+        URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
+
+        gifosResults = await search(URI);
+
         console.log("gifosList before: ", gifosList)
+
         gifosList = [gifosResults];
         results_container.innerHTML = '';
         insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
+
         console.log("gifosResults[] :: ", gifosResults);
         console.log("gifosList[] after :: ", gifosList);
+
         subsection_results_title.textContent = Q;
         subsection_results.classList.remove("display-none");
     }
@@ -223,9 +251,9 @@ function findFavs(array, id, matriz=false){
 viewMore_btn_results.addEventListener("click", async (event)=>{
     console.log("ViewMore event")
     OFFSET += 12;
-    URL = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`;
-    console.log(URL)
-    gifosResults = await search(URL);
+    URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`;
+    console.log(URI)
+    gifosResults = await search(URI);
     console.log("gifosList before viewmore: ", gifosList)
     gifosList.push(gifosResults);
     insertGifos(gifosList[gifosList.length-1], results_container, notFoundResultsSearchTemplate, viewMore_btn_results);
@@ -277,51 +305,3 @@ for (var i=0; i<trends_words.length; i++){
         searchTopicGifos(event.target.textContent);
     });
 }
-
-
-
-// function search (URL, gifosContainer, defaultInsert='', listToStorage=[], listResults=[], viewMoreBtn=default_btn){
-//     console.log("MOTA: Fetch starting...")
-//     fetch(URL)
-//     .then(apiResponse => apiResponse.json())
-//     .then(apiResponseJSON => {
-//         const data = apiResponseJSON.data;
-//         var statusFound = data.length>0;
-//         // Storage gifos code or function 
-//         data.forEach(gifo => {
-//             const gifoData  = {
-//                 // Validar contenido en title and id. replace with unknown if require
-//                 id: gifo.id,
-//                 title:  gifo.title,
-//                 author:  gifo.username,     //username
-//                 medias : {
-//                     gif :  gifo.images.original.url,
-//                     mp4: gifo.images.original.mp4,
-//                     webp: gifo.images.original.webp,
-//                     giphy: gifo.url
-//                 }
-//             }
-//             listResults.push(gifoData);
-//             listToStorage.push(gifoData);
-//         });
-//         console.log("Lista[]: ", listToStorage, typeof listToStorage, listToStorage.length)
-//         console.log("listResults[]: ", listResults, typeof listResults, listResults.length)
-//         // Insert gifos in page code or function
-//         // insertGifos(listResults, gifosContainer, statusFound, defaultInsert,  viewMoreBtn);
-//         console.log("NOTA: Fetch finished succesfully!")
-//         return data;
-//     })
-//     .catch(error => console.error(error))
-// }
-
-// window.onload = onloadExe = async () =>{
-//     console.log("onload excecute")
-//     REQ_TYPE ="gifs";                // gifs | stickers
-//     REQUEST = "trending";            // trending | search
-//     LIMIT = 12;                      // Cant gifos to get
-//     OFFSET = 0;
-//     URL = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&offset=${OFFSET}&limit=${LIMIT}`
-//     // Load trends in carrusel
-//     var listReturned = [];
-//     listReturned.push(await search(URL,carrusel, '', gifosTrends, myGifos));   
-// } 

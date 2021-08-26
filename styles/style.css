@@ -11,6 +11,7 @@
   --background-secondary-color: #F3F5F8;
   --layout-secondary-color: #50E3C2;
   --font-secondary-color: #50E3C2;
+  --shadow-color: rgba(80, 227, 195, 0.3);
   --font-third-color: black;
   --layout-third-color: #F3F5F8;
   --font-Montserrat: 'Montserrat', sans-serif;
@@ -498,6 +499,10 @@ header nav details ul li a {
      object-fit: cover;
 }
 
+.carrusel-section .trends-carrusel-container .carrusel g figure .capa p {
+  text-align: left;
+}
+
 .carrusel-section .trends-carrusel-container .carrusel-btn {
   display: none;
   width: 40px;
@@ -536,7 +541,6 @@ header nav details ul li a {
 figure {
   width: 156px;
   height: 120px;
-  border: 1px solid black;
   /*Permite aplicar [absolute] a un elemento hijo y será
     relativo a este contenedor*/
   position: relative;
@@ -717,9 +721,9 @@ figure {
 .preview .modal-preview img {
   width: 100%;
   height: 100%;
-  border: 1px solid red;
   -o-object-fit: contain;
      object-fit: contain;
+  background-color: var(--background-secondary-color);
 }
 
 .preview .container-btns-info {
@@ -778,56 +782,6 @@ figure {
   display: none;
 }
 
-/*
-.preview {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
-
-}
-
-.preview .btn-close {
-    position: absolute;
-    top: 66px;
-    right: 20%;
-}
-.preview img {
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
-    object-fit: contain;
-}
-.preview .container-btns-info {
-    width: 500px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-content: center;
-    .container-info {
-        width: 400px;
-        height: 50px;
-        font-family: monospace;
-        p {
-            font-size: 16px;
-        }
-        h3 {
-            margin: 0;
-        }
-    }
-}
-
-.display-none{
-    display: none;
-}
-*/
 footer {
   height: 195px;
   border-bottom: 5px solid var(--line-header-color);
@@ -999,278 +953,6 @@ footer .default-btn {
   height: 120px;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-#create-gifos-section {
-  padding: 5px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: --background-primary-color;
-}
-
-#create-gifos-section .screen-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#create-gifos-section .screen-container g.videoCam {
-  width: 200px;
-  height: 162px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#create-gifos-section .screen-container g.videoCam .camera {
-  content: url("../assets/camara.svg");
-}
-
-#create-gifos-section .screen-container g.videoCam .luz {
-  margin-top: 1px;
-  margin-left: 2px;
-  opacity: 0.6;
-  content: url("../assets/element-luz-camara.svg");
-}
-
-#create-gifos-section .screen-container .screen {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#create-gifos-section .screen-container .screen g .marco {
-  width: 690px;
-  height: 390px;
-  border: 1px solid var(--font-primary-color);
-  position: relative;
-}
-
-#create-gifos-section .screen-container .screen g .esquina {
-  width: 27px;
-  height: 25px;
-  margin: 20px;
-  background-color: rgba(255, 255, 255, 0);
-  position: absolute;
-}
-
-#create-gifos-section .screen-container .screen g .esquina1 {
-  border-top: 2px solid #50E3C2;
-  border-left: 2px solid #50E3C2;
-  top: 0;
-  left: 0;
-}
-
-#create-gifos-section .screen-container .screen g .esquina2 {
-  border-top: 2px solid #50E3C2;
-  border-right: 2px solid #50E3C2;
-  top: 0;
-  right: 0;
-}
-
-#create-gifos-section .screen-container .screen g .esquina3 {
-  border-bottom: 2px solid #50E3C2;
-  border-left: 2px solid #50E3C2;
-  bottom: 0;
-  left: 0;
-}
-
-#create-gifos-section .screen-container .screen g .esquina4 {
-  border-bottom: 2px solid #50E3C2;
-  border-right: 2px solid #50E3C2;
-  bottom: 0;
-  right: 0;
-}
-
-#create-gifos-section .screen-container .screen .contenido {
-  width: 480px;
-  height: 320px;
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#create-gifos-section .screen-container .screen .contenido .info {
-  width: 100%;
-}
-
-#create-gifos-section .screen-container .screen .contenido .info h3 {
-  font-family: monospace;
-  font-size: 25px;
-  line-height: 35px;
-  color: var(--font-primary-color);
-  text-align: center;
-}
-
-#create-gifos-section .screen-container .screen .contenido .info h3 span.text-resalt {
-  color: var(--font-secondary-color);
-}
-
-#create-gifos-section .screen-container .screen .contenido .info p {
-  font-family: monospace;
-  font-size: 16px;
-  line-height: 30px;
-  color: var(--font-third-color);
-  text-align: center;
-}
-
-#create-gifos-section .screen-container .pelicula {
-  margin-left: 58px;
-  position: relative;
-  bottom: -235px;
-  right: 0;
-  content: url("../assets/pelicula.svg");
-}
-
-#create-gifos-section .recording-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 25px;
-  position: relative;
-}
-
-#create-gifos-section .recording-container .container-btns-timelapse {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-}
-
-#create-gifos-section .recording-container .container-btns-timelapse .container-btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  width: 150px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-#create-gifos-section .recording-container .container-btns-timelapse .container-btns .step {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid var(--font-primary-color);
-  color: var(--font-primary-color);
-  text-align: center;
-  line-height: 30px;
-  font-family: monospace;
-  font-weight: bold;
-  font-size: 16px;
-  background-color: rgba(255, 255, 255, 0);
-}
-
-#create-gifos-section .recording-container .container-btns-timelapse .container-btns .step[data-active] {
-  background-color: var(--font-primary-color);
-  color: var(--layout-third-color);
-}
-
-#create-gifos-section .recording-container .container-btns-timelapse .timelapse-container {
-  width: 100px;
-  margin-right: 50px;
-  position: absolute;
-  right: 0;
-}
-
-#create-gifos-section .recording-container .container-btns-timelapse .timelapse-container .timelapse {
-  float: right;
-  font-family: monospace;
-  font-size: 16px;
-  line-height: 30px;
-  color: var(--font-primary-color);
-  text-align: center;
-}
-
-#create-gifos-section .recording-container .line {
-  width: 795px;
-  height: 7px;
-  margin-top: 24px;
-  border-radius: 3px;
-  background: var(--font-primary-color);
-}
-
-#create-gifos-section .recording-container .btn-process {
-  width: 127px;
-  height: 50px;
-  margin-top: 20px;
-  padding-top: 14px;
-  border: 1px solid var(--font-primary-color);
-  border-radius: 25px;
-  color: var(--font-primary-color);
-  font-family: monospace;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  text-align: center;
-}
-
-#create-gifos-section .recording-container .btn-process:hover {
-  background-color: var(--font-primary-color);
-  color: black;
-  cursor: pointer;
-}
-
-.display-none#create-gifos-section {
-  display: none;
-}
-
-.dark-mode {
-  background: var(--background-primary-color);
-}
-
-.dark-mode #create-gifos-section .screen-container g.videoCam .camera {
-  content: url("../assets/camara-modo-noc.svg");
-}
-
-.dark-mode #create-gifos-section .pelicula {
-  content: url("../assets/pelicula-modo-noc.svg");
 }
 
 @media screen and (min-width: 670px) {
@@ -1481,6 +1163,8 @@ footer .default-btn {
   #carrusel-section .trends-carrusel-container .carrusel g figure .modal-container {
     width: 357px;
     height: 275px;
+    -webkit-box-shadow: 0px 0px 5px 1px black;
+            box-shadow: 0px 0px 5px 1px black;
   }
   #carrusel-section .trends-carrusel-container .carrusel g figure .modal-container img {
     margin: 0;
@@ -1534,12 +1218,11 @@ footer .default-btn {
   }
   .preview .modal-preview {
     width: 500px;
-    max-height: 600px;
+    max-height: 500px;
   }
   .preview .modal-preview img {
     width: 100%;
     max-height: 100%;
-    border: 1px solid red;
     -o-object-fit: contain;
        object-fit: contain;
   }
@@ -1594,6 +1277,312 @@ footer .default-btn {
   .dark-mode header nav .desktop-menu .create-gifos-btn:hover {
     background-color: white;
     color: black;
+  }
+}
+
+@media screen and (min-width: 670px) {
+  #create-gifos-section {
+    padding: 5px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: --background-primary-color;
+  }
+  #create-gifos-section .screen-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #create-gifos-section .screen-container g.videoCam {
+    width: 200px;
+    height: 162px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #create-gifos-section .screen-container g.videoCam .camera {
+    content: url("../assets/camara.svg");
+  }
+  #create-gifos-section .screen-container g.videoCam .luz {
+    margin-top: 1px;
+    margin-left: 2px;
+    opacity: 0.6;
+    content: url("../assets/element-luz-camara.svg");
+  }
+  #create-gifos-section .screen-container .screen {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #create-gifos-section .screen-container .screen g .marco {
+    width: 690px;
+    height: 390px;
+    border: 1px solid var(--font-primary-color);
+    position: relative;
+  }
+  #create-gifos-section .screen-container .screen g .esquina {
+    width: 27px;
+    height: 25px;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+  }
+  #create-gifos-section .screen-container .screen g .esquina1 {
+    border-top: 2px solid #50E3C2;
+    border-left: 2px solid #50E3C2;
+    top: 0;
+    left: 0;
+  }
+  #create-gifos-section .screen-container .screen g .esquina2 {
+    border-top: 2px solid #50E3C2;
+    border-right: 2px solid #50E3C2;
+    top: 0;
+    right: 0;
+  }
+  #create-gifos-section .screen-container .screen g .esquina3 {
+    border-bottom: 2px solid #50E3C2;
+    border-left: 2px solid #50E3C2;
+    bottom: 0;
+    left: 0;
+  }
+  #create-gifos-section .screen-container .screen g .esquina4 {
+    border-bottom: 2px solid #50E3C2;
+    border-right: 2px solid #50E3C2;
+    bottom: 0;
+    right: 0;
+  }
+  #create-gifos-section .screen-container .screen .contenido {
+    width: 480px;
+    height: 320px;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info h3 {
+    font-family: var(--font-Montserrat);
+    font-size: 25px;
+    line-height: 35px;
+    color: var(--font-primary-color);
+    text-align: center;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info h3 span.text-resalt {
+    color: var(--font-secondary-color);
+  }
+  #create-gifos-section .screen-container .screen .contenido .info p {
+    font-family: var(--font-Roboto);
+    font-size: 16px;
+    line-height: 30px;
+    color: var(--font-third-color);
+    text-align: center;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #video {
+    width: 100%;
+    height: 100%;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #gif-img {
+    width: 100%;
+    height: 100%;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa {
+    width: 480px;
+    height: 320px;
+    z-index: 100;
+    background-color: rgba(87, 46, 229, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .createGifo-containerBtns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: right;
+        -ms-flex-pack: right;
+            justify-content: right;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .createGifo-containerBtns .btn-download, #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .createGifo-containerBtns .btn-link {
+    margin: 10px 10px 0 5px;
+  }
+  #create-gifos-section .screen-container .pelicula {
+    margin-left: 58px;
+    position: relative;
+    bottom: -235px;
+    right: 0;
+    content: url("../assets/pelicula.svg");
+  }
+  #create-gifos-section .recording-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 25px;
+    position: relative;
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse .container-btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    width: 150px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse .container-btns .step {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--font-primary-color);
+    color: var(--font-primary-color);
+    text-align: center;
+    line-height: 30px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse .container-btns .step[data-active] {
+    background-color: var(--font-primary-color);
+    color: var(--layout-third-color);
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse .timelapse-container {
+    width: 130px;
+    margin-right: 50px;
+    position: absolute;
+    right: 0;
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse .timelapse-container .timelapse {
+    float: right;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 30px;
+    color: var(--font-primary-color);
+    text-align: center;
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse .timelapse-container p#repeatRecordBtn {
+    width: 100%;
+    margin-top: 10px;
+    font-family: var(--font-Montserrat);
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    color: var(--font-primary-color);
+  }
+  #create-gifos-section .recording-container .container-btns-timelapse .timelapse-container p#repeatRecordBtn:hover {
+    -webkit-text-decoration: 2px underline var(--layout-secondary-color);
+            text-decoration: 2px underline var(--layout-secondary-color);
+  }
+  #create-gifos-section .recording-container .line {
+    width: 795px;
+    height: 7px;
+    margin-top: 24px;
+    border-radius: 3px;
+    background: var(--font-primary-color);
+  }
+  #create-gifos-section .recording-container .btn-process {
+    width: 127px;
+    height: 50px;
+    margin-top: 20px;
+    padding-top: 14px;
+    border: 1px solid var(--font-primary-color);
+    border-radius: 25px;
+    color: var(--font-primary-color);
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+  }
+  #create-gifos-section .recording-container .btn-process:hover {
+    background-color: var(--font-primary-color);
+    color: var(--layout-third-color);
+    cursor: pointer;
+  }
+  .display-none#create-gifos-section {
+    display: none;
+  }
+  .dark-mode {
+    background: var(--background-primary-color);
+  }
+  .dark-mode #create-gifos-section .screen-container g.videoCam .camera {
+    content: url("../assets/camara-modo-noc.svg");
+  }
+  .dark-mode #create-gifos-section .pelicula {
+    content: url("../assets/pelicula-modo-noc.svg");
   }
 }
 

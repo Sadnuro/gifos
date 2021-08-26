@@ -34,22 +34,22 @@ function validateClassList (validate, classList) {
         Output: 
             true or false: element have or not have the class
     */
-        let classListCleaned = [];
-        for (const i of classList) {    // guarda clases y omite metadatos
-            classListCleaned.push(i)
-        }
-        for (const key in classListCleaned) { // Se recorren las clases, ya no hay metadatos
-            //console.log(classListCleaned)
-            //console.log(key)
-            if (Object.hasOwnProperty.call(classListCleaned, key)) {
-                const element = classListCleaned[key];
-                if (element === validate){
-                    return true
-                }
+    let classListCleaned = [];
+    for (const i of classList) {    // guarda clases y omite metadatos
+        classListCleaned.push(i)
+    }
+    for (const key in classListCleaned) { // Se recorren las clases, ya no hay metadatos
+        //console.log(classListCleaned)
+        //console.log(key)
+        if (Object.hasOwnProperty.call(classListCleaned, key)) {
+            const element = classListCleaned[key];
+            if (element === validate){
+                return true
             }
         }
-        return false
     }
+    return false
+}
 
 // DARK AND LIGHT THEME MODE =====================================================================================
 // =========================================================================================================
@@ -209,7 +209,26 @@ const notFoundFavsGifs = `
     <div class="img"></div>
     <p>¡Guarda tu primer GIFO en favoritos para que se muestre aquí!</p>
 </div>
-`
+`;
+const notFoundMyGifos = ``;
+
+let subArray = [];
+let offsetFavs = 0;
+let offsetMyGifos =0;
+// init | end
+let favPageHistory = [0, 12];
+let myGifosPageHistory = [0, 12];
+
+function pagination (arrayToPaginate, init, end, increase=12){
+    /** Conditions:
+     *  the pagination is default done from 12 to 12
+     * init = inclusive
+     * end = inclusive
+     */
+    const subArray = arrayToPaginate.slice(init, end +1);
+    console.log("subarray ======= ", subArray)
+}
+
 inicio_btn.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open")  ;       // Cierra el menú
@@ -434,7 +453,6 @@ function unfocusedElement (element){
         // element.innerHTML = normalTemplate
     }
 }
-
 
 // Desplazamiento de carrusel con botones
 // const carrusel = document.querySelector(".carrusel");
