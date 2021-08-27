@@ -86,6 +86,7 @@ figure {
 }
 .btn-fav:hover {
     content: url("/assets/icon-fav-hover.svg");
+    cursor: pointer;
 }
 // .btn-fav:checked {
 //     content: url("/assets/icon-fav-active.svg");
@@ -99,30 +100,35 @@ figure {
 }
 .btn-fav[fav=true]:hover {
     opacity: 1;
+    cursor: pointer;
 }
 .btn-download {
     content: url("/assets/icon-download.svg");
 }
 .btn-download:hover {
     content: url("/assets/icon-download-hover.svg");
+    cursor: pointer;
 }
 .btn-max {
     content: url("/assets/icon-max-normal.svg");
 }
 .btn-max:hover {
     content: url("/assets/icon-max-hover.svg");
+    cursor: pointer;
 }
 .btn-delete {
     content: url("/assets/icon-trash-normal.svg");
 }
 .btn-delete:hover {
     content: url("/assets/icon-trash-hover.svg");
+    cursor: pointer;
 }
 .btn-link {
     content: url("/assets/icon-link-normal.svg");
 }
 .btn-link:hover {
     content: url("/assets/icon-link-hover.svg");
+    cursor: pointer;
 }
 .btn-close {
     width: 15px;
@@ -131,10 +137,11 @@ figure {
     // top: 60px;
     // right: 20px;
     content: url("/assets/close.svg");
+    &:hover{
+        cursor: pointer;
+    }
 }
-// .btn-close:hover {
-//     cursor: pointer;
-// }
+
 .dark-mode .btn-close {
     content: url("/assets/close-modo-noct.svg");
 }

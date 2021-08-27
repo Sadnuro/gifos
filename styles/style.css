@@ -627,6 +627,7 @@ figure {
 
 .btn-fav:hover {
   content: url("/assets/icon-fav-hover.svg");
+  cursor: pointer;
 }
 
 .btn-fav[fav=true] {
@@ -639,6 +640,7 @@ figure {
 
 .btn-fav[fav=true]:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .btn-download {
@@ -647,6 +649,7 @@ figure {
 
 .btn-download:hover {
   content: url("/assets/icon-download-hover.svg");
+  cursor: pointer;
 }
 
 .btn-max {
@@ -655,6 +658,7 @@ figure {
 
 .btn-max:hover {
   content: url("/assets/icon-max-hover.svg");
+  cursor: pointer;
 }
 
 .btn-delete {
@@ -663,6 +667,7 @@ figure {
 
 .btn-delete:hover {
   content: url("/assets/icon-trash-hover.svg");
+  cursor: pointer;
 }
 
 .btn-link {
@@ -671,12 +676,17 @@ figure {
 
 .btn-link:hover {
   content: url("/assets/icon-link-hover.svg");
+  cursor: pointer;
 }
 
 .btn-close {
   width: 15px;
   height: 15px;
   content: url("/assets/close.svg");
+}
+
+.btn-close:hover {
+  cursor: pointer;
 }
 
 .dark-mode .btn-close {
@@ -1440,24 +1450,67 @@ footer .default-btn {
     position: absolute;
     top: 0;
     left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .statusinfo-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .statusinfo-container .status-img {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 15px;
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .statusinfo-container #upload {
+    content: url("../assets/loader.svg");
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .statusinfo-container #uploaded {
+    content: url("../assets/ok.svg");
+  }
+  #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .statusinfo-container p#status-text {
+    font-family: var(--font-Montserrat);
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 16px;
   }
   #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .createGifo-containerBtns {
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: right;
-        -ms-flex-pack: right;
-            justify-content: right;
-    position: relative;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    position: absolute;
     top: 0;
     left: 0;
   }
   #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .createGifo-containerBtns .btn-download, #create-gifos-section .screen-container .screen .contenido .info #createGifo-capa .createGifo-containerBtns .btn-link {
-    margin: 10px 10px 0 5px;
+    margin: 10px 10px 0 0;
   }
   #create-gifos-section .screen-container .pelicula {
     margin-left: 58px;
