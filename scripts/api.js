@@ -2,6 +2,7 @@
 let gifosList = [];             // Stores all gifos findeds
 let gifosTrends = [];           // Stores all gifos in trends carrusel
 let myGifos = [];               // Stores all creates gifos 
+let myGifosId = [];     
 let gifosFavorites = [];        // Stores gifos added to favorites
 let gifosResults = [];          // Stores current results of search of gifos
 
@@ -39,7 +40,7 @@ var notFoundResultsSearchTemplate = `
         <p>Intenta con otra búsqueda</p>
     </div>
 `
-function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=default_btn, statusFav=false) {
+function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=default_btn, statusFav=false, typeGifo=0) {
     /**
      * [gifos]: array de gifos a insertar en [gifosContainer]
      * [gifosContainer]: Elemento HTML que recibirá los gifos
@@ -52,27 +53,51 @@ function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=defau
     if (gifos.length>0){
         console.log("start forech gifos insert!")
         gifos.forEach(gifo => {
-            gifosTemplate = `
-                <g>
-                    <figure class="figure-gifo" onmouseover="focusedElement(this)" statusMobile="false" statusDktp="false">
-                        <div class="modal-container">
-                            <img id="${gifo.id}" class="GIF img-gif" src="${gifo.medias.gif}" alt="${gifo.title}" >
-                        </div>
-                        <div class="capa">
-                            <div class="buttons">
-                                <div class="btn-fav hover-btns" id="btn-fav" fav="${statusFav}"></div>
-                                <div class="btn-download hover-btns" id="btn-download"></div>
-                                <div class="btn-max hover-btns" id="btn-max"></div>
+            if (typeGifo===0){
+                gifosTemplate = `
+                    <g>
+                        <figure class="figure-gifo" onmouseover="focusedElement(this)" statusMobile="false" statusDktp="false">
+                            <div class="modal-container">
+                                <img id="${gifo.id}" class="GIF img-gif" src="${gifo.medias.gif}" alt="${gifo.title}" >
                             </div>
-                            <p id="author">${gifo.author}</p>
-                            <h3 id="title">${gifo.title}</h3>
-                        </div>
-                    </figure>
-                </g>
-            `
-            gifosContainer.innerHTML += gifosTemplate;
+                            <div class="capa">
+                                <div class="buttons">
+                                    <div class="btn-fav hover-btns" id="btn-fav" fav="${statusFav}"></div>
+                                    <div class="btn-download hover-btns" id="btn-download"></div>
+                                    <div class="btn-max hover-btns" id="btn-max"></div>
+                                </div>
+                                <p id="author">${gifo.author}</p>
+                                <h3 id="title">${gifo.title}</h3>
+                            </div>
+                        </figure>
+                    </g>
+                `
+                gifosContainer.innerHTML += gifosTemplate;
+            } else if (typeGifo===1){
+                gifosTemplate = `
+                    <g>
+                        <figure class="figure-gifo" onmouseover="focusedMyGifo(this)" statusMobile="false" statusDktp="false">
+                            <div class="modal-container">
+                                <img id="${gifo.id}" class="GIF img-gif" src="${gifo.medias.gif}" alt="${gifo.title}" >
+                            </div>
+                            <div class="capa">
+                                <div class="buttons">
+                                    <div class="btn-delete hover-btns" id="btn-delete"></div>
+                                    <div class="btn-download hover-btns" id="btn-download"></div>
+                                    <div class="btn-max hover-btns" id="btn-max"></div>
+                                </div>
+                                <p id="author">${gifo.author}</p>
+                                <h3 id="title">${gifo.title}</h3>
+                            </div>
+                        </figure>
+                    </g>
+                `
+                gifosContainer.innerHTML += gifosTemplate;
+            }
+
             // show [view-more] button
         })
+        console.log("gifosContainer", gifosContainer);
         viewMoreBtn.classList.remove("display-none")
     } else {
         gifosContainer.innerHTML = defaultInsert;
@@ -104,8 +129,20 @@ async function search (URI, ){
         }
         result.push(gifoData);
     });
-    console.log(gifos)
+    console.log("search():", gifos)
     return result;
+}
+
+async function searchGifosById (arrayIds) {
+    let arrayGifos= [];
+
+    const ids = arrayIds.join();
+    console.log("ids join:", ids)
+
+    URI = `${API_URL}/${REQ_TYPE}?api_key=${API_KEY}&ids=${ids}`;
+    arrayGifos = await search(URI);
+    console.log("arrayGifos search by Id: ", arrayGifos)
+    return arrayGifos
 }
 
 async function upload(gifBlob){
@@ -306,4 +343,126 @@ for (var i=0; i<trends_words.length; i++){
     trends_words[i].addEventListener("click", (event)=>{
         searchTopicGifos(event.target.textContent);
     });
+}
+
+
+function focusedMyGifo(figureElement){
+    console.log("Show hover my gifo section!.")
+
+    const img = figureElement.querySelector(".img-gif");
+    const title = figureElement.querySelector("#title")
+    const author = figureElement.querySelector("#author")
+    const btn_download = figureElement.querySelector(".buttons #btn-download")
+    const btn_modal = figureElement.querySelector(".buttons #btn-max")
+    const btn_delete = figureElement.querySelector(".btn-delete")
+
+    var btn_insert_mg = btn_delete.outerHTML;
+    const container_preview = document.querySelector(".preview")
+
+    if (window.innerWidth>670 && figureElement.getAttribute("statusdktp")==="false"){ // Ancho de documento en [px]
+        btn_modal.addEventListener("click", (event)=>{
+            event.stopPropagation();    
+            btn_insert_mg = btn_delete.outerHTML;
+            templatePreview = `
+                    <div class="modal-btn btn-close hover-btns"></div>
+                    <div class="modal-preview">
+                        <img class="GIF img-gif" id=${img.id} src=${img.src} alt=${title.textContent} >
+                    </div>
+                    <div class="container-btns-info">
+                        <div class="container-info">
+                            <p class="author">${author.textContent}</p>
+                            <h3 class="title">${title.textContent}</h3>
+                        </div>
+                        ${btn_insert_mg}
+                        <div class="modal-btn btn-download hover-btns"></div>
+                    </div>
+                `
+            container_preview.innerHTML = templatePreview
+            container_preview.classList.remove("display-none")
+    
+            const btn_close = document.querySelector(".btn-close")
+            btn_close.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                container_preview.classList.add("display-none");
+
+            })
+            // inicio | favorites | mis-gifos
+    
+            btn_download.addEventListener("click", (event)=>{
+                event.stopPropagation();
+
+                console.log("download start!!: ", img.src);
+                downloadGif(img.src, "myGifo.gif");
+
+            })
+
+            btn_delete.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                console.log("delete start!!");
+            })
+        })
+
+        btn_download.addEventListener("click", (event)=>{
+            // Your code here
+            console.log("download start!!: ", img.src);
+            downloadGif(img.src, "myGifo.gif");
+        })
+        btn_delete.addEventListener("click", (event)=>{
+            event.stopPropagation();
+            console.log("delete start!!");
+        })
+
+        figureElement.setAttribute("statusdktp", "true");
+
+    } else if (window.innerWidth<=670 && figureElement.getAttribute("statusmobile")==="false"){
+        figureElement.addEventListener("click", (event)=>{
+            event.stopPropagation();
+            btn_insert_mg = btn_delete.outerHTML;
+            templatePreview = `
+                    <div class="modal-btn btn-close hover-btns"></div>
+                    <div class="modal-preview">
+                        <img class="GIF img-gif" id=${img.id} src=${img.src} alt=${title.textContent} >
+                    </div>
+                    <div class="container-btns-info">
+                        <div class="container-info">
+                            <p class="author">${author.textContent}</p>
+                            <h3 class="title">${title.textContent}</h3>
+                        </div>
+                        ${btn_insert_mg}
+                        <div class="modal-btn btn-download hover-btns"></div>
+                    </div>
+                `
+    
+            container_preview.innerHTML = templatePreview;
+            container_preview.classList.remove("display-none");
+
+            const btn_close = document.querySelector(".btn-close")
+            btn_close.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                container_preview.classList.add("display-none");
+            })
+            btn_download.addEventListener("click", (event)=>{
+                // Your code here
+                console.log("download start!!: ", img.src);
+            })
+            btn_delete.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                console.log("delete start!!");
+            })
+        })
+        figureElement.setAttribute("statusmobile", "true")
+    }
+
+
+}
+
+
+const downloadGif = async (gifSrc, gifName) => { //https://dev.to/sbodi10/download-images-using-javascript-51a9
+    const gif = await fetch(gifSrc)
+    const gifBlob = await gif.blob()
+    const gifURL = URL.createObjectURL(gifBlob)
+    const link = document.createElement('a')
+    link.href = gifURL
+    link.download = gifName
+    link.click()
 }

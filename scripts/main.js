@@ -272,14 +272,21 @@ mis_gifos_btn.addEventListener("click", (event)=>{
     // El array resultado insertarlo en la sección
     insertGifos(myGifos, container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false)
 })
-mis_gifos_btn_dkt.addEventListener("click", (event)=>{
+mis_gifos_btn_dkt.addEventListener("click", async (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     console.log(activeSection);              // Recopilar gifos de LocalStorage
 
     // Fetch al id de los gifos en localStorage
     // El array resultado insertarlo en la sección
-    insertGifos(myGifos, container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false)
+
+    const idLocalStorage =  JSON.parse(localStorage.getItem("myGifosId"));
+
+    const myGifos = await searchGifosById(idLocalStorage);
+    console.log("myGifos:", myGifos);
+    console.log("length of myGifos results: ", myGifos.length)
+    container_mis_gifos.innerHTML = '';
+    insertGifos(Array.from(myGifos), container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false, 1)
 })
 create_gifos_btn.addEventListener("click", (event)=>{
     toggleSections(event);
@@ -318,6 +325,8 @@ function removeToFav (imgElement){
 var normalTemplate = "";
 var elementFigure = null;
 
+
+
 function focusedElement(figureElement) { // element == <figure>
     const widthScreen = screen.width;
     const innerWidth = window.innerWidth;
@@ -331,12 +340,14 @@ function focusedElement(figureElement) { // element == <figure>
     const btn_fav = figureElement.querySelector(".buttons #btn-fav")
     const btn_download = figureElement.querySelector(".buttons #btn-download")
     const btn_modal = figureElement.querySelector(".buttons #btn-max")
-
+    const btn_delete = figureElement.querySelector(".btn-delete")
     // btn_fav.setAttribute("fav", "true")
     var btn_insert = btn_fav.outerHTML;
-// <div class="modal-btn btn-fav hover-btns" ></div>
+    // <div class="modal-btn btn-fav hover-btns" ></div>
     var templatePreview = ``
     const container_preview = document.querySelector(".preview")
+    var modal_btn_download;
+
     //   MODAL DESKTOP FUNCTION =========================================================
     if (window.innerWidth>670 && figureElement.getAttribute("statusdktp")==="false"){ // Ancho de documento en [px]
         btn_modal.addEventListener("click", (event)=>{
@@ -357,6 +368,7 @@ function focusedElement(figureElement) { // element == <figure>
                     </div>
                 `
             container_preview.innerHTML = templatePreview
+            modal_btn_download = document.querySelector(".preview .btn-download");
             container_preview.classList.remove("display-none")
     
             const btn_close = document.querySelector(".btn-close")
@@ -381,8 +393,13 @@ function focusedElement(figureElement) { // element == <figure>
                 console.log(gifosFavorites)
             })
     
-            btn_download.addEventListener("click", (event)=>{
+            modal_btn_download.addEventListener("click", (event)=>{
+                // const imagen = event.target.parentElement.previousSibling.firstElementChild;
+                const imagen = event.target.parentElement.previousElementSibling.firstElementChild;
+                console.log("img:", imagen)
+
                 event.stopPropagation();
+                downloadGif(img.src, `${img.alt}.gif`);
             })
         })
         // Add gif to fav -> hover desktop
@@ -399,9 +416,13 @@ function focusedElement(figureElement) { // element == <figure>
             }
             console.log(gifosFavorites)
         })
+    
         btn_download.addEventListener("click", (event)=>{
-            // Your code here
+            event.stopPropagation();
+            console.log(img.alt)
+            downloadGif(img.src, `${img.alt}.gif`);
         })
+        
 
         figureElement.setAttribute("statusdktp", "true");
 
@@ -446,6 +467,11 @@ function focusedElement(figureElement) { // element == <figure>
                     removeToFav(img);
                 }
                 console.log(gifosFavorites)
+            })
+            modal_btn_download.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                console.log(img.alt)
+                downloadGif(img.src, `${img.alt}.gif`);
             })
         })
         figureElement.setAttribute("statusmobile", "true")

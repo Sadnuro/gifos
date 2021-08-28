@@ -90,6 +90,7 @@ function initCreateGifosSection() {
 // create_gifos_btn.onclick = initCreateGifosSection();
 create_gifos_btn.addEventListener("click", (event)=>{
     if(status!="UPLOAD"){
+        process_btn.classList.remove("display-none");
         initCreateGifosSection();
     }
 })
@@ -215,7 +216,7 @@ process_btn.addEventListener("click", async (event)=>{
             break;
         case "SUBIR GIFO":
             status = "UPLOAD"
-            process_btn.style = "display: none";
+            process_btn.classList.add("display-none");
 
             // Create record.Blob() | fetch Giphy POST | 
             step2.removeAttribute("data-active");
@@ -223,9 +224,6 @@ process_btn.addEventListener("click", async (event)=>{
 
 
             timelapse_container.innerHTML = "";
-
-            // img.style = "display: none";
-            // img.setAttribute("src", "");
 
             // wait to resolve fetch upload          
             let formData = new FormData();
@@ -245,6 +243,11 @@ process_btn.addEventListener("click", async (event)=>{
             const GIFO_ID = resultReq.data.id;
             console.log("gifoId:", GIFO_ID);
 
+            // Update localStorage
+            local = JSON.parse(localStorage.getItem("myGifosId"))
+            myGifosId = [GIFO_ID].concat(local);
+            localStorage.setItem("myGifosId", JSON.stringify(myGifosId));
+
             REQ_TYPE ="gifs";                // gifs | stickers
             REQUEST = "trending";            // trending | search
 
@@ -254,7 +257,6 @@ process_btn.addEventListener("click", async (event)=>{
 
             console.log("myGifo:", myGifo);
             console.log(myGifos)
-
 
             step3.removeAttribute("data-active")
 
@@ -274,7 +276,15 @@ process_btn.addEventListener("click", async (event)=>{
 })
 
 
+function copyToClipBoard() {
 
+    var content = document.getElementById('textArea');
+    
+    content.select();
+    document.execCommand('copy');
+
+    alert("Copied!");
+}
 // const statusInfoContainer = document.querySelector(".statusinfo-container");
 // statusInfoContainer.innerHTML = gifoSubidoTemplate;
 
