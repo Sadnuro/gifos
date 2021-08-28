@@ -1,0 +1,227 @@
+
+figure {
+    width: 156px;
+    height: 120px;
+    // border: 1px solid black;
+    // box-shadow: 0px 0px 3px 1px var(--shadow-color);
+    // margin: 2px;
+    /*Permite aplicar [absolute] a un elemento hijo y será
+    relativo a este contenedor*/
+    position: relative;         
+    overflow: hidden;
+}
+
+
+
+// /* CAPA HOVER =================================================================== */
+// // .container 
+@media screen and (min-width: 670px) { 
+    figure .capa {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
+        background: rgba(87,46,229, 0.6);
+        transition: 0.5s;
+        opacity: 0;
+        /* Elemento desaparece de pantalla*/
+        visibility: hidden;  
+    }
+    // /* Como .capa no está en pantalla, no esposible hacerle hover sobre él
+    // por lo tanto le hacemos hover al elemento figure y aplicamos los efectos
+    // al primer elemento .capa de ese contenedor */
+
+    figure:hover > .capa {
+        transition: 0.5s;
+        opacity: 1;
+        visibility: visible;
+    }
+    figure .capa:hover {
+        transition: 0.5s;
+        opacity: 1;
+        visibility: visible;
+    }
+    figure .capa h3 {
+        margin: 0;
+        font-family: Roboto, sans-serif;
+        font-weight: bold;
+        color: White;
+        line-height: 20px;
+        font-size: 12px;
+    }
+    figure .capa p {
+        color: white;
+        font-family: Roboto, sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+    }
+    figure .capa .buttons{
+        width: 100%;
+        height: 50px;
+        padding: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+    
+
+// buttoms hover ========================================================================
+.hover-btns {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    margin-left: 11px;
+}
+
+.btn-fav{
+    content: url("/assets/icon-fav.svg");
+}
+.btn-fav:hover {
+    content: url("/assets/icon-fav-hover.svg");
+    cursor: pointer;
+}
+// .btn-fav:checked {
+//     content: url("/assets/icon-fav-active.svg");
+// }
+.btn-fav[fav=true] {
+    padding: 7px 6px;
+    background: white;
+    opacity: 0.5;
+    border-radius: 6px;
+    content: url("/assets/icon-fav-active.svg");
+}
+.btn-fav[fav=true]:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+.btn-download {
+    content: url("/assets/icon-download.svg");
+}
+.btn-download:hover {
+    content: url("/assets/icon-download-hover.svg");
+    cursor: pointer;
+}
+.btn-max {
+    content: url("/assets/icon-max-normal.svg");
+}
+.btn-max:hover {
+    content: url("/assets/icon-max-hover.svg");
+    cursor: pointer;
+}
+.btn-delete {
+    content: url("/assets/icon-trash-normal.svg");
+}
+.btn-delete:hover {
+    content: url("/assets/icon-trash-hover.svg");
+    cursor: pointer;
+}
+.btn-link {
+    content: url("/assets/icon-link-normal.svg");
+}
+.btn-link:hover {
+    content: url("/assets/icon-link-hover.svg");
+    cursor: pointer;
+}
+.btn-close {
+    width: 15px;
+    height: 15px;
+    // position: absolute;
+    // top: 60px;
+    // right: 20px;
+    content: url("/assets/close.svg");
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.dark-mode .btn-close {
+    content: url("/assets/close-modo-noct.svg");
+}
+// MODAL MOBILE ===============================================================
+// ============================================================================
+
+
+
+// MODAL DESKTOP STYLE =======================================================
+// ===========================================================================
+
+.preview {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+
+}
+
+.preview .btn-close {
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    margin-left: 5px;
+}
+.preview {
+    .modal-preview{
+        width: 320px;
+        max-height: 400px;
+        img {
+            width: 100%;
+            height: 100%;
+            // border: 1px solid red;
+            object-fit: contain;
+            background-color: var(--background-secondary-color);
+        }
+    }
+}
+.preview .container-btns-info {
+    width: 320px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    .container-info {
+        width: 300px;
+        height: 50px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        font-family: monospace;
+        p {
+            font-size: 12px;
+            line-height: 18px;
+            font-family: var(--font-Roboto);
+        }
+        h3 {
+            margin: 0;
+            line-height: 20px;
+            font-size: 16px;
+            font-family: var(--font-Montserrat);
+        }
+    }
+}
+.dark-mode {
+    .preview{
+        p, h3 {
+            color: white;
+        }
+
+    }
+}
+.display-none{
+    display: none;
+}

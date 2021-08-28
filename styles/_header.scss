@@ -1,0 +1,78 @@
+header {
+    border-top: var(--header-line-top) solid var(--line-header-color);
+    background-color: var(--background-primary-color);
+    nav {
+        height: var(--header-nav-height);
+        width: 100%;
+        // border-bottom: 1px solid black;
+        padding: 0px 22px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        #logo {
+            width: 50px;
+            height: 50px;
+            content: url("/assets/logo-mobile.svg");
+        }
+        details {
+            width: 30px;
+            height: var(--header-nav-height); //95px
+            summary {
+                height: 40px;
+                margin-top: 27px;
+                margin-bottom: 28px;
+                list-style: none;
+                line-height: 40px;
+                font-size: 20px;
+                color: var(--font-primary-color)
+            }
+            summary:hover{
+                cursor: pointer;
+            }
+            summary:before {
+                content: "☰";
+            }
+            &[open] {
+                summary:before{
+                    font-size: 32px;
+                    content: "×";
+                    font-weight: bold;
+                }
+            }
+            ul {
+                z-index: 3;
+                width: 100%;
+                height: calc(100vh - calc(var(--header-line-top) + var(--header-nav-height)));
+                // height: 100%;
+                padding-top: 17px;
+                background-color: var(--menu-color);
+                // opacity: 80%;
+                position: absolute;
+                left: 0px;
+                top: 100px;
+                li {
+                    width: 100%;
+                    height: 55px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    a {
+                        width: 100%;
+                        line-height: 55px;
+                        text-decoration: none;
+                        text-align: center;  
+                        font-family: var(--font-Roboto);
+                        color: white;
+                    }
+                            
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1px) and (max-width: 669px){
+    .dark-mode #logo {
+        content: url("/assets/logo-mobile-modo-noct.svg");
+    }
+}

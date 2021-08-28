@@ -4,11 +4,183 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles\style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <title>GIFOS</title>
 </head>
-<body>
+<body class="">
+    <header>
+        <nav class="bar-menu">
+            <!-- src="assets/logo-mobile.svg" -->
+            <a href="./index.html">
+                <img id="logo" alt="logo-mobile">
+            </a>
+            <details id="detailsMenu">
+                <summary></summary>
+                <ul>
+                    <li><a class="mode-btn" id="mode-btn" href="#"> Modo </a></li>
+                    <li><a class="inicio-btn" id="inicio-btn" href="#"> Inicio </a></li>
+                    <li><a class="favorites-btn" id="favorites-btn" href="#"> Favoritos </a></li>
+                    <li><a class="gifos-btn" id="gifos-btn" href="#"> Mis GIFOS </a></li>
+                </ul>
+            </details>
+
+            <div class="desktop-menu display-none">
+                <ul> <!-- Clase principal en la primera posicion-->
+                    <li><a class="mode-btn" id="mode-btn-dkt" href="#">  MODO </a></li>
+                    <li><a class="inicio-btn" id="inicio-btn-dkt" href="#"> INICIO </a></li>
+                    <li><a class="favorites-btn" id="favorites-btn-dkt" href="#"> FAVORITOS </a></li>
+                    <li><a class="gifos-btn" id="gifos-btn-dkt" href="#"> MIS GIFOS </a></li>
+                </ul>
+                <div class="create-gifos-btn" id="create-gifos-btn"></div>
+            </div>
+
+        </nav>
+    </header>
+    <main class="main">
+        <div class="preview display-none">
+        </div>
+        <section class="home-section" id="home-section">
+            <h1>Inspírate, busca, guarda, y crea los mejores <span class="text-resalt">GIFOS</span></h1>
+            <div class="container">
+                <img class="home-img" src="assets/ilustra_header.svg" alt="Ilustra-header">
+
+                <div class="search-bar-container">
+                    <input id="search-bar" type="text" placeholder="Busca GIFOS y más">
+                    <div id="search-bar"></div>
+                    <img id="search-btn-img" class="status-search" alt="icon-search">
+                    <img id="close-btn-img" class="display-none" alt="icon-close">
+                    
+                </div>
+            </div>
+        </section>
+        <section class="search-section" id="search-section">
+            <div class="trends-container">
+                <h3>Trending:</h3>
+                <div class="trend-words-container">
+                    <!-- <span class="trend-word tw-1">i miss you</span>
+                    <span class="trend-word tw-2">excited</span>
+                    <span class="trend-word tw-3">pig</span>
+                    <span class="trend-word tw-4">satisfacying</span>
+                    <span class="trend-word tw-5">alicia keys</span>
+                    <span class="trend-word tw-6">tum</span> -->
+                    <p class="trends-words"> Reactions, Entertainment, Sports, Stickers, Artists </p>
+                </div>
+            </div>
+        
+            <div class="subsection-results display-none" id="subsection-results-div">
+                <div id="line"></div>
+                <div class="container-results-section">
+                    <h2 class="topic-word"></h2>
+                    <div class="results-container">
+
+                    </div>
+                </div>
+                <button class="view-more-btn display-none" id="view-more-btn-results">VER MÁS</button>
+            </div>
+        </section>
+        <!--checked btn favorites remove class "display-none" to show
+        the style is applied to id="container-section-favs"-->
+        <section class="display-none" id="container-section-favs">
+            <div id="heart-img"></div>
+            <h2>Favoritos</h2>
+            <div class="container-favs-gifs" id="container-favs-gifs">
+
+            </div>
+            <div class="container-btn-view-more">
+                <button class="view-more-btn" id="view-more-btn-favs">VER MÁS</button>
+            </div>
+        </section>
+        
+        <!--checked btn mis-gifos remove class "display-none" to show
+        the style is applied to id="container-section-mis-gifos"-->
+        <section class="display-none" id="container-section-mis-gifos">
+            <div id="emoji-img"></div>
+            <h2>Mis GIFOS</h2>
+            <div class="container-mis-gifos">  
+
+            </div>
+            <div class="container-btn-view-more">
+                <button class="view-more-btn" id="view-more-btn-mis-gifos">VER MÁS</button>
+            </div>
+            
+        </section>
+        <section class="carrusel-section" id="carrusel-section">
+            <h2>Trending GIFOS</h2>
+            <p>Mira los últimos GIFOS de nuestra comunidad.</p>
+            <div class="trends-carrusel-container">
+                <div class="carrusel-btn carrusel-btn-left" id="carrusel-btn-left" onClick="scroll(300, 0)"></div>
+                <div class="carrusel">
+                    
+                </div>
+                <div class="carrusel-btn carrusel-btn-right" id="carrusel-btn-right" onClick="scroll(-300, 0)"></div>
+            </div>
+        </section>
+
+        <!-- CREATE GIFO SECTION -->
+        <section class="display-none" id="create-gifos-section">
+            <div class="screen-container">
+                <g class="videoCam">
+                    <div class="camera"></div>
+                    <div class="luz"></div>
+                </g>
+                <div class="screen">
+                    <g>
+                        <div class="marco">
+                            <div class="esquina esquina1"></div>
+                            <div class="esquina esquina2"></div>
+                            <div class="esquina esquina3"></div>
+                            <div class="esquina esquina4"></div>
+                        </div>
+                    </g>
+                    <div class="contenido">
+                        <div class="info">
+                        </div>
+                    </div>
+                </div>
+                <div class="pelicula"></div>
+            </div>
     
-    <scripts src="scripts\main.js" ></script>
+            <div class="recording-container">
+                <div class="container-btns-timelapse">
+                    <div class="container-btns">
+                        <div class="step step1">1</div>
+                        <div class="step step2">2</div>
+                        <div class="step step3">3</div>
+                    </div>
+                    <div class="timelapse-container">
+                        <!-- <p class="timelapse" id="timelapse">00:00:00</p> -->
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div id="process-btn" class="btn-process">FINALIZAR</div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <p id="share-txt">Compartir en:</p>
+        <div class="container-logos">
+            <a href="https://www.facebook.com/" class="socialmedia-link">
+                <div id="sm-fb" class="sm-logo" ></div>          
+            </a>
+            
+            <a href="https://twitter.com" class="socialmedia-link">
+                <div id="sm-tw" class="sm-logo"> </div>
+            </a> 
+
+            <a href="https://instagram.com" class="socialmedia-link">
+                <div id="sm-ig" class="sm-logo"> </div>
+            </a>    
+        </div>
+        <p class="copyright-txt">GIFOS 2020 All Rights Reserved.</p>
+        <div class="default display-none" id="default-btn"></div>
+    </footer>
+
+
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/api.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="./scripts/createGifo.js"></script>
 </body>
 </html>

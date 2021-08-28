@@ -1,0 +1,49 @@
+#container-section-mis-gifos {
+    background-color: var(--background-primary-color);
+    padding-top: 5px;
+    h2 {
+        font-family: var(--font-Montserrat);
+        color: var(--font-primary-color);
+        text-align: center;
+    }
+    #emoji-img {
+        content: url("/assets/icon-mis-gifos.svg");
+        margin: 0 auto 7px auto;
+    }
+    .container-mis-gifos {
+        width: 100%;
+        margin-top: 32px;
+        /* border: 1px solid black; */
+        display: flex;
+        flex-flow: row wrap;
+        overflow: hidden;
+        justify-content: center;
+        
+        figure{
+            margin: 5px;
+            img {
+                width: 156px;
+                height: 120px;
+                object-fit:cover;
+            }
+        }
+        
+        .defaultMyGifs{
+            .img{
+                margin: 30px auto 20px auto;
+                content: url("../assets/icon-mis-gifos-sin-contenido.svg");
+                width: 75px;
+            }
+            p {
+                margin-bottom: 65px;
+                max-width: 250px;
+                text-align: center;
+                font-size: 16px;
+                font-family: var(--font-Montserrat);
+                line-height: 20px;
+                font-weight: bold;
+                color: var(--font-secondary-color);
+            }
+        }
+    }
+}

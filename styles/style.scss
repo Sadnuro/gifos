@@ -1,0 +1,67 @@
+@import "variables";
+@import "baserules";
+@import "header";
+@import "main";
+@import "home-section";
+@import "search-section";
+@import "trends-section";
+@import "carrusel-section";
+@import "gifos_hover";
+@import "footer";
+@import "favorites-section";
+@import "mis-gifos-section";
+@import "./medias/medias";
+@import "./medias/createGifosSection";
+
+// #iframe-fav-sect {
+//     width: 100%;
+//     height: 1000px;
+//     overflow: hidden;
+// }
+
+.view-more-btn {
+    width: 127px;
+    height: 50px;
+    margin-top: 67px;
+    margin-bottom: 80px;
+    border: 1px solid var(--font-primary-color);
+    border-radius: 25px;
+    background-color: white;
+    
+    font-family: var(--font-Montserrat);
+    color: var(--font-primary-color);
+    font-weight: bold;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 16px;
+    font-size: 13px;
+    
+}
+.view-more-btn:hover {
+    background-color: var(--layout-primary-color);
+    color: white;
+}
+
+.dark-mode .view-more-btn {
+    border: 1px solid var(--font-primary-color);
+    background-color: rgba($color: #000000, $alpha: 0.0);
+    color: white;
+}
+.dark-mode .view-more-btn:hover {
+    border: 1px solid var(--font-primary-color);
+    background-color:white;
+    color: black;
+}
+.container-btn-view-more {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+
+
+
+
+.display-none {
+    display: none;
+}

@@ -1,0 +1,61 @@
+
+.search-section {
+    h3, .trend-word {
+        font-family: var(--font-Montserrat);
+        color: var(--font-primary-color);
+    }
+    h3 {
+        margin-top: 30px;
+    }
+
+    .trend-word {
+        font-weight: medium;
+
+    }
+    .trends-container {
+        width: 100%;
+        display: flex;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 45px;
+        .trend-words-container {
+            width: 70%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            .trend-word {
+                padding: 2px;
+                font-size: 14px;
+                font-weight: 200;
+                margin-top: 7px;
+            }
+            .trend-word::after {
+                content: ",";
+            }
+            .trend-word:hover{
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .trends-words{
+                font-weight: medium;
+                padding: 2px;
+                font-size: 14px;
+                margin-top: 7px;
+                font-family: var(--font-Roboto);
+                color: var(--font-primary-color);
+            }
+        }
+    }
+}
+
+.prueba-container {
+    width: 200px;
+    height: 150px;
+    img {
+        width: 200px;
+        height: 150px;
+        // width: 100%;
+        object-fit: contain;
+    }
+}

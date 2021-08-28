@@ -1,0 +1,93 @@
+.carrusel-section {
+    padding-top: 46px;
+    padding-bottom: 82px;
+    background-color: var(--background-secondary-color);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    h2 {
+        // width: 60%;
+        font-family: var(--font-Montserrat);
+        color: var(--font-primary-color);
+        text-align: center;
+    }
+    p{
+        width: 60%;
+        font-family: var(--font-Roboto);
+        line-height: 23px;
+        font-size: 16px;
+        text-align: center;
+        color: var(--font-third-color);
+    }
+    .trends-carrusel-container {
+        margin-top: 10px;
+        height: 220px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // background-color: var(--background-secondary-color);
+        .carrusel {
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap; 
+            overflow-y: hidden;
+            overflow-x: scroll;
+            g {
+                position: inherit;
+                figure {
+                    width: 245px;
+                    height: 190px;
+                    margin: 5px;
+                    .modal-container {
+                        width: 245px;
+                        height: 190px;
+                        img {
+                            margin: 0;
+                            width: 245px;
+                            height: 190px;
+                            object-fit: cover;
+                        }
+                    }
+                    .capa p {
+                        text-align: left;
+                    }
+                }
+            }
+
+        } 
+        .carrusel-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+        }
+        .carrusel-btn-left {
+            content: url('../assets/button-slider-left.svg');
+        }
+        .carrusel-btn-left:hover {
+            content: url('../assets/button-slider-left-hover.svg');
+        }
+        .carrusel-btn-right {
+            content: url('../assets/Button-Slider-right.svg');
+        }
+        .carrusel-btn-right:hover {
+            content: url('../assets/Button-Slider-right-hover.svg');
+        }
+    }
+}
+.dark-mode {
+    .carrusel-section  {
+        .carrusel-btn-left {
+            content: url('../assets/button-slider-left-md-noct.svg');
+        }
+        .carrusel-btn-right {
+            content: url('../assets/button-slider-right-md-noct.svg');
+        }
+
+    }
+}
+.display-none {
+    display: none;
+}
