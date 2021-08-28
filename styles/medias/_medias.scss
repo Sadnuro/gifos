@@ -155,6 +155,19 @@
                     }
                 }
             }
+
+            .defaultFavs {
+                .img {
+                    margin: 90px auto 20px auto;
+                    width: 150px;
+                }
+                p {
+                    margin-bottom: 130px;
+                    max-width: 430px;
+                    font-size: 22px;
+                    line-height: 33px;
+                }
+            }
         }
 
     }
@@ -175,6 +188,19 @@
                         height: 100%;
                         object-fit: cover;
                     }
+                }
+            }
+
+            .defaultMyGifs {
+                .img {
+                    margin: 90px auto 20px auto;
+                    width: 150px;
+                }
+                p {
+                    margin-bottom: 130px;
+                    max-width: 430px;
+                    font-size: 22px;
+                    line-height: 33px;
                 }
             }
         }

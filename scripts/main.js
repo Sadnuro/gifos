@@ -23,6 +23,7 @@ const subsection_results_id = document.querySelector("subsection-results-div");
 const container_section_favs_id = document.querySelector("#container-section-favs");
 const container_favs_gifs_id = document.querySelector("#container-favs-gifs");
 const container_section_mis_gifos_id = document.querySelector("#container-section-mis-gifos");
+const container_mis_gifos = document.querySelector(".container-mis-gifos");     // Contenedor de gifos
 const create_gifos_section_id = document.querySelector("#create-gifos-section");
 const carrusel_section_id = document.querySelector("#carrusel-section");
 
@@ -209,8 +210,14 @@ const notFoundFavsGifs = `
     <div class="img"></div>
     <p>¡Guarda tu primer GIFO en favoritos para que se muestre aquí!</p>
 </div>
-`;
-const notFoundMyGifos = ``;
+`
+const notFoundMyGifs = `
+<div class="defaultMyGifs">
+    <div class="img"></div>
+    <p>¡Anímate a crear tu primer GIFO!</p>
+</div>
+`
+
 
 let subArray = [];
 let offsetFavs = 0;
@@ -260,11 +267,19 @@ mis_gifos_btn.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     console.log(activeSection);              // Recopilar gifos de LocalStorage
+
+    // Fetch al id de los gifos en localStorage
+    // El array resultado insertarlo en la sección
+    insertGifos(myGifos, container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false)
 })
 mis_gifos_btn_dkt.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     console.log(activeSection);              // Recopilar gifos de LocalStorage
+
+    // Fetch al id de los gifos en localStorage
+    // El array resultado insertarlo en la sección
+    insertGifos(myGifos, container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false)
 })
 create_gifos_btn.addEventListener("click", (event)=>{
     toggleSections(event);
@@ -274,8 +289,8 @@ create_gifos_btn.addEventListener("click", (event)=>{
 })
 console.log(activeSection);
 
-// FIN | SWITCH BETWEEN MENU SECTIONS  ==================================================================
-// ==========================================================================================================
+// FIN | SWITCH BETWEEN MENU SECTIONS  ===========================================
+// ===============================================================================
 
 
 

@@ -41,10 +41,12 @@ var notFoundResultsSearchTemplate = `
 `
 function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=default_btn, statusFav=false) {
     /**
-     * [gifos]: array de gifos a insertar en [containerGifosElement]
+     * [gifos]: array de gifos a insertar en [gifosContainer]
      * [gifosContainer]: Elemento HTML que recibirá los gifos
-     * [defaultInsert]: template a insertar en [containerGifosElement] si [notFound]===true
+     * [defaultInsert]: template a insertar en [gifosContainer] si [notFound]===true
      * [viewMoreBtn]: botón ver-más que debe ser ocultado o mostrado si hay o no gifos
+     * [statusFav]: Al insertar un solo gifo | Indica si se ha añadido como favorito
+     *      Aplica en la inserción de gifos a la sección Fav a partir del botón fav
      */
 
     if (gifos.length>0){

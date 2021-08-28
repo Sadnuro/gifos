@@ -21,19 +21,22 @@
 
         .defaultFavs {
             .img {
-                margin: 90px auto 20px auto;
+                margin: 30px auto 20px auto;
                 content: url("../assets/icon-fav-sin-contenido.svg");
+                width: 75px;
             }
             p {
-                margin-bottom: 130px;
-                max-width: 430px;
+                margin-bottom: 65px;
+                max-width: 250px;
                 text-align: center;
-                font-size: 22px;
+                font-size: 16px;
                 font-family: var(--font-Montserrat);
-                line-height: 33px;
+                line-height: 20px;
                 font-weight: bold;
                 color: var(--font-secondary-color);
             }
+
+
         }
         
     }

@@ -274,18 +274,18 @@ process_btn.addEventListener("click", async (event)=>{
 })
 
 
+
 // const statusInfoContainer = document.querySelector(".statusinfo-container");
 // statusInfoContainer.innerHTML = gifoSubidoTemplate;
 
-
-         
-            // fetch('https://upload.giphy.com/v1/gifs', {
-            //     method: 'POST',
-            //     body: formData
-            // })
-            // .then((res)=>res.json())
-            // .then((resJson)=>{
-            //     console.log("resJson: " + resJson.data);
-            //     console.log("resJson: " + resJson.data.id);
-            // })
-            // .catch((err)=>console.error(err))
+ 
+    // fetch('https://upload.giphy.com/v1/gifs', {
+    //     method: 'POST',
+    //     body: formData
+    // })
+    // .then((res)=>res.json())
+    // .then((resJson)=>{
+    //     console.log("resJson: " + resJson.data);
+    //     console.log("resJson: " + resJson.data.id);
+    // })
+    // .catch((err)=>console.error(err))

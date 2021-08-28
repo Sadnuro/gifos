@@ -895,17 +895,18 @@ footer .default-btn {
 }
 
 #container-section-favs .container-favs-gifs .defaultFavs .img {
-  margin: 90px auto 20px auto;
+  margin: 30px auto 20px auto;
   content: url("../assets/icon-fav-sin-contenido.svg");
+  width: 75px;
 }
 
 #container-section-favs .container-favs-gifs .defaultFavs p {
-  margin-bottom: 130px;
-  max-width: 430px;
+  margin-bottom: 65px;
+  max-width: 250px;
   text-align: center;
-  font-size: 22px;
+  font-size: 16px;
   font-family: var(--font-Montserrat);
-  line-height: 33px;
+  line-height: 20px;
   font-weight: bold;
   color: var(--font-secondary-color);
 }
@@ -963,6 +964,23 @@ footer .default-btn {
   height: 120px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+#container-section-mis-gifos .container-mis-gifos .defaultMyGifs .img {
+  margin: 30px auto 20px auto;
+  content: url("../assets/icon-mis-gifos-sin-contenido.svg");
+  width: 75px;
+}
+
+#container-section-mis-gifos .container-mis-gifos .defaultMyGifs p {
+  margin-bottom: 65px;
+  max-width: 250px;
+  text-align: center;
+  font-size: 16px;
+  font-family: var(--font-Montserrat);
+  line-height: 20px;
+  font-weight: bold;
+  color: var(--font-secondary-color);
 }
 
 @media screen and (min-width: 670px) {
@@ -1113,6 +1131,16 @@ footer .default-btn {
     -o-object-fit: cover;
        object-fit: cover;
   }
+  #container-section-favs .container-favs-gifs .defaultFavs .img {
+    margin: 90px auto 20px auto;
+    width: 150px;
+  }
+  #container-section-favs .container-favs-gifs .defaultFavs p {
+    margin-bottom: 130px;
+    max-width: 430px;
+    font-size: 22px;
+    line-height: 33px;
+  }
   #container-section-mis-gifos h2 {
     line-height: 30px;
     font-size: 25px;
@@ -1132,6 +1160,16 @@ footer .default-btn {
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
+  }
+  #container-section-mis-gifos .container-mis-gifos .defaultMyGifs .img {
+    margin: 90px auto 20px auto;
+    width: 150px;
+  }
+  #container-section-mis-gifos .container-mis-gifos .defaultMyGifs p {
+    margin-bottom: 130px;
+    max-width: 430px;
+    font-size: 22px;
+    line-height: 33px;
   }
   #carrusel-section {
     width: 100%;
@@ -1598,6 +1636,7 @@ footer .default-btn {
   #create-gifos-section .recording-container .container-btns-timelapse .timelapse-container p#repeatRecordBtn:hover {
     -webkit-text-decoration: 2px underline var(--layout-secondary-color);
             text-decoration: 2px underline var(--layout-secondary-color);
+    cursor: pointer;
   }
   #create-gifos-section .recording-container .line {
     width: 795px;
