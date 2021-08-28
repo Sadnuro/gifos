@@ -261,10 +261,9 @@ process_btn.addEventListener("click", async (event)=>{
                 copyToClipBoard(myGifo[0].medias.gif);
             })
             btn_download.addEventListener("click", (event)=>{
-
+                console.log(event.target)
+                downloadGif(myGifo[0].medias.gif, "myGifo.gif");
             })
-
-
 
             console.log("myGifo:", myGifo);
             console.log(myGifos)

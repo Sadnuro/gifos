@@ -476,5 +476,6 @@ const downloadGif = async (gifSrc, gifName) => { //https://dev.to/sbodi10/downlo
     link.href = gifURL
     link.download = gifName
     link.click()
+    // link.remove()
 }
 
