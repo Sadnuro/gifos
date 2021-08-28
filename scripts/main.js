@@ -263,14 +263,20 @@ favorites_btn_dkt.addEventListener("click", (event)=>{
     container_favs_gifs_id.innerHTML='';
     insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
 })
-mis_gifos_btn.addEventListener("click", (event)=>{
+mis_gifos_btn.addEventListener("click", async (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     console.log(activeSection);              // Recopilar gifos de LocalStorage
 
     // Fetch al id de los gifos en localStorage
     // El array resultado insertarlo en la sección
-    insertGifos(myGifos, container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false)
+    const idLocalStorage =  JSON.parse(localStorage.getItem("myGifosId"));
+
+    const myGifos = await searchGifosById(idLocalStorage);
+    console.log("myGifos:", myGifos);
+    console.log("length of myGifos results: ", myGifos.length)
+    container_mis_gifos.innerHTML = '';
+    insertGifos(Array.from(myGifos), container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false, 1)
 })
 mis_gifos_btn_dkt.addEventListener("click", async (event)=>{
     toggleSections(event);
@@ -467,7 +473,8 @@ function focusedElement(figureElement) { // element == <figure>
                 }
                 console.log(gifosFavorites)
             })
-            modal_btn_download.addEventListener("click", (event)=>{
+            btn_download_mobile = document.querySelector(".preview .container-btns-info .btn-download");
+            btn_download_mobile.addEventListener("click", (event)=>{
                 event.stopPropagation();
                 console.log(img.alt)
                 downloadGif(img.src, `${img.alt}.gif`);

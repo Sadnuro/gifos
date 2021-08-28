@@ -915,7 +915,7 @@ footer .default-btn {
   margin: 5px;
 }
 
-#container-section-favs .container-favs-gifs figure .fav-gif {
+#container-section-favs .container-favs-gifs figure img {
   width: 156px;
   height: 120px;
   -o-object-fit: cover;
@@ -959,7 +959,7 @@ footer .default-btn {
   margin: 5px;
 }
 
-#container-section-mis-gifos .container-mis-gifos figure .mi-gifo {
+#container-section-mis-gifos .container-mis-gifos figure img {
   width: 156px;
   height: 120px;
   -o-object-fit: cover;

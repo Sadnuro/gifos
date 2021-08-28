@@ -446,11 +446,17 @@ function focusedMyGifo(figureElement){
                 event.stopPropagation();
                 container_preview.classList.add("display-none");
             })
-            btn_download.addEventListener("click", (event)=>{
-                // Your code here
+
+            btn_download_mobile = document.querySelector(".preview .container-btns-info .btn-download");
+            btn_download_mobile.addEventListener("click", (event)=>{
+                event.stopPropagation();
+    
                 console.log("download start!!: ", img.src);
+                downloadGif(img.src, "myGifo.gif");
+    
             })
-            btn_delete.addEventListener("click", (event)=>{
+            btn_delete_mobile = document.querySelector(".preview .container-btns-info .btn-delete");
+            btn_delete_mobile.addEventListener("click", (event)=>{
                 event.stopPropagation();
                 console.log("delete start!!");
             })
