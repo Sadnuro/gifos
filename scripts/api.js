@@ -387,11 +387,12 @@ function focusedMyGifo(figureElement){
                 container_preview.classList.add("display-none");
 
             })
-            // inicio | favorites | mis-gifos
 
-            btn_delete.addEventListener("click", (event)=>{
+            const btn_delete_modal = document.querySelector(".container-btns-info .btn-delete");
+            btn_delete_modal.addEventListener("click", async (event)=>{
                 event.stopPropagation();
                 console.log("delete start!!");
+                await deleteGifo(img.id)
             })
 
             modal_btn_download.addEventListener("click", (event)=>{
@@ -412,9 +413,10 @@ function focusedMyGifo(figureElement){
 
         })
 
-        btn_delete.addEventListener("click", (event)=>{
+        btn_delete.addEventListener("click", async (event)=>{
             event.stopPropagation();
             console.log("delete start!!");
+            await deleteGifo(img.id)
         })
 
         figureElement.setAttribute("statusdktp", "true");
@@ -455,16 +457,16 @@ function focusedMyGifo(figureElement){
                 downloadGif(img.src, "myGifo.gif");
     
             })
+
             btn_delete_mobile = document.querySelector(".preview .container-btns-info .btn-delete");
-            btn_delete_mobile.addEventListener("click", (event)=>{
+            btn_delete_mobile.addEventListener("click", async (event)=>{
                 event.stopPropagation();
                 console.log("delete start!!");
+                await deleteGifo(img.id)
             })
         })
         figureElement.setAttribute("statusmobile", "true")
     }
-
-
 }
 
 
