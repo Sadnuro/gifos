@@ -239,6 +239,8 @@ process_btn.addEventListener("click", async (event)=>{
             const createGifo_containerBtns = document.querySelector(".createGifo-containerBtns");
             statusInfoContainer.innerHTML = gifoSubidoTemplate;   
             createGifo_containerBtns.innerHTML = buttons_actions;
+            btn_link = document.querySelector(".createGifo-containerBtns .btn-link");
+            btn_download = document.querySelector(".createGifo-containerBtns .btn-download");
 
             const GIFO_ID = resultReq.data.id;
             console.log("gifoId:", GIFO_ID);
@@ -255,17 +257,26 @@ process_btn.addEventListener("click", async (event)=>{
             const myGifo = await search(URI);
             myGifos.push(myGifo[0]);
 
+            btn_link.addEventListener("click", (event)=>{
+                copyToClipBoard(myGifo[0].medias.gif);
+            })
+            btn_download.addEventListener("click", (event)=>{
+
+            })
+
+
+
             console.log("myGifo:", myGifo);
             console.log(myGifos)
 
             step3.removeAttribute("data-active")
+            status = "NONE"
 
             // invokeSaveAsDialog(gif);
             recording = null;
             gif = null;
             clearChronos();
 
-            status = "NONE"
             process_btn.textContent = "CONTINUAR"
             break;
     
@@ -276,15 +287,21 @@ process_btn.addEventListener("click", async (event)=>{
 })
 
 
-function copyToClipBoard() {
+function copyToClipBoard(elementWithContent) {
+    console.log(elementWithContent);
+    const p = document.createElement("textarea");
+    p.value = elementWithContent;
 
-    var content = document.getElementById('textArea');
-    
-    content.select();
+    p.value.style = "display: none";
+    document.body.appendChild(p)
+    p.select();
+    p.setSelectionRange(0, 99999);
     document.execCommand('copy');
 
-    alert("Copied!");
+    document.body.removeChild(p)
+    alert("Link copied!");
 }
+
 // const statusInfoContainer = document.querySelector(".statusinfo-container");
 // statusInfoContainer.innerHTML = gifoSubidoTemplate;
 

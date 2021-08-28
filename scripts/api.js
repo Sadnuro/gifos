@@ -477,3 +477,4 @@ const downloadGif = async (gifSrc, gifName) => { //https://dev.to/sbodi10/downlo
     link.download = gifName
     link.click()
 }
+
