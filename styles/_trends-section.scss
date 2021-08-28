@@ -7,8 +7,10 @@
     h3 {
         margin-top: 30px;
     }
+
     .trend-word {
         font-weight: medium;
+
     }
     .trends-container {
         width: 100%;
@@ -34,6 +36,14 @@
             .trend-word:hover{
                 font-weight: bold;
                 cursor: pointer;
+            }
+            .trends-words{
+                font-weight: medium;
+                padding: 2px;
+                font-size: 14px;
+                margin-top: 7px;
+                font-family: var(--font-Roboto);
+                color: var(--font-primary-color);
             }
         }
     }
