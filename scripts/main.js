@@ -394,7 +394,6 @@ function focusedElement(figureElement) { // element == <figure>
             })
     
             modal_btn_download.addEventListener("click", (event)=>{
-                // const imagen = event.target.parentElement.previousSibling.firstElementChild;
                 const imagen = event.target.parentElement.previousElementSibling.firstElementChild;
                 console.log("img:", imagen)
 

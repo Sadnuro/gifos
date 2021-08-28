@@ -378,6 +378,7 @@ function focusedMyGifo(figureElement){
                     </div>
                 `
             container_preview.innerHTML = templatePreview
+            modal_btn_download = document.querySelector(".preview .btn-download");
             container_preview.classList.remove("display-none")
     
             const btn_close = document.querySelector(".btn-close")
@@ -387,26 +388,30 @@ function focusedMyGifo(figureElement){
 
             })
             // inicio | favorites | mis-gifos
-    
-            btn_download.addEventListener("click", (event)=>{
-                event.stopPropagation();
-
-                console.log("download start!!: ", img.src);
-                downloadGif(img.src, "myGifo.gif");
-
-            })
 
             btn_delete.addEventListener("click", (event)=>{
                 event.stopPropagation();
                 console.log("delete start!!");
             })
+
+            modal_btn_download.addEventListener("click", (event)=>{
+                event.stopPropagation();
+                // const imagen = event.target.parentElement.previousSibling.firstElementChild;
+                const imagen = event.target.parentElement.previousElementSibling.firstElementChild;
+                console.log("img:", imagen)
+
+                downloadGif(img.src, `${img.alt}.gif`);
+            })   
         })
 
         btn_download.addEventListener("click", (event)=>{
-            // Your code here
+            event.stopPropagation();
+
             console.log("download start!!: ", img.src);
             downloadGif(img.src, "myGifo.gif");
+
         })
+
         btn_delete.addEventListener("click", (event)=>{
             event.stopPropagation();
             console.log("delete start!!");
