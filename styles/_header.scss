@@ -13,7 +13,7 @@ header {
         #logo {
             width: 50px;
             height: 50px;
-            content: url("/assets/logo-mobile.svg");
+            content: url("assets/logo-mobile.svg");
         }
         details {
             width: 30px;
@@ -73,6 +73,6 @@ header {
 }
 @media screen and (min-width: 1px) and (max-width: 669px){
     .dark-mode #logo {
-        content: url("/assets/logo-mobile-modo-noct.svg");
+        content: url("assets/logo-mobile-modo-noct.svg");
     }
 }
