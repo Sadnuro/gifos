@@ -200,27 +200,59 @@ async function toSearch(event){   // event keyboard data
     // element = input that contained of text to search
     const text = search_bar.value.trim()
     console.log("Running search!!!")
-    if (text){
-        // Cambiar lupa a X
-        if (!search_btn_img.classList.contains("display-none")){
-            search_btn_img.classList.toggle("display-none")
+    if (screen.width > 669){
+        if (text){
+            // Cambiar lupa a X
+            if (!search_btn_img.classList.contains("display-none")){
+                search_btn_img.classList.toggle("display-none")
+            }
+            
+            if (close_btn_img.classList.contains("display-none")){
+                close_btn_img.classList.toggle("display-none")
+            } 
         }
+        else {
+            // Cambiar X a lupa!
+            
+            if (search_btn_img.classList.contains("display-none")){
+                search_btn_img.classList.toggle("display-none")
+            }
+            
+            if (!close_btn_img.classList.contains("display-none")){
+                close_btn_img.classList.toggle("display-none")
+            }
+        }
+    } else {
+        search_btn_img.addEventListener("click", async (event)=>{
+            console.log("mobile search!")
+            if (text.trim()!=""){
+                search_bar.blur();
+                REQ_TYPE ="gifs";                // gifs | stickers
+                REQUEST = "search";              // trending | search
+                Q =`${text}`;                    // Búsqueda usuario
+                LIMIT = 12;                      // Cant gifos to get
+                OFFSET = 0;
+                gifosList = [];
+                URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
         
-        if (close_btn_img.classList.contains("display-none")){
-            close_btn_img.classList.toggle("display-none")
-        } 
+                gifosResults = await search(URI);
+        
+                console.log("gifosList before: ", gifosList)
+        
+                gifosList = [gifosResults];
+                results_container.innerHTML = '';
+                insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
+        
+                console.log("gifosResults[] :: ", gifosResults);
+                console.log("gifosList[] after :: ", gifosList);
+        
+                subsection_results_title.textContent = Q;
+                subsection_results.classList.remove("display-none");
+            }
+    
+        })
     }
-    else {
-        // Cambiar X a lupa!
-        
-        if (search_btn_img.classList.contains("display-none")){
-            search_btn_img.classList.toggle("display-none")
-        }
-        
-        if (!close_btn_img.classList.contains("display-none")){
-            close_btn_img.classList.toggle("display-none")
-        }
-    }
+
 
     // Realizar busqueda | Evento al presionar [Enter]
     if (event.code == "Enter" && text){
@@ -261,12 +293,6 @@ close_btn_img.addEventListener("click", (event)=>{
     search_btn_img.classList.remove("display-none");
 })
 
-
-// view_more_results_section_btn.addEventListener("click", (event)=>{
-//     console.log('hola!')
-// })
-
-
 // FUNCIONALIDAD Botón VER-MÁS==============================================================
 // const search_btn = document.getElementById("search_btn")
 // matriz | array
@@ -299,40 +325,6 @@ viewMore_btn_results.addEventListener("click", async (event)=>{
     console.log("gifosList afte viewMore: ", gifosList)
 
 })
-
-// const gifFav = findFavs(gifosList, "wzJ67MJMk6UMM", true)
-// console.log("Gifo added to fav array: ", gifFav)
-
-// const view_more_btns = document.querySelectorAll(".view-more-btn") 
-
-// const viewMoreFunction = (event, currentSection) => {
-//     const element = event.target;
-//     console.log("Event viewMore btn: ", event)
-//     console.log(element)
-//     // CurrentSection = inicio | favorites | mis-gifos
-
-//     if (currentSection === "inicio"){
-//         console.log("Show more gifos: seccion inicio")
-//     } else if (currentSection === "favorites") {
-//         console.log("Show more gifos: seccion favoritos")
-//     } else if (currentSection === "mis-gifos") {
-//         console.log("Show more gifos: seccion mis-gifos")
-//     }
-//     console.log(element.id)
-// }
-// for (var i=0; i<view_more_btns.length; i++) {
-//     // console.log(view_more_btns[i])
-//     view_more_btns[i].addEventListener("click", (event)=>{
-//         viewMoreFunction(event, activeSection);
-//     })
-// }
-
-
-
-
-
-
-
 
 
 // Generar busqueda a partir de palabras tendencias
