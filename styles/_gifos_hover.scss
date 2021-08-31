@@ -82,10 +82,10 @@ figure {
 }
 
 .btn-fav{
-    content: url("assets/icon-fav.svg");
+    content: url("./assets/icon-fav.svg");
 }
 .btn-fav:hover {
-    content: url("assets/icon-fav-hover.svg");
+    content: url("./assets/icon-fav-hover.svg");
     cursor: pointer;
 }
 // .btn-fav:checked {
@@ -96,38 +96,38 @@ figure {
     background: white;
     opacity: 0.5;
     border-radius: 6px;
-    content: url("assets/icon-fav-active.svg");
+    content: url("./assets/icon-fav-active.svg");
 }
 .btn-fav[fav=true]:hover {
     opacity: 1;
     cursor: pointer;
 }
 .btn-download {
-    content: url("assets/icon-download.svg");
+    content: url("./assets/icon-download.svg");
 }
 .btn-download:hover {
-    content: url("assets/icon-download-hover.svg");
+    content: url("./assets/icon-download-hover.svg");
     cursor: pointer;
 }
 .btn-max {
-    content: url("assets/icon-max-normal.svg");
+    content: url("./assets/icon-max-normal.svg");
 }
 .btn-max:hover {
-    content: url("assets/icon-max-hover.svg");
+    content: url("./assets/icon-max-hover.svg");
     cursor: pointer;
 }
 .btn-delete {
-    content: url("assets/icon-trash-normal.svg");
+    content: url("./assets/icon-trash-normal.svg");
 }
 .btn-delete:hover {
-    content: url("assets/icon-trash-hover.svg");
+    content: url("./assets/icon-trash-hover.svg");
     cursor: pointer;
 }
 .btn-link {
-    content: url("assets/icon-link-normal.svg");
+    content: url("./assets/icon-link-normal.svg");
 }
 .btn-link:hover {
-    content: url("assets/icon-link-hover.svg");
+    content: url("./assets/icon-link-hover.svg");
     cursor: pointer;
 }
 .btn-close {
@@ -136,14 +136,14 @@ figure {
     // position: absolute;
     // top: 60px;
     // right: 20px;
-    content: url("assets/close.svg");
+    content: url("./assets/close.svg");
     &:hover{
         cursor: pointer;
     }
 }
 
 .dark-mode .btn-close {
-    content: url("assets/close-modo-noct.svg");
+    content: url("./assets/close-modo-noct.svg");
 }
 // MODAL MOBILE ===============================================================
 // ============================================================================

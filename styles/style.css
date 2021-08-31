@@ -63,7 +63,7 @@ header nav {
 header nav #logo {
   width: 50px;
   height: 50px;
-  content: url("assets/logo-mobile.svg");
+  content: url("./assets/logo-mobile.svg");
 }
 
 header nav details {
@@ -132,7 +132,7 @@ header nav details ul li a {
 
 @media screen and (min-width: 1px) and (max-width: 669px) {
   .dark-mode #logo {
-    content: url("assets/logo-mobile-modo-noct.svg");
+    content: url("./assets/logo-mobile-modo-noct.svg");
   }
 }
 
@@ -631,11 +631,11 @@ figure {
 }
 
 .btn-fav {
-  content: url("assets/icon-fav.svg");
+  content: url("./assets/icon-fav.svg");
 }
 
 .btn-fav:hover {
-  content: url("assets/icon-fav-hover.svg");
+  content: url("./assets/icon-fav-hover.svg");
   cursor: pointer;
 }
 
@@ -644,7 +644,7 @@ figure {
   background: white;
   opacity: 0.5;
   border-radius: 6px;
-  content: url("assets/icon-fav-active.svg");
+  content: url("./assets/icon-fav-active.svg");
 }
 
 .btn-fav[fav=true]:hover {
@@ -653,45 +653,45 @@ figure {
 }
 
 .btn-download {
-  content: url("assets/icon-download.svg");
+  content: url("./assets/icon-download.svg");
 }
 
 .btn-download:hover {
-  content: url("assets/icon-download-hover.svg");
+  content: url("./assets/icon-download-hover.svg");
   cursor: pointer;
 }
 
 .btn-max {
-  content: url("assets/icon-max-normal.svg");
+  content: url("./assets/icon-max-normal.svg");
 }
 
 .btn-max:hover {
-  content: url("assets/icon-max-hover.svg");
+  content: url("./assets/icon-max-hover.svg");
   cursor: pointer;
 }
 
 .btn-delete {
-  content: url("assets/icon-trash-normal.svg");
+  content: url("./assets/icon-trash-normal.svg");
 }
 
 .btn-delete:hover {
-  content: url("assets/icon-trash-hover.svg");
+  content: url("./assets/icon-trash-hover.svg");
   cursor: pointer;
 }
 
 .btn-link {
-  content: url("assets/icon-link-normal.svg");
+  content: url("./assets/icon-link-normal.svg");
 }
 
 .btn-link:hover {
-  content: url("assets/icon-link-hover.svg");
+  content: url("./assets/icon-link-hover.svg");
   cursor: pointer;
 }
 
 .btn-close {
   width: 15px;
   height: 15px;
-  content: url("assets/close.svg");
+  content: url("./assets/close.svg");
 }
 
 .btn-close:hover {
@@ -699,7 +699,7 @@ figure {
 }
 
 .dark-mode .btn-close {
-  content: url("assets/close-modo-noct.svg");
+  content: url("./assets/close-modo-noct.svg");
 }
 
 .preview {
@@ -838,27 +838,27 @@ footer .container-logos .sm-logo {
 }
 
 footer .container-logos #sm-fb {
-  content: url("assets/icon_facebook.svg");
+  content: url("./assets/icon_facebook.svg");
 }
 
 footer .container-logos #sm-fb:hover {
-  content: url("assets/icon_facebook_hover.svg");
+  content: url("./assets/icon_facebook_hover.svg");
 }
 
 footer .container-logos #sm-tw {
-  content: url("assets/icon-twitter.svg");
+  content: url("./assets/icon-twitter.svg");
 }
 
 footer .container-logos #sm-tw:hover {
-  content: url("assets/icon-twitter-hover.svg");
+  content: url("./assets/icon-twitter-hover.svg");
 }
 
 footer .container-logos #sm-ig {
-  content: url("assets/icon_instagram.svg");
+  content: url("./assets/icon_instagram.svg");
 }
 
 footer .container-logos #sm-ig:hover {
-  content: url("assets/icon_instagram-hover.svg");
+  content: url("./assets/icon_instagram-hover.svg");
 }
 
 footer .default-btn {
@@ -882,7 +882,7 @@ footer .default-btn {
 }
 
 #container-section-favs #heart-img {
-  content: url("assets/icon-favoritos.svg");
+  content: url("./assets/icon-favoritos.svg");
   margin: 5px auto 7px auto;
 }
 
@@ -943,7 +943,7 @@ footer .default-btn {
 }
 
 #container-section-mis-gifos #emoji-img {
-  content: url("assets/icon-mis-gifos.svg");
+  content: url("./assets/icon-mis-gifos.svg");
   margin: 0 auto 7px auto;
 }
 
@@ -997,7 +997,7 @@ footer .default-btn {
     padding: 0 156px;
   }
   header nav #logo {
-    content: url("assets/logo-desktop.svg");
+    content: url("./assets/logo-desktop.svg");
   }
   header nav details {
     display: none;
@@ -1055,7 +1055,7 @@ footer .default-btn {
     cursor: pointer;
   }
   body.dark-mode #logo {
-    content: url("assets/Logo-modo-noc.svg");
+    content: url("./assets/Logo-modo-noc.svg");
   }
   .home-section h1 {
     width: 934px;
