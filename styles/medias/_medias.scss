@@ -4,7 +4,7 @@
         nav {
             padding: 0 156px;
             #logo {
-                content: url("assets/logo-desktop.svg");
+                content: url("./assets/logo-desktop.svg");
             }
             details {
                 display: none;
@@ -63,7 +63,7 @@
     }
     body.dark-mode {
         #logo {
-            content: url("assets/Logo-modo-noc.svg");
+            content: url("./assets/Logo-modo-noc.svg");
         }
     }
 
