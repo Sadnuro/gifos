@@ -17,10 +17,6 @@ let LIMIT = 12;                      // Cant gifos to get
 let OFFSET = 0;
 let URI = "";
 
-// URL = "https://api.giphy.com/v1/gifs/trending?api_key=oAF6BugvxZqmpPf30UwCOVes8vOpwQEe&limit=10";
-// URL = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
-
-
 const carrusel = document.querySelector(".carrusel");
 const favorites = document.querySelector(".container-favs-gifs");
 const subsection_results = document.getElementById("subsection-results-div");
@@ -51,7 +47,7 @@ function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=defau
      */
 
     if (gifos.length>0){
-        console.log("start forech gifos insert!")
+        // console.log("start forech gifos insert!")
         gifos.forEach(gifo => {
             if (typeGifo===0){
                 gifosTemplate = `
@@ -97,7 +93,7 @@ function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=defau
 
             // show [view-more] button
         })
-        console.log("gifosContainer", gifosContainer);
+        // console.log("gifosContainer", gifosContainer);
         viewMoreBtn.classList.remove("display-none")
     } else {
         gifosContainer.innerHTML = defaultInsert;
@@ -129,7 +125,7 @@ async function search (URI, ){
         }
         result.push(gifoData);
     });
-    console.log("search():", gifos)
+    // console.log("search():", gifos)
     return result;
 }
 
@@ -149,7 +145,7 @@ async function searchGifosById (arrayIds) {
 
     URI = `${API_URL}/${REQ_TYPE}?api_key=${API_KEY}&ids=${ids}`;
     arrayGifos = await search(URI);
-    console.log("arrayGifos search by Id: ", arrayGifos)
+    // console.log("arrayGifos search by Id: ", arrayGifos)
     return arrayGifos
 }
 
@@ -207,7 +203,7 @@ async function toSearch(event){   // event keyboard data
     // event = metas of key of keyboard
     // element = input that contained of text to search
     const text = search_bar.value.trim()
-    console.log("Running search!!!")
+    // console.log("Running search!!!")
     if (screen.width > 669){
         if (text){
             // Cambiar lupa a X
@@ -232,7 +228,7 @@ async function toSearch(event){   // event keyboard data
         }
     } else {
         search_btn_img.addEventListener("click", async (event)=>{
-            console.log("mobile search!")
+            // console.log("mobile search!")
             if (text.trim()!=""){
                 search_bar.blur();
                 REQ_TYPE ="gifs";                // gifs | stickers
@@ -245,14 +241,14 @@ async function toSearch(event){   // event keyboard data
         
                 gifosResults = await search(URI);
         
-                console.log("gifosList before: ", gifosList)
+                // console.log("gifosList before: ", gifosList)
         
                 gifosList = [gifosResults];
                 results_container.innerHTML = '';
                 insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
         
-                console.log("gifosResults[] :: ", gifosResults);
-                console.log("gifosList[] after :: ", gifosList);
+                // console.log("gifosResults[] :: ", gifosResults);
+                // console.log("gifosList[] after :: ", gifosList);
         
                 subsection_results_title.textContent = Q;
                 subsection_results.classList.remove("display-none");
@@ -275,14 +271,14 @@ async function toSearch(event){   // event keyboard data
 
         gifosResults = await search(URI);
 
-        console.log("gifosList before: ", gifosList)
+        // console.log("gifosList before: ", gifosList)
 
         gifosList = [gifosResults];
         results_container.innerHTML = '';
         insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
 
-        console.log("gifosResults[] :: ", gifosResults);
-        console.log("gifosList[] after :: ", gifosList);
+        // console.log("gifosResults[] :: ", gifosResults);
+        // console.log("gifosList[] after :: ", gifosList);
 
         subsection_results_title.textContent = Q;
         subsection_results.classList.remove("display-none");
@@ -317,20 +313,20 @@ function findFavs(array, id, matriz=false){
     } else {
         result = array.find(e => e.id === `${id}`)
     }
-    console.log("RESULT ELEMENT FAV: ", result)
+    // console.log("RESULT ELEMENT FAV: ", result)
     return result
 }
 
 viewMore_btn_results.addEventListener("click", async (event)=>{
-    console.log("ViewMore event")
+    // console.log("ViewMore event")
     OFFSET += 12;
     URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`;
-    console.log(URI)
+    // console.log(URI)
     gifosResults = await search(URI);
-    console.log("gifosList before viewmore: ", gifosList)
+    // console.log("gifosList before viewmore: ", gifosList)
     gifosList.push(gifosResults);
     insertGifos(gifosList[gifosList.length-1], results_container, notFoundResultsSearchTemplate, viewMore_btn_results);
-    console.log("gifosList afte viewMore: ", gifosList)
+    // console.log("gifosList afte viewMore: ", gifosList)
 
 })
 
@@ -347,7 +343,7 @@ for (var i=0; i<trends_words.length; i++){
 
 
 function focusedMyGifo(figureElement){
-    console.log("Show hover my gifo section!.")
+    // console.log("Show hover my gifo section!.")
 
     const img = figureElement.querySelector(".img-gif");
     const title = figureElement.querySelector("#title")
@@ -391,7 +387,7 @@ function focusedMyGifo(figureElement){
             const btn_delete_modal = document.querySelector(".container-btns-info .btn-delete");
             btn_delete_modal.addEventListener("click", async (event)=>{
                 event.stopPropagation();
-                console.log("delete start!!");
+                // console.log("delete start!!");
                 await deleteGifo(img.id)
             })
 
@@ -399,7 +395,7 @@ function focusedMyGifo(figureElement){
                 event.stopPropagation();
                 // const imagen = event.target.parentElement.previousSibling.firstElementChild;
                 const imagen = event.target.parentElement.previousElementSibling.firstElementChild;
-                console.log("img:", imagen)
+                // console.log("img:", imagen)
 
                 downloadGif(img.src, `${img.alt}.gif`);
             })   
@@ -407,10 +403,8 @@ function focusedMyGifo(figureElement){
 
         btn_download.addEventListener("click", (event)=>{
             event.stopPropagation();
-
-            console.log("download start!!: ", img.src);
+            // console.log("download start!!: ", img.src);
             downloadGif(img.src, "myGifo.gif");
-
         })
 
         btn_delete.addEventListener("click", async (event)=>{
@@ -439,7 +433,6 @@ function focusedMyGifo(figureElement){
                         <div class="modal-btn btn-download hover-btns"></div>
                     </div>
                 `
-    
             container_preview.innerHTML = templatePreview;
             container_preview.classList.remove("display-none");
 
@@ -453,22 +446,20 @@ function focusedMyGifo(figureElement){
             btn_download_mobile.addEventListener("click", (event)=>{
                 event.stopPropagation();
     
-                console.log("download start!!: ", img.src);
+                // console.log("download start!!: ", img.src);
                 downloadGif(img.src, "myGifo.gif");
-    
             })
 
             btn_delete_mobile = document.querySelector(".preview .container-btns-info .btn-delete");
             btn_delete_mobile.addEventListener("click", async (event)=>{
                 event.stopPropagation();
-                console.log("delete start!!");
+                // console.log("delete start!!");
                 await deleteGifo(img.id)
             })
         })
         figureElement.setAttribute("statusmobile", "true")
     }
 }
-
 
 const downloadGif = async (gifSrc, gifName) => { //https://dev.to/sbodi10/download-images-using-javascript-51a9
     const gif = await fetch(gifSrc)
@@ -480,4 +471,3 @@ const downloadGif = async (gifSrc, gifName) => { //https://dev.to/sbodi10/downlo
     link.click()
     // link.remove()
 }
-

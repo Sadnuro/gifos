@@ -1,7 +1,3 @@
-// import { gifosList, gifosTrends, gifosFavorites, gifosResults, myGifos } from "./arrays.js";
-
-
-
 // INICIO | CAMBIO ENTRE SECCIONES DESDE MENÚ ======================================================
 // =================================================================================================
 const body = document.querySelector("body");
@@ -27,9 +23,6 @@ const container_mis_gifos = document.querySelector(".container-mis-gifos");     
 const create_gifos_section_id = document.querySelector("#create-gifos-section");
 const carrusel_section_id = document.querySelector("#carrusel-section");
 
-
-
-console.log(container_mis_gifos);
 var genericList = [];
 function validateClassList (validate, classList) {
     /* input:
@@ -43,8 +36,6 @@ function validateClassList (validate, classList) {
         classListCleaned.push(i)
     }
     for (const key in classListCleaned) { // Se recorren las clases, ya no hay metadatos
-        //console.log(classListCleaned)
-        //console.log(key)
         if (Object.hasOwnProperty.call(classListCleaned, key)) {
             const element = classListCleaned[key];
             if (element === validate){
@@ -56,9 +47,6 @@ function validateClassList (validate, classList) {
 }
 
 // DARK AND LIGHT THEME MODE =====================================================================================
-// =========================================================================================================
-
-console.log(mode_btn, mode_btn_dkt)
 if (localStorage.getItem("THEME")===null) {
     // THEME = "LIGHT" // DARK | LIGHT
     localStorage.setItem("THEME", "LIGHT")
@@ -83,7 +71,7 @@ console.log(localStorage.getItem("THEME"))
 
 const details = document.getElementById("detailsMenu")
 mode_btn.addEventListener ("click", (event)=>{
-    console.log("CLICK MODE_BTN")
+    // console.log("CLICK MODE_BTN")
     details.removeAttribute("open")         // Cierra el menú
     body.classList.toggle("dark-mode")
     localStorage.getItem("THEME")==="LIGHT" ? localStorage.setItem("THEME", "DARK") : localStorage.setItem("THEME", "LIGHT");
@@ -92,7 +80,7 @@ mode_btn.addEventListener ("click", (event)=>{
 })
 
 mode_btn_dkt.addEventListener ("click", (event)=>{
-    console.log("CLICK MODE_BTN_DKT")
+    // console.log("CLICK MODE_BTN_DKT")
     details.removeAttribute("open")         // Cierra el menú
     body.classList.toggle("dark-mode")
     localStorage.getItem("THEME")==="LIGHT" ? localStorage.setItem("THEME", "DARK") : localStorage.setItem("THEME", "LIGHT");
@@ -101,16 +89,11 @@ mode_btn_dkt.addEventListener ("click", (event)=>{
 })
 
 // SWITCH BETWEEN MENU SECTIONS WITH BUTTONS ====================================================================
-// ===================================================================================================================
 
 var activeSection = "inicio"
 const toggleSections = (event)=>{
-    console.log(event.target)
-
     const clase = event.target.classList[0];
-
     if (clase === "inicio-btn" && activeSection!=="inicio") {
-        console.log(clase)
         sectionToHidden1 = "container_section_favs"
         // ocultar: favoritos, mis gifos
         if  (validateClassList("display-none", container_section_favs_id.classList)!=true) {
@@ -132,7 +115,6 @@ const toggleSections = (event)=>{
         activeSection = "inicio"
 
     } else if (clase === "favorites-btn" && activeSection!=="favorites") {
-        console.log(clase)
         // ocultar home, trends, mis-gifos
         if  (validateClassList("display-none", home_section_id.classList)!=true) {
             home_section_id.classList.toggle("display-none")
@@ -154,7 +136,6 @@ const toggleSections = (event)=>{
         activeSection = "favorites"
     }
     else if (clase === "gifos-btn" && activeSection!=="mis-gifos" ) {
-        console.log(clase)
         // ocultar home, trends and favorites
         if  (validateClassList("display-none", home_section_id.classList)!=true) {
             home_section_id.classList.toggle("display-none")
@@ -175,7 +156,6 @@ const toggleSections = (event)=>{
         container_section_mis_gifos_id.classList.toggle("display-none")
         activeSection = "mis-gifos"
     } else if (clase==="create-gifos-btn" && activeSection!="create-gifos") {
-        console.log(clase);
         if  (validateClassList("display-none", home_section_id.classList)!=true) {
             home_section_id.classList.toggle("display-none")
         }
@@ -190,7 +170,6 @@ const toggleSections = (event)=>{
         }
         if (validateClassList("display-none", carrusel_section_id.classList)!=true){
             carrusel_section_id.classList.toggle("display-none");
-            console.log(carrusel_section_id.classList);
         }
 
         create_gifos_section_id.classList.toggle("display-none");
@@ -237,16 +216,6 @@ let offsetMyGifos =0;
 let favPageHistory = [0, 12];
 let myGifosPageHistory = [0, 12];
 
-function pagination (arrayToPaginate, init, end, increase=12){
-    /** Conditions:
-     *  the pagination is default done from 12 to 12
-     * init = inclusive
-     * end = inclusive
-     */
-    const subArray = arrayToPaginate.slice(init, end +1);
-    console.log("subarray ======= ", subArray)
-}
-
 inicio_btn.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open")  ;       // Cierra el menú
@@ -286,8 +255,6 @@ mis_gifos_btn.addEventListener("click", async (event)=>{
     const idLocalStorage =  JSON.parse(localStorage.getItem("myGifosId"));
 
     const myGifos = await searchGifosById(idLocalStorage);
-    console.log("myGifos:", myGifos);
-    console.log("length of myGifos results: ", myGifos.length)
     container_mis_gifos.innerHTML = '';
     insertGifos(Array.from(myGifos), container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false, 1)
 })
@@ -296,16 +263,12 @@ mis_gifos_btn_dkt.addEventListener("click", async (event)=>{
     details.removeAttribute("open");         // Cierra el menú
     console.log(activeSection);              // Recopilar gifos de LocalStorage
 
-    initLocalStorageMyGifo();
-
     // Fetch al id de los gifos en localStorage
     // El array resultado insertarlo en la sección
-
+    initLocalStorageMyGifo();
     const idLocalStorage =  JSON.parse(localStorage.getItem("myGifosId"));
 
     const myGifos = await searchGifosById(idLocalStorage);
-    console.log("myGifos:", myGifos);
-    console.log("length of myGifos results: ", myGifos.length)
     container_mis_gifos.innerHTML = '';
     insertGifos(Array.from(myGifos), container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false, 1)
 })
@@ -316,11 +279,6 @@ create_gifos_btn.addEventListener("click", (event)=>{
 
 })
 console.log(activeSection);
-
-// FIN | SWITCH BETWEEN MENU SECTIONS  ===========================================
-// ===============================================================================
-
-
 
 // CONTROL DE HOVER DE GIFO ======================================================
 // ===============================================================================
@@ -351,10 +309,7 @@ var elementFigure = null;
 function focusedElement(figureElement) { // element == <figure>
     const widthScreen = screen.width;
     const innerWidth = window.innerWidth;
-    // console.log("Width screen: ", widthScreen)
-    // console.log("Windoe Width: ", innerWidth)
 
-    console.log("Show hover")
     const img = figureElement.querySelector(".img-gif");
     const title = figureElement.querySelector("#title")
     const author = figureElement.querySelector("#author")
@@ -411,21 +366,16 @@ function focusedElement(figureElement) { // element == <figure>
                     btn_fav_preview.setAttribute("fav" , "false")
                     removeToFav(img);
                 }
-                console.log(gifosFavorites)
             })
     
             modal_btn_download.addEventListener("click", (event)=>{
                 const imagen = event.target.parentElement.previousElementSibling.firstElementChild;
-                console.log("img:", imagen)
-
                 event.stopPropagation();
                 downloadGif(img.src, `${img.alt}.gif`);
             })
         })
         // Add gif to fav -> hover desktop
         btn_fav.addEventListener("click", (event)=>{
-            console.log(img)
-            console.log(img.id)
             event.stopPropagation();
             if (btn_fav.getAttribute("fav")=="false"){
                 btn_fav.setAttribute("fav" , "true")
@@ -434,16 +384,12 @@ function focusedElement(figureElement) { // element == <figure>
                 btn_fav.setAttribute("fav" , "false")
                 removeToFav(img);
             }
-            console.log(gifosFavorites)
         })
     
         btn_download.addEventListener("click", (event)=>{
             event.stopPropagation();
-            console.log(img.alt)
             downloadGif(img.src, `${img.alt}.gif`);
         })
-        
-
         figureElement.setAttribute("statusdktp", "true");
 
     } else if (window.innerWidth<=670 && figureElement.getAttribute("statusmobile")==="false"){
@@ -486,144 +432,23 @@ function focusedElement(figureElement) { // element == <figure>
                     btn_fav_preview.setAttribute("fav" , "false")
                     removeToFav(img);
                 }
-                console.log(gifosFavorites)
             })
             btn_download_mobile = document.querySelector(".preview .container-btns-info .btn-download");
             btn_download_mobile.addEventListener("click", (event)=>{
                 event.stopPropagation();
-                console.log(img.alt)
                 downloadGif(img.src, `${img.alt}.gif`);
             })
         })
         figureElement.setAttribute("statusmobile", "true")
     }
-
-    // activeSection
-        // gifListSection.find.id
-            // Get Name
-            // Get Author 
-            // Get other required
-        // Insert properties in capa hover
-
-    // element.setAttribute("status", "true")  // Debe setearlo el metodo que inserte gifos
-}
-
-function unfocusedElement (element){
-    if (element.getAttribute("status")==="true") {
-        console.log("Remove hover")
-        // element.setAttribute("status", "false") 
-        // element.innerHTML = normalTemplate
-    }
 }
 
 // Desplazamiento de carrusel con botones
-// const carrusel = document.querySelector(".carrusel");
 const carrusel_btn_left = document.querySelector("#carrusel-btn-left");
 const carrusel_btn_right = document.querySelector("#carrusel-btn-right");
 carrusel_btn_right.addEventListener("click", (event)=>{
-    console.log(event);
     carrusel.scrollLeft += 300;
 })
 carrusel_btn_left.addEventListener("click", (event)=>{
-    console.log(event);
     carrusel.scrollLeft -= 300;
 })
-
-
-
-
-
-
-// GIFOS TEMPLATE GENERIC FOR ALL SECTIONS ======================
-
-/*
-<figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
-    <div class="modal-container">
-        <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
-    </div>
-    <div class="capa">
-        <div class="buttons">
-            <div class="btn-fav hover-btns" id="btn-a">A</div>
-            <div class="btn-download hover-btns" id="btn-b">B</div>
-            <div class="btn-max hover-btns" id="btn-c">C</div>
-        </div>
-        <p>@AuthorGif 1</p>
-        <h3>Master Chief Title 1</h3>
-    </div>
-</figure>
-*/
-
-
-// HOVER TEMPLATE =================================
-/*
-hoverTemplate = `
-<figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
-    <img id="0001-gifo" class="GIF img-gif" src="https://media2.giphy.com/media/R97jJCEGEmh0I/giphy.gif?cid=9039c678ca0c65q1ul8l281nf22l760bm4e99k6mebm3x4jp&rid=giphy.gif&ct=g" alt="" >
-    <div class="capa">
-        <div class="buttons">
-            <div class="btn-fav hover-btns" id="btn-a">A</div>
-            <div class="btn-download hover-btns" id="btn-b">B</div>
-            <div class="btn-max hover-btns" id="btn-c">C</div>
-        </div>
-        <p>@AuthorGif</p>
-        <h3>Master Chief Title</h3>
-    </div>
-</figure>
-`
-*/
-
-
-
-// MODAL PREVIEW TEMPLATE ================================
-/**
- var templatePreview = `
- <div class="modal-btn btn-close"></div>
- <img src=${img.src} alt=${title.textContent}>
- <div class="container-btns-info">
-     <div class="container-info">
-         <p class="author">${author.textContent}</p>
-         <h3 class="title">${title.textContent}</h3>
-     </div>
-     <div class="modal-btn btn-fav"></div>
-     <div class="modal-btn btn-download"></div>
- </div>
- `
- 
- */
-
-// CARRUSEL GIF TEMPLATE ==================================
-/*
-<g>
-    <figure class="figure-gifo" onmouseover="focusedElement(this)" status="false">
-        <div class="modal-container">
-            <img class="GIF img-gif" src="https://media2.giphy.com/media/Wr8PrRVqnGOLE48FWk/giphy.gif?cid=9039c67842hhv0o0swfod2gvu5rrmxqj55vm5mr4xiyt0v14&rid=giphy.gif&ct=g" alt="" >
-        </div>
-        <div class="capa">
-            <div class="buttons">
-                <div class="btn-fav hover-btns" id="btn-a">A</div>
-                <div class="btn-download hover-btns" id="btn-b">B</div>
-                <div class="btn-max hover-btns" id="btn-c">C</div>
-            </div>
-            <p>@AuthorGif 1</p>
-            <h3>Master Chief Title 1</h3>
-        </div>
-    </figure>                      
-</g>
-*/
-
-
-
-/*
-    *** Desarrollar aplicacion de modo dark and light
-    *** Incorporar boton [ver-más] a cada sección
-    * Traer tendencia de palabras y ocultar seccion que muestra sus busquedas
-    * Desarrollar aplicativo de crear y subir gifo
-    * Incorporar comunicacion con API a cada section
-*/
-
-
-// window.pageYOffset
-// window.pageXOffset
-// window.scrollTo()
-// document.documentElement.scrollTop
-// document.documentElement.scrollLeft

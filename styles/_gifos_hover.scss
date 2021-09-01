@@ -2,9 +2,7 @@
 figure {
     width: 156px;
     height: 120px;
-    // border: 1px solid black;
-    // box-shadow: 0px 0px 3px 1px var(--shadow-color);
-    // margin: 2px;
+
     /*Permite aplicar [absolute] a un elemento hijo y será
     relativo a este contenedor*/
     position: relative;         
@@ -88,9 +86,7 @@ figure {
     content: url("/assets/icon-fav-hover.svg");
     cursor: pointer;
 }
-// .btn-fav:checked {
-//     content: url("/assets/icon-fav-active.svg");
-// }
+
 .btn-fav[fav=true] {
     padding: 7px 6px;
     background: white;
@@ -133,9 +129,6 @@ figure {
 .btn-close {
     width: 15px;
     height: 15px;
-    // position: absolute;
-    // top: 60px;
-    // right: 20px;
     content: url("/assets/close.svg");
     &:hover{
         cursor: pointer;
@@ -145,10 +138,6 @@ figure {
 .dark-mode .btn-close {
     content: url("/assets/close-modo-noct.svg");
 }
-// MODAL MOBILE ===============================================================
-// ============================================================================
-
-
 
 // MODAL DESKTOP STYLE =======================================================
 // ===========================================================================

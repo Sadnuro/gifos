@@ -44,10 +44,8 @@ header {
                 z-index: 3;
                 width: 100%;
                 height: calc(100vh - calc(var(--header-line-top) + var(--header-nav-height)));
-                // height: 100%;
                 padding-top: 17px;
                 background-color: var(--menu-color);
-                // opacity: 80%;
                 position: absolute;
                 left: 0px;
                 top: 100px;

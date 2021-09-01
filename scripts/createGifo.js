@@ -65,7 +65,7 @@ let gifId = "";
  minutes = '00'
 
 function initCreateGifosSection() {
-    console.log("Clear section")
+    // console.log("Clear section")
     infoDiv.innerHTML = initInfo;
     process_btn.textContent = "CONTINUAR";
 
@@ -102,9 +102,6 @@ function clearChronos(){
     minutes = '00';
     timelapse.textContent = minutes + ':' + seconds;
 }
-
-// clearChronos();
-// initCreateGifosSection();
 
 function chronos(){
     if (process_btn.textContent==="FINALIZAR") {
@@ -165,7 +162,6 @@ process_btn.addEventListener("click", async (event)=>{
 
             timelapse_container.innerHTML = timelapseTemplate;
             timelapse = document.querySelector("#timelapse");
-            // timelapse.textContent = minutes + ':' + seconds;
 
             step1.removeAttribute("data-active");
             step2.setAttribute("data-active", true);
@@ -243,7 +239,7 @@ process_btn.addEventListener("click", async (event)=>{
             btn_download = document.querySelector(".createGifo-containerBtns .btn-download");
 
             const GIFO_ID = resultReq.data.id;
-            console.log("gifoId:", GIFO_ID);
+            // console.log("gifoId:", GIFO_ID);
 
             // Update localStorage
             local = JSON.parse(localStorage.getItem("myGifosId"))
@@ -261,12 +257,12 @@ process_btn.addEventListener("click", async (event)=>{
                 copyToClipBoard(myGifo[0].medias.gif);
             })
             btn_download.addEventListener("click", (event)=>{
-                console.log(event.target)
+                // console.log(event.target)
                 downloadGif(myGifo[0].medias.gif, "myGifo.gif");
             })
 
-            console.log("myGifo:", myGifo);
-            console.log(myGifos)
+            // console.log("myGifo:", myGifo);
+            // console.log(myGifos)
 
             step3.removeAttribute("data-active")
             status = "NONE"
@@ -280,14 +276,14 @@ process_btn.addEventListener("click", async (event)=>{
             break;
     
         default:
-            console.log(event.target.textContent)
+            // console.log(event.target.textContent)
             break;
     }
 })
 
 
 function copyToClipBoard(elementWithContent) {
-    console.log(elementWithContent);
+    // console.log(elementWithContent);
     const p = document.createElement("textarea");
     p.value = elementWithContent;
 
@@ -303,98 +299,16 @@ function copyToClipBoard(elementWithContent) {
 
 
 async function deleteGifo (gifoId){
-    console.log("gifoId:", gifoId);
+    // console.log("gifoId:", gifoId);
     const idList = JSON.parse(localStorage.getItem("myGifosId")); 
     const index = idList.indexOf(gifoId);
-    console.log("idList:", idList)
+    // console.log("idList:", idList)
 
     idList.splice(index, 1);
-    console.log("idList:", idList)
+    // console.log("idList:", idList)
     localStorage.setItem("myGifosId", JSON.stringify(idList));
 
     myGifos = await searchGifosById(idList);
     container_mis_gifos.innerHTML = '';
     insertGifos(myGifos, container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false, 1)
 }
-
-// const statusInfoContainer = document.querySelector(".statusinfo-container");
-// statusInfoContainer.innerHTML = gifoSubidoTemplate;
-
- 
-    // fetch('https://upload.giphy.com/v1/gifs', {
-    //     method: 'POST',
-    //     body: formData
-    // })
-    // .then((res)=>res.json())
-    // .then((resJson)=>{
-    //     console.log("resJson: " + resJson.data);
-    //     console.log("resJson: " + resJson.data.id);
-    // })
-    // .catch((err)=>console.error(err))
-
-
-// window.onload = ()=>{
-//     localStorage.setItem("myGifosId", JSON.stringify(
-//         [
-//             "YY7TsISTgsSpLD8maG",
-//             "JGdVa9bmNboHFYdUEk",
-//             "VPG5tWUjNrrbqcDq75",
-//             "fsBOMludQ02gYLbG7k",
-//             "JixhpgjaCA97xfMfRd",
-//             "e88GH85KjoxTnYMiFa",
-//             "29M013fXxvu2y84Ixb",
-//             "QGsy354CBe7Nea10iG",
-//             "pHKYM4T10ilLoILBuy",
-//             "7hzaac2hE6M11K3AVB",
-//             "jp7izni5fCq75Usm6z",
-//             "bQ4BaEwStU4ZOKQsx5",
-//             "AwUFPUoLyqWyJoLXfB",
-//             "N5t1I9rNokzrRKNpCM",
-//             "7SO7pcEqwdDoQ70UhI",
-//             "ASbiTWdos6Rlw89aZi",
-//             "DUdti1a9olul8T7k9V",
-//             "iOCy5s9KtYpo1cbA7A",
-//             "ysuDqiZZO5MIgUnWwd",
-//             "98XEjKDdfxQykNZ69Q",
-//             "ZK700icwYiHJ3dsVv5",
-//             "ozmTCDGOyG2KnIt8DP",
-//             "zTf5MV3ZpOQDGPgW41",
-//             "mjzC9pzhuHLOOHmFKq",
-//             "PH4JE66O0felWyr7wU",
-//             "UmCRYhg6M843p7kGJ8"
-        
-//         ]
-//     ))
-// }
-    /*
-
-[
-    "YY7TsISTgsSpLD8maG",
-    "JGdVa9bmNboHFYdUEk",
-    "VPG5tWUjNrrbqcDq75",
-    "fsBOMludQ02gYLbG7k",
-    "JixhpgjaCA97xfMfRd",
-    "e88GH85KjoxTnYMiFa",
-    "29M013fXxvu2y84Ixb",
-    "QGsy354CBe7Nea10iG",
-    "pHKYM4T10ilLoILBuy",
-    "7hzaac2hE6M11K3AVB",
-    "jp7izni5fCq75Usm6z",
-    "bQ4BaEwStU4ZOKQsx5",
-    "AwUFPUoLyqWyJoLXfB",
-    "N5t1I9rNokzrRKNpCM",
-    "7SO7pcEqwdDoQ70UhI",
-    "ASbiTWdos6Rlw89aZi",
-    "DUdti1a9olul8T7k9V",
-    "iOCy5s9KtYpo1cbA7A",
-    "ysuDqiZZO5MIgUnWwd",
-    "98XEjKDdfxQykNZ69Q",
-    "ZK700icwYiHJ3dsVv5",
-    "ozmTCDGOyG2KnIt8DP",
-    "zTf5MV3ZpOQDGPgW41",
-    "mjzC9pzhuHLOOHmFKq",
-    "PH4JE66O0felWyr7wU",
-    "UmCRYhg6M843p7kGJ8"
-
-]
-*/
