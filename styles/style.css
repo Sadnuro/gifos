@@ -950,7 +950,6 @@ footer .default-btn {
 #container-section-mis-gifos .container-mis-gifos {
   width: 100%;
   margin-top: 32px;
-  /* border: 1px solid black; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1365,7 +1364,7 @@ footer .default-btn {
           align-items: center;
 }
 
-#create-gifos-section .screen-container g.videoCam {
+#create-gifos-section .screen-container .videoCam {
   width: 200px;
   height: 162px;
   display: -webkit-box;
@@ -1380,11 +1379,11 @@ footer .default-btn {
           align-items: center;
 }
 
-#create-gifos-section .screen-container g.videoCam .camera {
+#create-gifos-section .screen-container .videoCam .camera {
   content: url("../assets/camara.svg");
 }
 
-#create-gifos-section .screen-container g.videoCam .luz {
+#create-gifos-section .screen-container .videoCam .luz {
   margin-top: 1px;
   margin-left: 2px;
   opacity: 0.6;
@@ -1403,14 +1402,14 @@ footer .default-btn {
           align-items: center;
 }
 
-#create-gifos-section .screen-container .screen g .marco {
+#create-gifos-section .screen-container .screen div .marco {
   width: 690px;
   height: 390px;
   border: 1px solid var(--font-primary-color);
   position: relative;
 }
 
-#create-gifos-section .screen-container .screen g .esquina {
+#create-gifos-section .screen-container .screen div .esquina {
   width: 27px;
   height: 25px;
   margin: 20px;
@@ -1418,28 +1417,28 @@ footer .default-btn {
   position: absolute;
 }
 
-#create-gifos-section .screen-container .screen g .esquina1 {
+#create-gifos-section .screen-container .screen div .esquina1 {
   border-top: 2px solid #50E3C2;
   border-left: 2px solid #50E3C2;
   top: 0;
   left: 0;
 }
 
-#create-gifos-section .screen-container .screen g .esquina2 {
+#create-gifos-section .screen-container .screen div .esquina2 {
   border-top: 2px solid #50E3C2;
   border-right: 2px solid #50E3C2;
   top: 0;
   right: 0;
 }
 
-#create-gifos-section .screen-container .screen g .esquina3 {
+#create-gifos-section .screen-container .screen div .esquina3 {
   border-bottom: 2px solid #50E3C2;
   border-left: 2px solid #50E3C2;
   bottom: 0;
   left: 0;
 }
 
-#create-gifos-section .screen-container .screen g .esquina4 {
+#create-gifos-section .screen-container .screen div .esquina4 {
   border-bottom: 2px solid #50E3C2;
   border-right: 2px solid #50E3C2;
   bottom: 0;

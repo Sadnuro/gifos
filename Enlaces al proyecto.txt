@@ -1,0 +1,3 @@
+Enlaces al proyecto GIFOS alojado en un hosting:
+
+https://gifos-sadnuro-app.netlify.app
