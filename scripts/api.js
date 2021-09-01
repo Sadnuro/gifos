@@ -1,7 +1,7 @@
 // // GIFOS storage
 let gifosList = [];             // Stores all gifos findeds
 let gifosTrends = [];           // Stores all gifos in trends carrusel
-let myGifos = [];               // Stores all creates gifos 
+let myGifos = [0];               // Stores all creates gifos 
 let myGifosId = [];     
 let gifosFavorites = [];        // Stores gifos added to favorites
 let gifosResults = [];          // Stores current results of search of gifos
@@ -135,8 +135,16 @@ async function search (URI, ){
 
 async function searchGifosById (arrayIds) {
     let arrayGifos= [];
+    let ids;
 
-    const ids = arrayIds.join();
+    if (arrayIds.length == null || arrayIds.length==undefined){
+        return [];
+    }
+    else if (arrayIds.length>0){
+        ids = arrayIds.join();
+    }else{
+        ids = arrayIds[0];
+    }
     console.log("ids join:", ids)
 
     URI = `${API_URL}/${REQ_TYPE}?api_key=${API_KEY}&ids=${ids}`;
