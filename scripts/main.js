@@ -27,6 +27,9 @@ const container_mis_gifos = document.querySelector(".container-mis-gifos");     
 const create_gifos_section_id = document.querySelector("#create-gifos-section");
 const carrusel_section_id = document.querySelector("#carrusel-section");
 
+
+
+console.log(container_mis_gifos);
 var genericList = [];
 function validateClassList (validate, classList) {
     /* input:
@@ -214,10 +217,18 @@ const notFoundFavsGifs = `
 const notFoundMyGifs = `
 <div class="defaultMyGifs">
     <div class="img"></div>
-    <p>¡Anímate a crear tu primer GIFO!</p>
+    <p>¡Anímate a crear tu primer GIFO! <br>(Usa la versión de escritorio)</p>
 </div>
 `
 
+
+container_mis_gifos.innerHTML = notFoundMyGifs;
+
+function initLocalStorageMyGifo(){
+    if (localStorage.getItem("myGifosId")==null || localStorage.getItem("myGifosId")==undefined){
+        localStorage.setItem("myGifosId", myGifosId);
+    }
+}
 
 let subArray = [];
 let offsetFavs = 0;
@@ -268,6 +279,8 @@ mis_gifos_btn.addEventListener("click", async (event)=>{
     details.removeAttribute("open");         // Cierra el menú
     console.log(activeSection);              // Recopilar gifos de LocalStorage
 
+    initLocalStorageMyGifo();
+
     // Fetch al id de los gifos en localStorage
     // El array resultado insertarlo en la sección
     const idLocalStorage =  JSON.parse(localStorage.getItem("myGifosId"));
@@ -282,6 +295,8 @@ mis_gifos_btn_dkt.addEventListener("click", async (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     console.log(activeSection);              // Recopilar gifos de LocalStorage
+
+    initLocalStorageMyGifo();
 
     // Fetch al id de los gifos en localStorage
     // El array resultado insertarlo en la sección
