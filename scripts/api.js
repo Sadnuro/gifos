@@ -144,8 +144,7 @@ async function searchSuggestions(text){
                 </li>
                 `
             }
-        }
-        console.log(suggestions)        
+        }    
     } catch (error) {
         console.log({success: false, msg: error})
     }
@@ -281,7 +280,6 @@ async function toSearch(event){   // event keyboard data
         event.stopImmediatePropagation();
         container_suggestions.innerHTML = '';
         let texto = search_bar.value.trim()
-        console.log("mobile search!:", texto)
         if (texto!=""){
             search_bar.blur();
             REQ_TYPE ="gifs";                // gifs | stickers
@@ -325,7 +323,6 @@ async function toSearch(event){   // event keyboard data
                 break;
             }         
         }
-        console.log(textSearch)
         search_bar.value = textSearch;
         container_suggestions.innerHTML = '';
         search_btn_img2.style = 'visibility: hidden';
