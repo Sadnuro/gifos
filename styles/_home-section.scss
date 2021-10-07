@@ -22,18 +22,29 @@
 }
 .search-bar-container {
     width: 90%;
-    height: 50px;
+    // height: 50px;
     border: 1px solid var(--font-primary-color);
     border-radius: 25px;
-    padding: 4px 20px 4px 10px;
+    padding: 4px 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    
+    #search-bar-parent {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        // align-items: center;
+    }
     input#search-bar {
         height: 40px;
-        width: 85%;
-        padding-left: 40px;
+        width: 220px;
+        position: relative;
+        left: 0px;
         border: none;
         font-family: var(--font-Roboto);
         font-size: 16px;
@@ -43,11 +54,14 @@
         color: var(--placeholder-searchbar-primary-color);
     }
 
-    #search-btn-img {
+    .search-btn-img {
         width: 20px;
         height: 20px;
         object-fit: contain;
         content: url("../assets/icon-search.svg");
+    }
+    #search-btn-img2 {
+        visibility: hidden;
     }
     #close-btn-img {
         width: 15px;
@@ -55,8 +69,45 @@
         object-fit: contain;
         content: url("../assets/close.svg");
     }
-    
-
+    ul.container-suggestions {
+        display: block;
+        width: 100%;
+        li {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            list-style: none;
+            // border: 1px solid white;
+            &:hover {
+                border-bottom: 1px solid white;
+                // > p{
+                //     text-decoration: underline;
+                // }
+            }
+            img {
+                width: 15px;
+                height: 15px;
+                margin-left: 3px;
+                object-fit: contain;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            p {
+                width: 100%;
+                margin-left: 15px;
+                font-family: var(--font-Roboto);
+                line-height: 30px;
+                font-size: 15px;
+                color: gray;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
 .home-img {
     width: 65%;
@@ -65,10 +116,21 @@
     input#search-bar {
         color: white;
     }
-    #search-btn-img {
+    .search-btn-img {
         content: url("../assets/icon-search-modo-noct.svg");
     }
     #close-btn-img {
         content: url("../assets/close-modo-noct.svg");
     }
+
+    .search-bar-container .container-suggestions {
+        li p {
+            color: rgba($color: #FFF, $alpha: 0.7);
+        }
+    }
+}
+
+
+.display-hidden{
+    visibility: hidden;
 }

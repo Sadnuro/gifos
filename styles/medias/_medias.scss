@@ -85,6 +85,10 @@
             }
             .search-bar-container {
                 width: 550px;
+                #search-bar {
+                    width: 100%;
+                    margin: 0 20px;
+                }
             }
 
         }
