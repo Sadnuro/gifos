@@ -51,7 +51,7 @@ header nav {
 header nav #logo {
   width: 50px;
   height: 50px;
-  content: url("/assets/logo-mobile.svg");
+  content: url("../assets/logo-mobile.svg");
 }
 header nav details {
   width: 30px;
@@ -105,7 +105,7 @@ header nav details ul li a {
 
 @media screen and (min-width: 1px) and (max-width: 669px) {
   .dark-mode #logo {
-    content: url("/assets/logo-mobile-modo-noct.svg");
+    content: url("../assets/logo-mobile-modo-noct.svg");
   }
 }
 .home-section {
@@ -681,22 +681,22 @@ footer .container-logos .sm-logo {
   height: 20px;
 }
 footer .container-logos #sm-fb {
-  content: url("/assets/icon_facebook.svg");
+  content: url("../assets/icon_facebook.svg");
 }
 footer .container-logos #sm-fb:hover {
-  content: url("/assets/icon_facebook_hover.svg");
+  content: url("../assets/icon_facebook_hover.svg");
 }
 footer .container-logos #sm-tw {
-  content: url("/assets/icon-twitter.svg");
+  content: url("../assets/icon-twitter.svg");
 }
 footer .container-logos #sm-tw:hover {
-  content: url("/assets/icon-twitter-hover.svg");
+  content: url("../assets/icon-twitter-hover.svg");
 }
 footer .container-logos #sm-ig {
-  content: url("/assets/icon_instagram.svg");
+  content: url("../assets/icon_instagram.svg");
 }
 footer .container-logos #sm-ig:hover {
-  content: url("/assets/icon_instagram-hover.svg");
+  content: url("../assets/icon_instagram-hover.svg");
 }
 footer .default-btn {
   display: none;
