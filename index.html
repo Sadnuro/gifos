@@ -45,10 +45,15 @@
                 <img class="home-img" src="assets/ilustra_header.svg" alt="Ilustra-header">
 
                 <div class="search-bar-container">
-                    <input id="search-bar" type="text" placeholder="Busca GIFOS y más">
-                    <!-- <div id="search-bar"></div> -->
-                    <img src="../assets/icon-search.svg" id="search-btn-img" class="status-search" alt="icon-search">
-                    <img src="../assets/close.svg" id="close-btn-img" class="display-none" alt="icon-close">
+                    <div id="search-bar-parent">
+                        <img src="../assets/icon-search.svg" id="search-btn-img2" class="search-btn-img status-search" alt="icon-search">
+                        <input id="search-bar" type="text" placeholder="Busca GIFOS y más">
+                        <img src="../assets/icon-search.svg" id="search-btn-img" class="search-btn-img status-search" alt="icon-search">
+                        <img src="../assets/close.svg" id="close-btn-img" class="display-none" alt="icon-close">
+                    </div>
+
+                    <ul class="container-suggestions" id="container-suggestions">
+                    </ul>
                     
                 </div>
             </div>

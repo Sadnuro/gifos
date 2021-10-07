@@ -104,7 +104,7 @@ function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=defau
     }
 }
 
-async function search (URI, ){
+async function search (URI){
     const response = await fetch(URI);
     if(!response.ok) {
         throw new Error("WARN", response.status);
@@ -127,6 +127,28 @@ async function search (URI, ){
     });
     // console.log("search():", gifos)
     return result;
+}
+async function searchSuggestions(text){
+    const URI = `https://api.giphy.com/v1/gifs/search/tags?api_key=${API_KEY}&q=${text}`;
+    try {
+        let result = await fetch(URI);
+        container_suggestions.innerHTML='';
+        let suggestions = (await result.json()).data;
+    
+        if(suggestions.length>0){
+            for(let i=0; i<=3; i++){
+                container_suggestions.innerHTML += `
+                <li id="sugerencia_${i+1}" class="suggestions-li suggestion-${i+1}">
+                        <img src="../assets/icon-search.svg" id="sug-search-btn${i+1}" class="search-btn-img status-search suggestion-${i+1}" alt="icon-search">
+                        <p id="p-suggestion-${i+1}" class="suggestion-${i+1}">${suggestions[i].name}</p>
+                </li>
+                `
+            }
+        }
+        console.log(suggestions)        
+    } catch (error) {
+        console.log({success: false, msg: error})
+    }
 }
 
 async function searchGifosById (arrayIds) {
@@ -196,15 +218,17 @@ window.onload =  onloadExe();
 
 // Generar busqueda de GIf al presionar [Enter]
 const search_bar = document.querySelector("input#search-bar")
-const search_btn_img = document.querySelector("#search-btn-img")
 const close_btn_img = document.querySelector("#close-btn-img")
+const search_btn_img = document.querySelector("#search-btn-img")
+const search_btn_img2 = document.querySelector('#search-btn-img2');
+const container_suggestions = document.querySelector('#container-suggestions');
 
 async function toSearch(event){   // event keyboard data
     // event = metas of key of keyboard
     // element = input that contained of text to search
     const text = search_bar.value.trim()
     // console.log("Running search!!!")
-    if (screen.width > 669){
+    // if (screen.width > 669){
         if (text){
             // Cambiar lupa a X
             if (!search_btn_img.classList.contains("display-none")){
@@ -226,7 +250,7 @@ async function toSearch(event){   // event keyboard data
                 close_btn_img.classList.toggle("display-none")
             }
         }
-    } else {
+    // } else {
         search_btn_img.addEventListener("click", async (event)=>{
             // console.log("mobile search!")
             if (text.trim()!=""){
@@ -255,11 +279,61 @@ async function toSearch(event){   // event keyboard data
             }
     
         })
+    // }
+
+    // Search suggestions =======
+    await searchSuggestions(text);
+    container_suggestions.addEventListener('click', async (event)=>{
+        event.stopImmediatePropagation();
+        
+        const element = event.target;
+        let sug_index = 0;
+        let textSearch = '';
+        for (let index = 1; index <=4; index++) {
+            if (validateClassList(`suggestion-${index}`, element.classList)){
+                sug_index = index;
+                textSearch = document.querySelector(`#p-suggestion-${index}`).textContent;
+                break;
+            }         
+        }
+        console.log(textSearch)
+        search_bar.value = textSearch;
+        container_suggestions.innerHTML = '';
+        search_btn_img2.style = 'visibility: hidden';
+
+        search_bar.blur();
+        REQ_TYPE ="gifs";                // gifs | stickers
+        REQUEST = "search";              // trending | search
+        Q =`${textSearch}`;                    // Búsqueda usuario
+        LIMIT = 12;                      // Cant gifos to get
+        OFFSET = 0;
+        gifosList = [];
+        URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
+
+        gifosResults = await search(URI);
+
+        // console.log("gifosList before: ", gifosList)
+
+        gifosList = [gifosResults];
+        results_container.innerHTML = '';
+        insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
+
+        // console.log("gifosResults[] :: ", gifosResults);
+        // console.log("gifosList[] after :: ", gifosList);
+
+        subsection_results_title.textContent = Q;
+        subsection_results.classList.remove("display-none");
+
+    })
+    if (text){
+        search_btn_img2.style = 'visibility: visible'
+    } else {
+        search_btn_img2.style = 'visibility: hidden'
     }
-
-
     // Realizar busqueda | Evento al presionar [Enter]
     if (event.code == "Enter" && text){
+        container_suggestions.innerHTML = '';
+        search_btn_img2.style = 'visibility: hidden';
         search_bar.blur();
         REQ_TYPE ="gifs";                // gifs | stickers
         REQUEST = "search";              // trending | search
@@ -295,6 +369,9 @@ close_btn_img.addEventListener("click", (event)=>{
     search_bar.value = ""
     close_btn_img.classList.add("display-none");
     search_btn_img.classList.remove("display-none");
+    search_btn_img2.style = 'visibility: hidden';       // hidden search-btn 2
+    container_suggestions.innerHTML='';                 // Clear suggestions
+    
 })
 
 // FUNCIONALIDAD Botón VER-MÁS==============================================================
@@ -329,6 +406,7 @@ viewMore_btn_results.addEventListener("click", async (event)=>{
     // console.log("gifosList afte viewMore: ", gifosList)
 
 })
+
 
 
 // Generar busqueda a partir de palabras tendencias
