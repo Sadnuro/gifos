@@ -226,60 +226,89 @@ const container_suggestions = document.querySelector('#container-suggestions');
 async function toSearch(event){   // event keyboard data
     // event = metas of key of keyboard
     // element = input that contained of text to search
-    const text = search_bar.value.trim()
-    // console.log("Running search!!!")
-    // if (screen.width > 669){
-        if (text){
-            // Cambiar lupa a X
-            if (!search_btn_img.classList.contains("display-none")){
-                search_btn_img.classList.toggle("display-none")
-            }
-            
-            if (close_btn_img.classList.contains("display-none")){
-                close_btn_img.classList.toggle("display-none")
-            } 
+    let text = search_bar.value.trim()
+    if (text){
+        // Cambiar lupa a X
+        if (!search_btn_img.classList.contains("display-none")){
+            search_btn_img.classList.toggle("display-none")
         }
-        else {
-            // Cambiar X a lupa!
-            
-            if (search_btn_img.classList.contains("display-none")){
-                search_btn_img.classList.toggle("display-none")
-            }
-            
-            if (!close_btn_img.classList.contains("display-none")){
-                close_btn_img.classList.toggle("display-none")
-            }
+        
+        if (close_btn_img.classList.contains("display-none")){
+            close_btn_img.classList.toggle("display-none")
+        } 
+    }
+    else {
+        // Cambiar X a lupa!
+        
+        if (search_btn_img.classList.contains("display-none")){
+            search_btn_img.classList.toggle("display-none")
         }
-    // } else {
-        search_btn_img.addEventListener("click", async (event)=>{
-            // console.log("mobile search!")
-            if (text.trim()!=""){
-                search_bar.blur();
-                REQ_TYPE ="gifs";                // gifs | stickers
-                REQUEST = "search";              // trending | search
-                Q =`${text}`;                    // Búsqueda usuario
-                LIMIT = 12;                      // Cant gifos to get
-                OFFSET = 0;
-                gifosList = [];
-                URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
         
-                gifosResults = await search(URI);
-        
-                // console.log("gifosList before: ", gifosList)
-        
-                gifosList = [gifosResults];
-                results_container.innerHTML = '';
-                insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
-        
-                // console.log("gifosResults[] :: ", gifosResults);
-                // console.log("gifosList[] after :: ", gifosList);
-        
-                subsection_results_title.textContent = Q;
-                subsection_results.classList.remove("display-none");
-            }
+        if (!close_btn_img.classList.contains("display-none")){
+            close_btn_img.classList.toggle("display-none")
+        }
+    }
+
+    // search_btn_img.addEventListener("click", async (event)=>{
+    //     // console.log("mobile search!")
+    //     if (text.trim()!=""){
+    //         search_bar.blur();
+    //         REQ_TYPE ="gifs";                // gifs | stickers
+    //         REQUEST = "search";              // trending | search
+    //         Q =`${text}`;                    // Búsqueda usuario
+    //         LIMIT = 12;                      // Cant gifos to get
+    //         OFFSET = 0;
+    //         gifosList = [];
+    //         URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
     
-        })
-    // }
+    //         gifosResults = await search(URI);
+    
+    //         // console.log("gifosList before: ", gifosList)
+    
+    //         gifosList = [gifosResults];
+    //         results_container.innerHTML = '';
+    //         insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
+    
+    //         // console.log("gifosResults[] :: ", gifosResults);
+    //         // console.log("gifosList[] after :: ", gifosList);
+    
+    //         subsection_results_title.textContent = Q;
+    //         subsection_results.classList.remove("display-none");
+    //     }
+
+
+    search_btn_img2.addEventListener("click", async (event)=>{
+        event.stopImmediatePropagation();
+        container_suggestions.innerHTML = '';
+        let texto = search_bar.value.trim()
+        console.log("mobile search!:", texto)
+        if (texto!=""){
+            search_bar.blur();
+            REQ_TYPE ="gifs";                // gifs | stickers
+            REQUEST = "search";              // trending | search
+            Q =`${texto}`;                    // Búsqueda usuario
+            LIMIT = 12;                      // Cant gifos to get
+            OFFSET = 0;
+            gifosList = [];
+            URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
+    
+            gifosResults = await search(URI);
+    
+            // console.log("gifosList before: ", gifosList)
+    
+            gifosList = [gifosResults];
+            results_container.innerHTML = '';
+            insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
+    
+            // console.log("gifosResults[] :: ", gifosResults);
+            // console.log("gifosList[] after :: ", gifosList);
+    
+            subsection_results_title.textContent = Q;
+            subsection_results.classList.remove("display-none");
+        }
+
+    })
+
 
     // Search suggestions =======
     await searchSuggestions(text);
