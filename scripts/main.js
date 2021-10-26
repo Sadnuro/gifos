@@ -208,6 +208,11 @@ function initLocalStorageMyGifo(){
         localStorage.setItem("myGifosId", myGifosId);
     }
 }
+function initLocalStorageFavGifo(){
+    if (localStorage.getItem("favGifosId")==null || localStorage.getItem("favGifosId")==undefined){
+        localStorage.setItem("favGifosId", gifosFavoritesId);
+    }
+}
 
 let subArray = [];
 let offsetFavs = 0;
@@ -229,16 +234,26 @@ inicio_btn_dkt.addEventListener("click", (event)=>{
 favorites_btn.addEventListener("click", (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
-    // addIframe()                          // Recopilar gifos de LocalStorage
+    
+    // Recopilar gifos de LocalStorage
+    initLocalStorageFavGifo();
+    
+
     console.log(activeSection); // favorites
     container_favs_gifs_id.innerHTML='';
     insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
 
 })
-favorites_btn_dkt.addEventListener("click", (event)=>{
+favorites_btn_dkt.addEventListener("click", async (event)=>{
     toggleSections(event);
     details.removeAttribute("open");         // Cierra el menú
     // addIframe()                          // Recopilar gifos de LocalStorage
+
+    initLocalStorageFavGifo();
+    gifosFavoritesId = getLocalArray("favGifosId");
+    gifosFavorites = await searchGifosById(gifosFavoritesId);
+    console.log("id List:", gifosFavorites);
+
     console.log(activeSection); // favorites
     container_favs_gifs_id.innerHTML='';
     insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
@@ -249,7 +264,7 @@ mis_gifos_btn.addEventListener("click", async (event)=>{
     console.log(activeSection);              // Recopilar gifos de LocalStorage
 
     initLocalStorageMyGifo();
-
+    gifosFavorites = getLocalArray("favGifosId");
     // Fetch al id de los gifos en localStorage
     // El array resultado insertarlo en la sección
     const idLocalStorage =  JSON.parse(localStorage.getItem("myGifosId"));
@@ -282,28 +297,54 @@ console.log(activeSection);
 
 // CONTROL DE HOVER DE GIFO ======================================================
 // ===============================================================================
-function addToFav (imgElement){
-    genericList=[];
-    genericList = gifosList;
-    genericList.push(gifosTrends);
-    gifosFavorites.push(findFavs(genericList, imgElement.id, true));
-    genericList=[];
+function getLocalArray(itemListName){
+    let localArrayString = localStorage.getItem(itemListName);
+    let localArray = [];
+    if (localArrayString!=''){
+        localArray = JSON.parse(localArrayString);
+    } 
+    return localArray;
+}
+async function addToFav (imgId){
+    console.log("id to insert:", imgId);
+
+    initLocalStorageFavGifo();
+    localArray = getLocalArray("favGifosId");
+    gifosFavoritesId = [imgId].concat(localArray);
+
+    localStorage.setItem("favGifosId", JSON.stringify(gifosFavoritesId));
+
+    gifosFavorites = await searchGifosById(gifosFavoritesId);
+
     container_favs_gifs_id.innerHTML='';
     insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
 }
-function removeToFav (imgElement){
-    const index = gifosFavorites.findIndex(e => e.id == imgElement.id)
-    if (index>=0){
-        gifosFavorites.splice(index, 1)
-        container_favs_gifs_id.innerHTML='';
-        insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
-    }    
+async function removeToFav (imgId){
+    console.log("id to delete:", imgId);
+
+    localArray = getLocalArray("favGifosId");
+    if (localArray.length>0){
+        const index = localArray.findIndex(id => id == imgId)
+        console.log("index to delete:", index)
+        if (index>=0){
+            localArray.splice(index, 1)
+            gifosFavoritesId = localArray;
+            localStorage.setItem("favGifosId", JSON.stringify(gifosFavoritesId));
+
+            if(gifosFavoritesId.length>0){
+                gifosFavorites = await searchGifosById(gifosFavoritesId);
+            } else {
+                gifosFavorites = [];
+            }
+            container_favs_gifs_id.innerHTML='';
+            insertGifos(gifosFavorites, container_favs_gifs_id, notFoundFavsGifs, viewMore_btn_favs, true)
+        }    
+    }
 }
 
 // Modal for desktop version
 var normalTemplate = "";
 var elementFigure = null;
-
 
 
 function focusedElement(figureElement) { // element == <figure>
@@ -360,11 +401,11 @@ function focusedElement(figureElement) { // element == <figure>
                 if (btn_fav.getAttribute("fav")=="false"){
                     btn_fav.setAttribute("fav" , "true")
                     btn_fav_preview.setAttribute("fav" , "true")
-                    addToFav(img);
+                    addToFav(img.id);
                 } else {
                     btn_fav.setAttribute("fav" , "false")
                     btn_fav_preview.setAttribute("fav" , "false")
-                    removeToFav(img);
+                    removeToFav(img.id);
                 }
             })
     
@@ -379,10 +420,10 @@ function focusedElement(figureElement) { // element == <figure>
             event.stopPropagation();
             if (btn_fav.getAttribute("fav")=="false"){
                 btn_fav.setAttribute("fav" , "true")
-                addToFav(img);
+                addToFav(img.id);
             } else {
                 btn_fav.setAttribute("fav" , "false")
-                removeToFav(img);
+                removeToFav(img.id);
             }
         })
     
@@ -426,11 +467,11 @@ function focusedElement(figureElement) { // element == <figure>
                 if (btn_fav.getAttribute("fav")=="false"){
                     btn_fav.setAttribute("fav" , "true")
                     btn_fav_preview.setAttribute("fav" , "true")
-                    addToFav(img);
+                    addToFav(img.id);
                 } else {
                     btn_fav.setAttribute("fav" , "false")
                     btn_fav_preview.setAttribute("fav" , "false")
-                    removeToFav(img);
+                    removeToFav(img.id);
                 }
             })
             btn_download_mobile = document.querySelector(".preview .container-btns-info .btn-download");

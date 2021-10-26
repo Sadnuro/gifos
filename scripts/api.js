@@ -4,6 +4,7 @@ let gifosTrends = [];           // Stores all gifos in trends carrusel
 let myGifos = [0];               // Stores all creates gifos 
 let myGifosId = [];     
 let gifosFavorites = [];        // Stores gifos added to favorites
+let gifosFavoritesId = [];
 let gifosResults = [];          // Stores current results of search of gifos
 
 
@@ -44,6 +45,9 @@ function insertGifos (gifos, gifosContainer, defaultInsert='', viewMoreBtn=defau
      * [viewMoreBtn]: botón ver-más que debe ser ocultado o mostrado si hay o no gifos
      * [statusFav]: Al insertar un solo gifo | Indica si se ha añadido como favorito
      *      Aplica en la inserción de gifos a la sección Fav a partir del botón fav
+     * [typeGifo] = 1 -> MyGifo
+     *              0 -> Default Gifo
+     *              Change buttons to hover preview
      */
 
     if (gifos.length>0){
@@ -248,34 +252,6 @@ async function toSearch(event){   // event keyboard data
         }
     }
 
-    // search_btn_img.addEventListener("click", async (event)=>{
-    //     // console.log("mobile search!")
-    //     if (text.trim()!=""){
-    //         search_bar.blur();
-    //         REQ_TYPE ="gifs";                // gifs | stickers
-    //         REQUEST = "search";              // trending | search
-    //         Q =`${text}`;                    // Búsqueda usuario
-    //         LIMIT = 12;                      // Cant gifos to get
-    //         OFFSET = 0;
-    //         gifosList = [];
-    //         URI = `${API_URL}/${REQ_TYPE}/${REQUEST}?api_key=${API_KEY}&q=${Q}&offset=${OFFSET}&limit=${LIMIT}`
-    
-    //         gifosResults = await search(URI);
-    
-    //         // console.log("gifosList before: ", gifosList)
-    
-    //         gifosList = [gifosResults];
-    //         results_container.innerHTML = '';
-    //         insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
-    
-    //         // console.log("gifosResults[] :: ", gifosResults);
-    //         // console.log("gifosList[] after :: ", gifosList);
-    
-    //         subsection_results_title.textContent = Q;
-    //         subsection_results.classList.remove("display-none");
-    //     }
-
-
     search_btn_img2.addEventListener("click", async (event)=>{
         event.stopImmediatePropagation();
         container_suggestions.innerHTML = '';
@@ -343,9 +319,6 @@ async function toSearch(event){   // event keyboard data
         gifosList = [gifosResults];
         results_container.innerHTML = '';
         insertGifos (gifosResults, results_container, notFoundResultsSearchTemplate, viewMore_btn_results)
-
-        // console.log("gifosResults[] :: ", gifosResults);
-        // console.log("gifosList[] after :: ", gifosList);
 
         subsection_results_title.textContent = Q;
         subsection_results.classList.remove("display-none");
