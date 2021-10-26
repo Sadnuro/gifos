@@ -251,8 +251,11 @@ favorites_btn_dkt.addEventListener("click", async (event)=>{
 
     initLocalStorageFavGifo();
     gifosFavoritesId = getLocalArray("favGifosId");
-    gifosFavorites = await searchGifosById(gifosFavoritesId);
-    console.log("id List:", gifosFavorites);
+    if(gifosFavoritesId.length>0){
+        gifosFavorites = await searchGifosById(gifosFavoritesId);
+    } else {
+        gifosFavorites = [];
+    }
 
     console.log(activeSection); // favorites
     container_favs_gifs_id.innerHTML='';

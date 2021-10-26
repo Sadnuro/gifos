@@ -135,6 +135,7 @@ setInterval(chronos, 1000);
 const gifSetup = {type: 'gif', frameRate: 10, quality: 10, width: 360, height: 240}
 
 process_btn.addEventListener("click", async (event)=>{
+    let status;
     switch (event.target.textContent){
         case "CONTINUAR":
             status = "NONE"
