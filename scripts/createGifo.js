@@ -308,15 +308,22 @@ function copyToClipBoard(elementWithContent) {
 
 async function deleteGifo (gifoId){
     // console.log("gifoId:", gifoId);
+    idList = [];
+
     const idList = JSON.parse(localStorage.getItem("myGifosId")); 
     const index = idList.indexOf(gifoId);
     // console.log("idList:", idList)
 
     idList.splice(index, 1);
     // console.log("idList:", idList)
+    if (idList.length>0){
+        myGifos = await searchGifosById(idList);
+    } else {
+        idList = [];
+        myGifos=[];
+    }
+    
     localStorage.setItem("myGifosId", JSON.stringify(idList));
-
-    myGifos = await searchGifosById(idList);
     container_mis_gifos.innerHTML = '';
     insertGifos(myGifos, container_mis_gifos, notFoundMyGifs, viewMore_btn_misGifos, false, 1)
 }
