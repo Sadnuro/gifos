@@ -308,9 +308,9 @@ function copyToClipBoard(elementWithContent) {
 
 async function deleteGifo (gifoId){
     // console.log("gifoId:", gifoId);
-    idList = [];
+    let idList = [];
 
-    const idList = JSON.parse(localStorage.getItem("myGifosId")); 
+    idList = JSON.parse(localStorage.getItem("myGifosId")); 
     const index = idList.indexOf(gifoId);
     // console.log("idList:", idList)
 
