@@ -29,8 +29,8 @@ let gifoSubidoTemplate = `
     <p id="status-text">GIFO subido con éxito</p>
 `
 let buttons_actions = `
-    <div class="btn-download"></div>
-    <div class="btn-link"></div>
+    <div class="btn-download" id="download_uploaded-btn"></div>
+    <div class="btn-link" id="link-uploaded-btn"></div>
 `
 let timelapseTemplate = `
     <p id="timelapse" class="timelapse"></p>
@@ -235,14 +235,20 @@ process_btn.addEventListener("click", async (event)=>{
             const createGifo_containerBtns = document.querySelector(".createGifo-containerBtns");
             statusInfoContainer.innerHTML = gifoSubidoTemplate;   
             createGifo_containerBtns.innerHTML = buttons_actions;
-            btn_link = document.querySelector(".createGifo-containerBtns .btn-link");
-            btn_download = document.querySelector(".createGifo-containerBtns .btn-download");
+            btn_downloaded = document.querySelector("#download_uploaded-btn");
+            btn_link = document.querySelector("#link-uploaded-btn");
+            console.log(btn_downloaded)
+            console.log(btn_link)
 
             const GIFO_ID = resultReq.data.id;
             // console.log("gifoId:", GIFO_ID);
 
             // Update localStorage
-            local = JSON.parse(localStorage.getItem("myGifosId"))
+            localString = localStorage.getItem("myGifosId")
+            let local =[];
+            if (localString!=''){
+                local = JSON.parse(localString)
+            }
             myGifosId = [GIFO_ID].concat(local);
             localStorage.setItem("myGifosId", JSON.stringify(myGifosId));
 
@@ -252,12 +258,14 @@ process_btn.addEventListener("click", async (event)=>{
             URI = `${API_URL}/${REQ_TYPE}?api_key=${API_KEY}&ids=${GIFO_ID}`;
             const myGifo = await search(URI);
             myGifos.push(myGifo[0]);
-
+            console.log(myGifo)
             btn_link.addEventListener("click", (event)=>{
+                console.log('Click copy!')
                 copyToClipBoard(myGifo[0].medias.gif);
             })
-            btn_download.addEventListener("click", (event)=>{
-                // console.log(event.target)
+            btn_downloaded.addEventListener("click", (event)=>{
+                console.log(event.target)
+                console.log(myGifo)
                 downloadGif(myGifo[0].medias.gif, "myGifo.gif");
             })
 
@@ -291,10 +299,9 @@ function copyToClipBoard(elementWithContent) {
     document.body.appendChild(p)
     p.select();
     p.setSelectionRange(0, 99999);
-    document.execCommand('copy');
-
-    document.body.removeChild(p)
+    document.execCommand("copy");
     alert("Link copied!");
+    document.body.removeChild(p)
 }
 
 
